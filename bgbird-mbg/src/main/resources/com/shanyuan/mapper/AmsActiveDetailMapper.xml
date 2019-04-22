@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.mapper.AmsActiveDetailMapper">
+  <resultMap id="BaseResultMap" type="com.shanyuan.model.AmsActiveDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="active_id" jdbcType="INTEGER" property="activeId" />
+    <result column="active_detail_picture" jdbcType="VARCHAR" property="activeDetailPicture" />
+    <result column="active_date" jdbcType="VARCHAR" property="activeDate" />
+    <result column="active_time_interval" jdbcType="VARCHAR" property="activeTimeInterval" />
+    <result column="active_address" jdbcType="VARCHAR" property="activeAddress" />
+    <result column="recommend_people" jdbcType="VARCHAR" property="recommendPeople" />
+    <result column="welfare" jdbcType="VARCHAR" property="welfare" />
+    <result column="apply_need_know" jdbcType="VARCHAR" property="applyNeedKnow" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shanyuan.model.AmsActiveDetail">
+    <result column="active_introduce" jdbcType="LONGVARCHAR" property="activeIntroduce" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, active_id, active_detail_picture, active_date, active_time_interval, active_address, 
+    recommend_people, welfare, apply_need_know
+  </sql>
+  <sql id="Blob_Column_List">
+    active_introduce
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.shanyuan.model.AmsActiveDetailExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ams_active_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.shanyuan.model.AmsActiveDetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ams_active_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ams_active_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ams_active_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shanyuan.model.AmsActiveDetailExample">
+    delete from ams_active_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.shanyuan.model.AmsActiveDetail">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ams_active_detail (active_id, active_detail_picture, active_date, 
+      active_time_interval, active_address, recommend_people, 
+      welfare, apply_need_know, active_introduce
+      )
+    values (#{activeId,jdbcType=INTEGER}, #{activeDetailPicture,jdbcType=VARCHAR}, #{activeDate,jdbcType=VARCHAR}, 
+      #{activeTimeInterval,jdbcType=VARCHAR}, #{activeAddress,jdbcType=VARCHAR}, #{recommendPeople,jdbcType=VARCHAR}, 
+      #{welfare,jdbcType=VARCHAR}, #{applyNeedKnow,jdbcType=VARCHAR}, #{activeIntroduce,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shanyuan.model.AmsActiveDetail">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ams_active_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activeId != null">
+        active_id,
+      </if>
+      <if test="activeDetailPicture != null">
+        active_detail_picture,
+      </if>
+      <if test="activeDate != null">
+        active_date,
+      </if>
+      <if test="activeTimeInterval != null">
+        active_time_interval,
+      </if>
+      <if test="activeAddress != null">
+        active_address,
+      </if>
+      <if test="recommendPeople != null">
+        recommend_people,
+      </if>
+      <if test="welfare != null">
+        welfare,
+      </if>
+      <if test="applyNeedKnow != null">
+        apply_need_know,
+      </if>
+      <if test="activeIntroduce != null">
+        active_introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activeId != null">
+        #{activeId,jdbcType=INTEGER},
+      </if>
+      <if test="activeDetailPicture != null">
+        #{activeDetailPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="activeDate != null">
+        #{activeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTimeInterval != null">
+        #{activeTimeInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="activeAddress != null">
+        #{activeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendPeople != null">
+        #{recommendPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null">
+        #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNeedKnow != null">
+        #{applyNeedKnow,jdbcType=VARCHAR},
+      </if>
+      <if test="activeIntroduce != null">
+        #{activeIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shanyuan.model.AmsActiveDetailExample" resultType="java.lang.Integer">
+    select count(*) from ams_active_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ams_active_detail
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.activeId != null">
+        active_id = #{record.activeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.activeDetailPicture != null">
+        active_detail_picture = #{record.activeDetailPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activeDate != null">
+        active_date = #{record.activeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activeTimeInterval != null">
+        active_time_interval = #{record.activeTimeInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activeAddress != null">
+        active_address = #{record.activeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recommendPeople != null">
+        recommend_people = #{record.recommendPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.welfare != null">
+        welfare = #{record.welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.applyNeedKnow != null">
+        apply_need_know = #{record.applyNeedKnow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activeIntroduce != null">
+        active_introduce = #{record.activeIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ams_active_detail
+    set id = #{record.id,jdbcType=INTEGER},
+      active_id = #{record.activeId,jdbcType=INTEGER},
+      active_detail_picture = #{record.activeDetailPicture,jdbcType=VARCHAR},
+      active_date = #{record.activeDate,jdbcType=VARCHAR},
+      active_time_interval = #{record.activeTimeInterval,jdbcType=VARCHAR},
+      active_address = #{record.activeAddress,jdbcType=VARCHAR},
+      recommend_people = #{record.recommendPeople,jdbcType=VARCHAR},
+      welfare = #{record.welfare,jdbcType=VARCHAR},
+      apply_need_know = #{record.applyNeedKnow,jdbcType=VARCHAR},
+      active_introduce = #{record.activeIntroduce,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ams_active_detail
+    set id = #{record.id,jdbcType=INTEGER},
+      active_id = #{record.activeId,jdbcType=INTEGER},
+      active_detail_picture = #{record.activeDetailPicture,jdbcType=VARCHAR},
+      active_date = #{record.activeDate,jdbcType=VARCHAR},
+      active_time_interval = #{record.activeTimeInterval,jdbcType=VARCHAR},
+      active_address = #{record.activeAddress,jdbcType=VARCHAR},
+      recommend_people = #{record.recommendPeople,jdbcType=VARCHAR},
+      welfare = #{record.welfare,jdbcType=VARCHAR},
+      apply_need_know = #{record.applyNeedKnow,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shanyuan.model.AmsActiveDetail">
+    update ams_active_detail
+    <set>
+      <if test="activeId != null">
+        active_id = #{activeId,jdbcType=INTEGER},
+      </if>
+      <if test="activeDetailPicture != null">
+        active_detail_picture = #{activeDetailPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="activeDate != null">
+        active_date = #{activeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTimeInterval != null">
+        active_time_interval = #{activeTimeInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="activeAddress != null">
+        active_address = #{activeAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendPeople != null">
+        recommend_people = #{recommendPeople,jdbcType=VARCHAR},
+      </if>
+      <if test="welfare != null">
+        welfare = #{welfare,jdbcType=VARCHAR},
+      </if>
+      <if test="applyNeedKnow != null">
+        apply_need_know = #{applyNeedKnow,jdbcType=VARCHAR},
+      </if>
+      <if test="activeIntroduce != null">
+        active_introduce = #{activeIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shanyuan.model.AmsActiveDetail">
+    update ams_active_detail
+    set active_id = #{activeId,jdbcType=INTEGER},
+      active_detail_picture = #{activeDetailPicture,jdbcType=VARCHAR},
+      active_date = #{activeDate,jdbcType=VARCHAR},
+      active_time_interval = #{activeTimeInterval,jdbcType=VARCHAR},
+      active_address = #{activeAddress,jdbcType=VARCHAR},
+      recommend_people = #{recommendPeople,jdbcType=VARCHAR},
+      welfare = #{welfare,jdbcType=VARCHAR},
+      apply_need_know = #{applyNeedKnow,jdbcType=VARCHAR},
+      active_introduce = #{activeIntroduce,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shanyuan.model.AmsActiveDetail">
+    update ams_active_detail
+    set active_id = #{activeId,jdbcType=INTEGER},
+      active_detail_picture = #{activeDetailPicture,jdbcType=VARCHAR},
+      active_date = #{activeDate,jdbcType=VARCHAR},
+      active_time_interval = #{activeTimeInterval,jdbcType=VARCHAR},
+      active_address = #{activeAddress,jdbcType=VARCHAR},
+      recommend_people = #{recommendPeople,jdbcType=VARCHAR},
+      welfare = #{welfare,jdbcType=VARCHAR},
+      apply_need_know = #{applyNeedKnow,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

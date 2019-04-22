@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.mapper.UmsUserMemberLevelMapper">
+  <resultMap id="BaseResultMap" type="com.shanyuan.model.UmsUserMemberLevel">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="level_name" jdbcType="VARCHAR" property="levelName" />
+    <result column="growth_point" jdbcType="INTEGER" property="growthPoint" />
+    <result column="default_status" jdbcType="BIT" property="defaultStatus" />
+    <result column="priviledge_birthday" jdbcType="BIT" property="priviledgeBirthday" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, level_name, growth_point, default_status, priviledge_birthday
+  </sql>
+  <select id="selectByExample" parameterType="com.shanyuan.model.UmsUserMemberLevelExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ums_user_member_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ums_user_member_level
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ums_user_member_level
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shanyuan.model.UmsUserMemberLevelExample">
+    delete from ums_user_member_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.shanyuan.model.UmsUserMemberLevel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_user_member_level (level_name, growth_point, default_status, 
+      priviledge_birthday)
+    values (#{levelName,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, #{defaultStatus,jdbcType=BIT}, 
+      #{priviledgeBirthday,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUserMemberLevel">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_user_member_level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        level_name,
+      </if>
+      <if test="growthPoint != null">
+        growth_point,
+      </if>
+      <if test="defaultStatus != null">
+        default_status,
+      </if>
+      <if test="priviledgeBirthday != null">
+        priviledge_birthday,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="growthPoint != null">
+        #{growthPoint,jdbcType=INTEGER},
+      </if>
+      <if test="defaultStatus != null">
+        #{defaultStatus,jdbcType=BIT},
+      </if>
+      <if test="priviledgeBirthday != null">
+        #{priviledgeBirthday,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shanyuan.model.UmsUserMemberLevelExample" resultType="java.lang.Integer">
+    select count(*) from ums_user_member_level
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ums_user_member_level
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelName != null">
+        level_name = #{record.levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.growthPoint != null">
+        growth_point = #{record.growthPoint,jdbcType=INTEGER},
+      </if>
+      <if test="record.defaultStatus != null">
+        default_status = #{record.defaultStatus,jdbcType=BIT},
+      </if>
+      <if test="record.priviledgeBirthday != null">
+        priviledge_birthday = #{record.priviledgeBirthday,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ums_user_member_level
+    set id = #{record.id,jdbcType=INTEGER},
+      level_name = #{record.levelName,jdbcType=VARCHAR},
+      growth_point = #{record.growthPoint,jdbcType=INTEGER},
+      default_status = #{record.defaultStatus,jdbcType=BIT},
+      priviledge_birthday = #{record.priviledgeBirthday,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shanyuan.model.UmsUserMemberLevel">
+    update ums_user_member_level
+    <set>
+      <if test="levelName != null">
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="growthPoint != null">
+        growth_point = #{growthPoint,jdbcType=INTEGER},
+      </if>
+      <if test="defaultStatus != null">
+        default_status = #{defaultStatus,jdbcType=BIT},
+      </if>
+      <if test="priviledgeBirthday != null">
+        priviledge_birthday = #{priviledgeBirthday,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shanyuan.model.UmsUserMemberLevel">
+    update ums_user_member_level
+    set level_name = #{levelName,jdbcType=VARCHAR},
+      growth_point = #{growthPoint,jdbcType=INTEGER},
+      default_status = #{defaultStatus,jdbcType=BIT},
+      priviledge_birthday = #{priviledgeBirthday,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
