@@ -53,21 +53,21 @@ public class PmsProduct implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean publishStatus;
+    private Integer publishStatus;
 
     /**
      * 热销状态: 0->否;1->是
      *
      * @mbggenerated
      */
-    private Boolean hotStatus;
+    private Integer hotStatus;
 
     /**
      * 兑换状态:0->否;1->是
      *
      * @mbggenerated
      */
-    private Boolean exchangeStatus;
+    private Integer exchangeStatus;
 
     /**
      * 销量
@@ -176,27 +176,27 @@ public class PmsProduct implements Serializable {
         this.deleteStatus = deleteStatus;
     }
 
-    public Boolean getPublishStatus() {
+    public Integer getPublishStatus() {
         return publishStatus;
     }
 
-    public void setPublishStatus(Boolean publishStatus) {
+    public void setPublishStatus(Integer publishStatus) {
         this.publishStatus = publishStatus;
     }
 
-    public Boolean getHotStatus() {
+    public Integer getHotStatus() {
         return hotStatus;
     }
 
-    public void setHotStatus(Boolean hotStatus) {
+    public void setHotStatus(Integer hotStatus) {
         this.hotStatus = hotStatus;
     }
 
-    public Boolean getExchangeStatus() {
+    public Integer getExchangeStatus() {
         return exchangeStatus;
     }
 
-    public void setExchangeStatus(Boolean exchangeStatus) {
+    public void setExchangeStatus(Integer exchangeStatus) {
         this.exchangeStatus = exchangeStatus;
     }
 

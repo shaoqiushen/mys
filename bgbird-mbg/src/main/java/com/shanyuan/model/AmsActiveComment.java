@@ -46,7 +46,7 @@ public class AmsActiveComment implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean isShow;
+    private Integer showStatus;
 
     /**
      * 创建时间
@@ -105,12 +105,12 @@ public class AmsActiveComment implements Serializable {
         this.commentContent = commentContent;
     }
 
-    public Boolean getIsShow() {
-        return isShow;
+    public Integer getShowStatus() {
+        return showStatus;
     }
 
-    public void setIsShow(Boolean isShow) {
-        this.isShow = isShow;
+    public void setShowStatus(Integer showStatus) {
+        this.showStatus = showStatus;
     }
 
     public Date getCreateTime() {
@@ -133,7 +133,7 @@ public class AmsActiveComment implements Serializable {
         sb.append(", avartalUrl=").append(avartalUrl);
         sb.append(", nickname=").append(nickname);
         sb.append(", commentContent=").append(commentContent);
-        sb.append(", isShow=").append(isShow);
+        sb.append(", showStatus=").append(showStatus);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

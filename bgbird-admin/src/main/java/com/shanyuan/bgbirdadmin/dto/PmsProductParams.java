@@ -3,6 +3,7 @@ package com.shanyuan.bgbirdadmin.dto;
 import com.shanyuan.model.PmsProduct;
 import com.shanyuan.model.PmsProductAttributeValue;
 import com.shanyuan.model.PmsSkuStock;
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
  * desc 创建修改商品的入参
  **/
 @Data
+@ApiModel
 public class PmsProductParams extends PmsProduct {
     /*sku库存信息*/
     List<PmsSkuStock> skuStockList;

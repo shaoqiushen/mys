@@ -74,28 +74,28 @@ public class OmsOrder implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean payType;
+    private Integer payType;
 
     /**
      * 订单来源:0->app订单,1->PC订单
      *
      * @mbggenerated
      */
-    private Boolean sourceType;
+    private Integer sourceType;
 
     /**
      * 订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
      *
      * @mbggenerated
      */
-    private Boolean orderStatus;
+    private Integer orderStatus;
 
     /**
      * 订单类型：0->正常订单；1->秒杀订单
      *
      * @mbggenerated
      */
-    private Boolean orderType;
+    private Integer orderType;
 
     /**
      * 支付时间
@@ -181,6 +181,13 @@ public class OmsOrder implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 删除状态:0->否，1->是
+     *
+     * @mbggenerated
+     */
+    private Integer deleteStatus;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -263,35 +270,35 @@ public class OmsOrder implements Serializable {
         this.couponAmount = couponAmount;
     }
 
-    public Boolean getPayType() {
+    public Integer getPayType() {
         return payType;
     }
 
-    public void setPayType(Boolean payType) {
+    public void setPayType(Integer payType) {
         this.payType = payType;
     }
 
-    public Boolean getSourceType() {
+    public Integer getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(Boolean sourceType) {
+    public void setSourceType(Integer sourceType) {
         this.sourceType = sourceType;
     }
 
-    public Boolean getOrderStatus() {
+    public Integer getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Boolean orderStatus) {
+    public void setOrderStatus(Integer orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public Boolean getOrderType() {
+    public Integer getOrderType() {
         return orderType;
     }
 
-    public void setOrderType(Boolean orderType) {
+    public void setOrderType(Integer orderType) {
         this.orderType = orderType;
     }
 
@@ -391,6 +398,14 @@ public class OmsOrder implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -423,6 +438,7 @@ public class OmsOrder implements Serializable {
         sb.append(", commentTime=").append(commentTime);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

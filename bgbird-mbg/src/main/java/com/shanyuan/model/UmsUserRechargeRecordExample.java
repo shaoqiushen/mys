@@ -305,52 +305,52 @@ public class UmsUserRechargeRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeEqualTo(Boolean value) {
+        public Criteria andChangeTypeEqualTo(Integer value) {
             addCriterion("change_type =", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeNotEqualTo(Boolean value) {
+        public Criteria andChangeTypeNotEqualTo(Integer value) {
             addCriterion("change_type <>", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeGreaterThan(Boolean value) {
+        public Criteria andChangeTypeGreaterThan(Integer value) {
             addCriterion("change_type >", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andChangeTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("change_type >=", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeLessThan(Boolean value) {
+        public Criteria andChangeTypeLessThan(Integer value) {
             addCriterion("change_type <", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andChangeTypeLessThanOrEqualTo(Integer value) {
             addCriterion("change_type <=", value, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeIn(List<Boolean> values) {
+        public Criteria andChangeTypeIn(List<Integer> values) {
             addCriterion("change_type in", values, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeNotIn(List<Boolean> values) {
+        public Criteria andChangeTypeNotIn(List<Integer> values) {
             addCriterion("change_type not in", values, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andChangeTypeBetween(Integer value1, Integer value2) {
             addCriterion("change_type between", value1, value2, "changeType");
             return (Criteria) this;
         }
 
-        public Criteria andChangeTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andChangeTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("change_type not between", value1, value2, "changeType");
             return (Criteria) this;
         }
@@ -365,52 +365,52 @@ public class UmsUserRechargeRecordExample {
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusEqualTo(Boolean value) {
+        public Criteria andRechargeStatusEqualTo(Integer value) {
             addCriterion("recharge_status =", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusNotEqualTo(Boolean value) {
+        public Criteria andRechargeStatusNotEqualTo(Integer value) {
             addCriterion("recharge_status <>", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusGreaterThan(Boolean value) {
+        public Criteria andRechargeStatusGreaterThan(Integer value) {
             addCriterion("recharge_status >", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andRechargeStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("recharge_status >=", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusLessThan(Boolean value) {
+        public Criteria andRechargeStatusLessThan(Integer value) {
             addCriterion("recharge_status <", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andRechargeStatusLessThanOrEqualTo(Integer value) {
             addCriterion("recharge_status <=", value, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusIn(List<Boolean> values) {
+        public Criteria andRechargeStatusIn(List<Integer> values) {
             addCriterion("recharge_status in", values, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusNotIn(List<Boolean> values) {
+        public Criteria andRechargeStatusNotIn(List<Integer> values) {
             addCriterion("recharge_status not in", values, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andRechargeStatusBetween(Integer value1, Integer value2) {
             addCriterion("recharge_status between", value1, value2, "rechargeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andRechargeStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andRechargeStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("recharge_status not between", value1, value2, "rechargeStatus");
             return (Criteria) this;
         }

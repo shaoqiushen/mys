@@ -575,52 +575,52 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusEqualTo(Boolean value) {
+        public Criteria andPublishStatusEqualTo(Integer value) {
             addCriterion("publish_status =", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusNotEqualTo(Boolean value) {
+        public Criteria andPublishStatusNotEqualTo(Integer value) {
             addCriterion("publish_status <>", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusGreaterThan(Boolean value) {
+        public Criteria andPublishStatusGreaterThan(Integer value) {
             addCriterion("publish_status >", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andPublishStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("publish_status >=", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusLessThan(Boolean value) {
+        public Criteria andPublishStatusLessThan(Integer value) {
             addCriterion("publish_status <", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andPublishStatusLessThanOrEqualTo(Integer value) {
             addCriterion("publish_status <=", value, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusIn(List<Boolean> values) {
+        public Criteria andPublishStatusIn(List<Integer> values) {
             addCriterion("publish_status in", values, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusNotIn(List<Boolean> values) {
+        public Criteria andPublishStatusNotIn(List<Integer> values) {
             addCriterion("publish_status not in", values, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andPublishStatusBetween(Integer value1, Integer value2) {
             addCriterion("publish_status between", value1, value2, "publishStatus");
             return (Criteria) this;
         }
 
-        public Criteria andPublishStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andPublishStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("publish_status not between", value1, value2, "publishStatus");
             return (Criteria) this;
         }
@@ -635,52 +635,52 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusEqualTo(Boolean value) {
+        public Criteria andHotStatusEqualTo(Integer value) {
             addCriterion("hot_status =", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusNotEqualTo(Boolean value) {
+        public Criteria andHotStatusNotEqualTo(Integer value) {
             addCriterion("hot_status <>", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusGreaterThan(Boolean value) {
+        public Criteria andHotStatusGreaterThan(Integer value) {
             addCriterion("hot_status >", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andHotStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("hot_status >=", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusLessThan(Boolean value) {
+        public Criteria andHotStatusLessThan(Integer value) {
             addCriterion("hot_status <", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andHotStatusLessThanOrEqualTo(Integer value) {
             addCriterion("hot_status <=", value, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusIn(List<Boolean> values) {
+        public Criteria andHotStatusIn(List<Integer> values) {
             addCriterion("hot_status in", values, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusNotIn(List<Boolean> values) {
+        public Criteria andHotStatusNotIn(List<Integer> values) {
             addCriterion("hot_status not in", values, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andHotStatusBetween(Integer value1, Integer value2) {
             addCriterion("hot_status between", value1, value2, "hotStatus");
             return (Criteria) this;
         }
 
-        public Criteria andHotStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andHotStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("hot_status not between", value1, value2, "hotStatus");
             return (Criteria) this;
         }
@@ -695,52 +695,52 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusEqualTo(Boolean value) {
+        public Criteria andExchangeStatusEqualTo(Integer value) {
             addCriterion("exchange_status =", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusNotEqualTo(Boolean value) {
+        public Criteria andExchangeStatusNotEqualTo(Integer value) {
             addCriterion("exchange_status <>", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusGreaterThan(Boolean value) {
+        public Criteria andExchangeStatusGreaterThan(Integer value) {
             addCriterion("exchange_status >", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andExchangeStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("exchange_status >=", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusLessThan(Boolean value) {
+        public Criteria andExchangeStatusLessThan(Integer value) {
             addCriterion("exchange_status <", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andExchangeStatusLessThanOrEqualTo(Integer value) {
             addCriterion("exchange_status <=", value, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusIn(List<Boolean> values) {
+        public Criteria andExchangeStatusIn(List<Integer> values) {
             addCriterion("exchange_status in", values, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusNotIn(List<Boolean> values) {
+        public Criteria andExchangeStatusNotIn(List<Integer> values) {
             addCriterion("exchange_status not in", values, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andExchangeStatusBetween(Integer value1, Integer value2) {
             addCriterion("exchange_status between", value1, value2, "exchangeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andExchangeStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andExchangeStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("exchange_status not between", value1, value2, "exchangeStatus");
             return (Criteria) this;
         }

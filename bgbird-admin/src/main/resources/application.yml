@@ -9,8 +9,8 @@ logging:
   config: classpath:log/logback.xml
 mybatis:
   mapper-locations:
-    classpath*:com/**/mapper/*.xml
-#  - classpath:dao/*.xml
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
 
 
 spring:

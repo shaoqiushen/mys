@@ -3,6 +3,7 @@ package com.shanyuan.bgbirdadmin.controller;
 import com.shanyuan.bgbirdadmin.dto.PmsProductParams;
 import com.shanyuan.bgbirdadmin.service.PmsProductService;
 import com.shanyuan.domain.CommonResult;
+import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,9 +34,6 @@ public class PmsProductController {
     public CommonResult createProduct(@RequestBody PmsProductParams pmsProductParams){
 
         int count=pmsProductService.createProduct( pmsProductParams );
-        if(count >0){
-            return new CommonResult().success( count );
-        }
-        return new CommonResult().failed();
+        return ResultUtil.result( count );
     }
 }

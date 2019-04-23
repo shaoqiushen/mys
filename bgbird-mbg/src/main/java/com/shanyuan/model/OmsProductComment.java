@@ -46,14 +46,14 @@ public class OmsProductComment implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean commentStar;
+    private Integer commentStar;
 
     /**
      * 是否显示在手机端:0->否,1->是
      *
      * @mbggenerated
      */
-    private Boolean isShow;
+    private Integer showStatus;
 
     /**
      * 创建时间
@@ -112,20 +112,20 @@ public class OmsProductComment implements Serializable {
         this.commentContent = commentContent;
     }
 
-    public Boolean getCommentStar() {
+    public Integer getCommentStar() {
         return commentStar;
     }
 
-    public void setCommentStar(Boolean commentStar) {
+    public void setCommentStar(Integer commentStar) {
         this.commentStar = commentStar;
     }
 
-    public Boolean getIsShow() {
-        return isShow;
+    public Integer getShowStatus() {
+        return showStatus;
     }
 
-    public void setIsShow(Boolean isShow) {
-        this.isShow = isShow;
+    public void setShowStatus(Integer showStatus) {
+        this.showStatus = showStatus;
     }
 
     public Date getCreateTime() {
@@ -149,7 +149,7 @@ public class OmsProductComment implements Serializable {
         sb.append(", nickname=").append(nickname);
         sb.append(", commentContent=").append(commentContent);
         sb.append(", commentStar=").append(commentStar);
-        sb.append(", isShow=").append(isShow);
+        sb.append(", showStatus=").append(showStatus);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

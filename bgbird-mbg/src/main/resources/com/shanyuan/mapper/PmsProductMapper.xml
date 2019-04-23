@@ -9,9 +9,9 @@
     <result column="picture" jdbcType="VARCHAR" property="picture" />
     <result column="pictute_detail" jdbcType="VARCHAR" property="pictuteDetail" />
     <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
-    <result column="publish_status" jdbcType="BIT" property="publishStatus" />
-    <result column="hot_status" jdbcType="BIT" property="hotStatus" />
-    <result column="exchange_status" jdbcType="BIT" property="exchangeStatus" />
+    <result column="publish_status" jdbcType="INTEGER" property="publishStatus" />
+    <result column="hot_status" jdbcType="INTEGER" property="hotStatus" />
+    <result column="exchange_status" jdbcType="INTEGER" property="exchangeStatus" />
     <result column="sale_amount" jdbcType="INTEGER" property="saleAmount" />
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="current_price" jdbcType="INTEGER" property="currentPrice" />
@@ -122,8 +122,8 @@
       create_time, update_time)
     values (#{productId,jdbcType=INTEGER}, #{productCategoryId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
       #{productIntroduce,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{pictuteDetail,jdbcType=VARCHAR}, 
-      #{deleteStatus,jdbcType=BIT}, #{publishStatus,jdbcType=BIT}, #{hotStatus,jdbcType=BIT}, 
-      #{exchangeStatus,jdbcType=BIT}, #{saleAmount,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
+      #{deleteStatus,jdbcType=BIT}, #{publishStatus,jdbcType=INTEGER}, #{hotStatus,jdbcType=INTEGER}, 
+      #{exchangeStatus,jdbcType=INTEGER}, #{saleAmount,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
       #{currentPrice,jdbcType=INTEGER}, #{giftPoint,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -205,13 +205,13 @@
         #{deleteStatus,jdbcType=BIT},
       </if>
       <if test="publishStatus != null">
-        #{publishStatus,jdbcType=BIT},
+        #{publishStatus,jdbcType=INTEGER},
       </if>
       <if test="hotStatus != null">
-        #{hotStatus,jdbcType=BIT},
+        #{hotStatus,jdbcType=INTEGER},
       </if>
       <if test="exchangeStatus != null">
-        #{exchangeStatus,jdbcType=BIT},
+        #{exchangeStatus,jdbcType=INTEGER},
       </if>
       <if test="saleAmount != null">
         #{saleAmount,jdbcType=INTEGER},
@@ -267,13 +267,13 @@
         delete_status = #{record.deleteStatus,jdbcType=BIT},
       </if>
       <if test="record.publishStatus != null">
-        publish_status = #{record.publishStatus,jdbcType=BIT},
+        publish_status = #{record.publishStatus,jdbcType=INTEGER},
       </if>
       <if test="record.hotStatus != null">
-        hot_status = #{record.hotStatus,jdbcType=BIT},
+        hot_status = #{record.hotStatus,jdbcType=INTEGER},
       </if>
       <if test="record.exchangeStatus != null">
-        exchange_status = #{record.exchangeStatus,jdbcType=BIT},
+        exchange_status = #{record.exchangeStatus,jdbcType=INTEGER},
       </if>
       <if test="record.saleAmount != null">
         sale_amount = #{record.saleAmount,jdbcType=INTEGER},
@@ -310,9 +310,9 @@
       picture = #{record.picture,jdbcType=VARCHAR},
       pictute_detail = #{record.pictuteDetail,jdbcType=VARCHAR},
       delete_status = #{record.deleteStatus,jdbcType=BIT},
-      publish_status = #{record.publishStatus,jdbcType=BIT},
-      hot_status = #{record.hotStatus,jdbcType=BIT},
-      exchange_status = #{record.exchangeStatus,jdbcType=BIT},
+      publish_status = #{record.publishStatus,jdbcType=INTEGER},
+      hot_status = #{record.hotStatus,jdbcType=INTEGER},
+      exchange_status = #{record.exchangeStatus,jdbcType=INTEGER},
       sale_amount = #{record.saleAmount,jdbcType=INTEGER},
       price = #{record.price,jdbcType=INTEGER},
       current_price = #{record.currentPrice,jdbcType=INTEGER},
@@ -346,13 +346,13 @@
         delete_status = #{deleteStatus,jdbcType=BIT},
       </if>
       <if test="publishStatus != null">
-        publish_status = #{publishStatus,jdbcType=BIT},
+        publish_status = #{publishStatus,jdbcType=INTEGER},
       </if>
       <if test="hotStatus != null">
-        hot_status = #{hotStatus,jdbcType=BIT},
+        hot_status = #{hotStatus,jdbcType=INTEGER},
       </if>
       <if test="exchangeStatus != null">
-        exchange_status = #{exchangeStatus,jdbcType=BIT},
+        exchange_status = #{exchangeStatus,jdbcType=INTEGER},
       </if>
       <if test="saleAmount != null">
         sale_amount = #{saleAmount,jdbcType=INTEGER},
@@ -386,9 +386,9 @@
       picture = #{picture,jdbcType=VARCHAR},
       pictute_detail = #{pictuteDetail,jdbcType=VARCHAR},
       delete_status = #{deleteStatus,jdbcType=BIT},
-      publish_status = #{publishStatus,jdbcType=BIT},
-      hot_status = #{hotStatus,jdbcType=BIT},
-      exchange_status = #{exchangeStatus,jdbcType=BIT},
+      publish_status = #{publishStatus,jdbcType=INTEGER},
+      hot_status = #{hotStatus,jdbcType=INTEGER},
+      exchange_status = #{exchangeStatus,jdbcType=INTEGER},
       sale_amount = #{saleAmount,jdbcType=INTEGER},
       price = #{price,jdbcType=INTEGER},
       current_price = #{currentPrice,jdbcType=INTEGER},

@@ -26,13 +26,6 @@ public class PmsProductAttributeValue implements Serializable {
      */
     private String value;
 
-    /**
-     * 价格
-     *
-     * @mbggenerated
-     */
-    private Integer price;
-
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -67,14 +60,6 @@ public class PmsProductAttributeValue implements Serializable {
         this.value = value;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -85,7 +70,6 @@ public class PmsProductAttributeValue implements Serializable {
         sb.append(", productId=").append(productId);
         sb.append(", productAttributeId=").append(productAttributeId);
         sb.append(", value=").append(value);
-        sb.append(", price=").append(price);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

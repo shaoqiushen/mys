@@ -304,52 +304,52 @@ public class UmsUserMemberLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusEqualTo(Boolean value) {
+        public Criteria andDefaultStatusEqualTo(Integer value) {
             addCriterion("default_status =", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotEqualTo(Boolean value) {
+        public Criteria andDefaultStatusNotEqualTo(Integer value) {
             addCriterion("default_status <>", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusGreaterThan(Boolean value) {
+        public Criteria andDefaultStatusGreaterThan(Integer value) {
             addCriterion("default_status >", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andDefaultStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("default_status >=", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusLessThan(Boolean value) {
+        public Criteria andDefaultStatusLessThan(Integer value) {
             addCriterion("default_status <", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andDefaultStatusLessThanOrEqualTo(Integer value) {
             addCriterion("default_status <=", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusIn(List<Boolean> values) {
+        public Criteria andDefaultStatusIn(List<Integer> values) {
             addCriterion("default_status in", values, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotIn(List<Boolean> values) {
+        public Criteria andDefaultStatusNotIn(List<Integer> values) {
             addCriterion("default_status not in", values, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andDefaultStatusBetween(Integer value1, Integer value2) {
             addCriterion("default_status between", value1, value2, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andDefaultStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("default_status not between", value1, value2, "defaultStatus");
             return (Criteria) this;
         }
@@ -364,52 +364,52 @@ public class UmsUserMemberLevelExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayEqualTo(Boolean value) {
+        public Criteria andPriviledgeBirthdayEqualTo(Integer value) {
             addCriterion("priviledge_birthday =", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayNotEqualTo(Boolean value) {
+        public Criteria andPriviledgeBirthdayNotEqualTo(Integer value) {
             addCriterion("priviledge_birthday <>", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayGreaterThan(Boolean value) {
+        public Criteria andPriviledgeBirthdayGreaterThan(Integer value) {
             addCriterion("priviledge_birthday >", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andPriviledgeBirthdayGreaterThanOrEqualTo(Integer value) {
             addCriterion("priviledge_birthday >=", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayLessThan(Boolean value) {
+        public Criteria andPriviledgeBirthdayLessThan(Integer value) {
             addCriterion("priviledge_birthday <", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayLessThanOrEqualTo(Boolean value) {
+        public Criteria andPriviledgeBirthdayLessThanOrEqualTo(Integer value) {
             addCriterion("priviledge_birthday <=", value, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayIn(List<Boolean> values) {
+        public Criteria andPriviledgeBirthdayIn(List<Integer> values) {
             addCriterion("priviledge_birthday in", values, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayNotIn(List<Boolean> values) {
+        public Criteria andPriviledgeBirthdayNotIn(List<Integer> values) {
             addCriterion("priviledge_birthday not in", values, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayBetween(Boolean value1, Boolean value2) {
+        public Criteria andPriviledgeBirthdayBetween(Integer value1, Integer value2) {
             addCriterion("priviledge_birthday between", value1, value2, "priviledgeBirthday");
             return (Criteria) this;
         }
 
-        public Criteria andPriviledgeBirthdayNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andPriviledgeBirthdayNotBetween(Integer value1, Integer value2) {
             addCriterion("priviledge_birthday not between", value1, value2, "priviledgeBirthday");
             return (Criteria) this;
         }

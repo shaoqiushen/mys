@@ -38,7 +38,7 @@ public class PmsProductAttribute implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean attrType;
+    private Integer attrType;
 
     private static final long serialVersionUID = 1L;
 
@@ -82,11 +82,11 @@ public class PmsProductAttribute implements Serializable {
         this.sort = sort;
     }
 
-    public Boolean getAttrType() {
+    public Integer getAttrType() {
         return attrType;
     }
 
-    public void setAttrType(Boolean attrType) {
+    public void setAttrType(Integer attrType) {
         this.attrType = attrType;
     }
 

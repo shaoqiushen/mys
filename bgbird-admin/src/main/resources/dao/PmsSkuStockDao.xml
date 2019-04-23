@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdadmin.dao.PmsSkuStockDao">
+    <insert id="insertList">
+        insert into pms_sku_stock(product_id,current_price,price,stock,sp1,sp2,sp3,picture,sale_count,sku_code)
+        values
+        <foreach collection="list" separator="," index="index" item="item">
+            (#{item.productId,jdbcType=INTEGER},
+            #{item.currentPrice,jdbcType=INTEGER},
+            #{item.price,jdbcType=INTEGER},
+            #{item.stock,jdbcType=INTEGER},
+            #{item.sp1,jdbcType=VARCHAR},
+            #{item.sp2,jdbcType=VARCHAR},
+            #{item.sp3,jdbcType=VARCHAR},
+            #{item.picture,jdbcType=VARCHAR},
+            #{item.saleCount,jdbcType=INTEGER},
+            #{item.skuCode,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

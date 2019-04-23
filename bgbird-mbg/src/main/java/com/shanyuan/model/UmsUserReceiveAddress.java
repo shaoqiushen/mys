@@ -38,7 +38,7 @@ public class UmsUserReceiveAddress implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean defaultStatus;
+    private Integer defaultStatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -82,11 +82,11 @@ public class UmsUserReceiveAddress implements Serializable {
         this.address = address;
     }
 
-    public Boolean getDefaultStatus() {
+    public Integer getDefaultStatus() {
         return defaultStatus;
     }
 
-    public void setDefaultStatus(Boolean defaultStatus) {
+    public void setDefaultStatus(Integer defaultStatus) {
         this.defaultStatus = defaultStatus;
     }
 

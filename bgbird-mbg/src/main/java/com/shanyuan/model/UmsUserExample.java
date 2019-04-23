@@ -595,52 +595,52 @@ public class UmsUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andGenderEqualTo(Boolean value) {
+        public Criteria andGenderEqualTo(Integer value) {
             addCriterion("gender =", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotEqualTo(Boolean value) {
+        public Criteria andGenderNotEqualTo(Integer value) {
             addCriterion("gender <>", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderGreaterThan(Boolean value) {
+        public Criteria andGenderGreaterThan(Integer value) {
             addCriterion("gender >", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andGenderGreaterThanOrEqualTo(Integer value) {
             addCriterion("gender >=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderLessThan(Boolean value) {
+        public Criteria andGenderLessThan(Integer value) {
             addCriterion("gender <", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderLessThanOrEqualTo(Boolean value) {
+        public Criteria andGenderLessThanOrEqualTo(Integer value) {
             addCriterion("gender <=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderIn(List<Boolean> values) {
+        public Criteria andGenderIn(List<Integer> values) {
             addCriterion("gender in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotIn(List<Boolean> values) {
+        public Criteria andGenderNotIn(List<Integer> values) {
             addCriterion("gender not in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderBetween(Boolean value1, Boolean value2) {
+        public Criteria andGenderBetween(Integer value1, Integer value2) {
             addCriterion("gender between", value1, value2, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andGenderNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andGenderNotBetween(Integer value1, Integer value2) {
             addCriterion("gender not between", value1, value2, "gender");
             return (Criteria) this;
         }
@@ -795,52 +795,52 @@ public class UmsUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andActStatusEqualTo(Boolean value) {
+        public Criteria andActStatusEqualTo(Integer value) {
             addCriterion("act_status =", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusNotEqualTo(Boolean value) {
+        public Criteria andActStatusNotEqualTo(Integer value) {
             addCriterion("act_status <>", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusGreaterThan(Boolean value) {
+        public Criteria andActStatusGreaterThan(Integer value) {
             addCriterion("act_status >", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andActStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("act_status >=", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusLessThan(Boolean value) {
+        public Criteria andActStatusLessThan(Integer value) {
             addCriterion("act_status <", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andActStatusLessThanOrEqualTo(Integer value) {
             addCriterion("act_status <=", value, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusIn(List<Boolean> values) {
+        public Criteria andActStatusIn(List<Integer> values) {
             addCriterion("act_status in", values, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusNotIn(List<Boolean> values) {
+        public Criteria andActStatusNotIn(List<Integer> values) {
             addCriterion("act_status not in", values, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andActStatusBetween(Integer value1, Integer value2) {
             addCriterion("act_status between", value1, value2, "actStatus");
             return (Criteria) this;
         }
 
-        public Criteria andActStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andActStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("act_status not between", value1, value2, "actStatus");
             return (Criteria) this;
         }
@@ -902,6 +902,66 @@ public class UmsUserExample {
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusIsNull() {
+            addCriterion("user_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusIsNotNull() {
+            addCriterion("user_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusEqualTo(Integer value) {
+            addCriterion("user_status =", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusNotEqualTo(Integer value) {
+            addCriterion("user_status <>", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusGreaterThan(Integer value) {
+            addCriterion("user_status >", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_status >=", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusLessThan(Integer value) {
+            addCriterion("user_status <", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("user_status <=", value, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusIn(List<Integer> values) {
+            addCriterion("user_status in", values, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusNotIn(List<Integer> values) {
+            addCriterion("user_status not in", values, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusBetween(Integer value1, Integer value2) {
+            addCriterion("user_status between", value1, value2, "userStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_status not between", value1, value2, "userStatus");
             return (Criteria) this;
         }
     }

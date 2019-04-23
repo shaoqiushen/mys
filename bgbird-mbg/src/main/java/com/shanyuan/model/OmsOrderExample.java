@@ -725,52 +725,52 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeEqualTo(Boolean value) {
+        public Criteria andPayTypeEqualTo(Integer value) {
             addCriterion("pay_type =", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotEqualTo(Boolean value) {
+        public Criteria andPayTypeNotEqualTo(Integer value) {
             addCriterion("pay_type <>", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeGreaterThan(Boolean value) {
+        public Criteria andPayTypeGreaterThan(Integer value) {
             addCriterion("pay_type >", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andPayTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("pay_type >=", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeLessThan(Boolean value) {
+        public Criteria andPayTypeLessThan(Integer value) {
             addCriterion("pay_type <", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andPayTypeLessThanOrEqualTo(Integer value) {
             addCriterion("pay_type <=", value, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeIn(List<Boolean> values) {
+        public Criteria andPayTypeIn(List<Integer> values) {
             addCriterion("pay_type in", values, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotIn(List<Boolean> values) {
+        public Criteria andPayTypeNotIn(List<Integer> values) {
             addCriterion("pay_type not in", values, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andPayTypeBetween(Integer value1, Integer value2) {
             addCriterion("pay_type between", value1, value2, "payType");
             return (Criteria) this;
         }
 
-        public Criteria andPayTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andPayTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("pay_type not between", value1, value2, "payType");
             return (Criteria) this;
         }
@@ -785,52 +785,52 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeEqualTo(Boolean value) {
+        public Criteria andSourceTypeEqualTo(Integer value) {
             addCriterion("source_type =", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeNotEqualTo(Boolean value) {
+        public Criteria andSourceTypeNotEqualTo(Integer value) {
             addCriterion("source_type <>", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeGreaterThan(Boolean value) {
+        public Criteria andSourceTypeGreaterThan(Integer value) {
             addCriterion("source_type >", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andSourceTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("source_type >=", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeLessThan(Boolean value) {
+        public Criteria andSourceTypeLessThan(Integer value) {
             addCriterion("source_type <", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andSourceTypeLessThanOrEqualTo(Integer value) {
             addCriterion("source_type <=", value, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeIn(List<Boolean> values) {
+        public Criteria andSourceTypeIn(List<Integer> values) {
             addCriterion("source_type in", values, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeNotIn(List<Boolean> values) {
+        public Criteria andSourceTypeNotIn(List<Integer> values) {
             addCriterion("source_type not in", values, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andSourceTypeBetween(Integer value1, Integer value2) {
             addCriterion("source_type between", value1, value2, "sourceType");
             return (Criteria) this;
         }
 
-        public Criteria andSourceTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andSourceTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("source_type not between", value1, value2, "sourceType");
             return (Criteria) this;
         }
@@ -845,52 +845,52 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusEqualTo(Boolean value) {
+        public Criteria andOrderStatusEqualTo(Integer value) {
             addCriterion("order_status =", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusNotEqualTo(Boolean value) {
+        public Criteria andOrderStatusNotEqualTo(Integer value) {
             addCriterion("order_status <>", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusGreaterThan(Boolean value) {
+        public Criteria andOrderStatusGreaterThan(Integer value) {
             addCriterion("order_status >", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andOrderStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("order_status >=", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusLessThan(Boolean value) {
+        public Criteria andOrderStatusLessThan(Integer value) {
             addCriterion("order_status <", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andOrderStatusLessThanOrEqualTo(Integer value) {
             addCriterion("order_status <=", value, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusIn(List<Boolean> values) {
+        public Criteria andOrderStatusIn(List<Integer> values) {
             addCriterion("order_status in", values, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusNotIn(List<Boolean> values) {
+        public Criteria andOrderStatusNotIn(List<Integer> values) {
             addCriterion("order_status not in", values, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andOrderStatusBetween(Integer value1, Integer value2) {
             addCriterion("order_status between", value1, value2, "orderStatus");
             return (Criteria) this;
         }
 
-        public Criteria andOrderStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andOrderStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("order_status not between", value1, value2, "orderStatus");
             return (Criteria) this;
         }
@@ -905,52 +905,52 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeEqualTo(Boolean value) {
+        public Criteria andOrderTypeEqualTo(Integer value) {
             addCriterion("order_type =", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeNotEqualTo(Boolean value) {
+        public Criteria andOrderTypeNotEqualTo(Integer value) {
             addCriterion("order_type <>", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeGreaterThan(Boolean value) {
+        public Criteria andOrderTypeGreaterThan(Integer value) {
             addCriterion("order_type >", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andOrderTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("order_type >=", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeLessThan(Boolean value) {
+        public Criteria andOrderTypeLessThan(Integer value) {
             addCriterion("order_type <", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andOrderTypeLessThanOrEqualTo(Integer value) {
             addCriterion("order_type <=", value, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeIn(List<Boolean> values) {
+        public Criteria andOrderTypeIn(List<Integer> values) {
             addCriterion("order_type in", values, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeNotIn(List<Boolean> values) {
+        public Criteria andOrderTypeNotIn(List<Integer> values) {
             addCriterion("order_type not in", values, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andOrderTypeBetween(Integer value1, Integer value2) {
             addCriterion("order_type between", value1, value2, "orderType");
             return (Criteria) this;
         }
 
-        public Criteria andOrderTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andOrderTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("order_type not between", value1, value2, "orderType");
             return (Criteria) this;
         }
@@ -1722,6 +1722,66 @@ public class OmsOrderExample {
 
         public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNull() {
+            addCriterion("delete_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNotNull() {
+            addCriterion("delete_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusEqualTo(Integer value) {
+            addCriterion("delete_status =", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotEqualTo(Integer value) {
+            addCriterion("delete_status <>", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThan(Integer value) {
+            addCriterion("delete_status >", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("delete_status >=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThan(Integer value) {
+            addCriterion("delete_status <", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("delete_status <=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIn(List<Integer> values) {
+            addCriterion("delete_status in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotIn(List<Integer> values) {
+            addCriterion("delete_status not in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status between", value1, value2, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status not between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
     }

@@ -454,52 +454,52 @@ public class UmsUserReceiveAddressExample {
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusEqualTo(Boolean value) {
+        public Criteria andDefaultStatusEqualTo(Integer value) {
             addCriterion("default_status =", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotEqualTo(Boolean value) {
+        public Criteria andDefaultStatusNotEqualTo(Integer value) {
             addCriterion("default_status <>", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusGreaterThan(Boolean value) {
+        public Criteria andDefaultStatusGreaterThan(Integer value) {
             addCriterion("default_status >", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andDefaultStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("default_status >=", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusLessThan(Boolean value) {
+        public Criteria andDefaultStatusLessThan(Integer value) {
             addCriterion("default_status <", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andDefaultStatusLessThanOrEqualTo(Integer value) {
             addCriterion("default_status <=", value, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusIn(List<Boolean> values) {
+        public Criteria andDefaultStatusIn(List<Integer> values) {
             addCriterion("default_status in", values, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotIn(List<Boolean> values) {
+        public Criteria andDefaultStatusNotIn(List<Integer> values) {
             addCriterion("default_status not in", values, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andDefaultStatusBetween(Integer value1, Integer value2) {
             addCriterion("default_status between", value1, value2, "defaultStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDefaultStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andDefaultStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("default_status not between", value1, value2, "defaultStatus");
             return (Criteria) this;
         }

@@ -39,7 +39,7 @@ public class AmsActive implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean isEnable;
+    private Integer isEnable;
 
     /**
      * 获得的积分
@@ -90,11 +90,11 @@ public class AmsActive implements Serializable {
         this.activePicture = activePicture;
     }
 
-    public Boolean getIsEnable() {
+    public Integer getIsEnable() {
         return isEnable;
     }
 
-    public void setIsEnable(Boolean isEnable) {
+    public void setIsEnable(Integer isEnable) {
         this.isEnable = isEnable;
     }
 

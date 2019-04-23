@@ -26,6 +26,13 @@ public class PmsProductCategory implements Serializable {
      */
     private String description;
 
+    /**
+     * 是否显示:0->否，1->是
+     *
+     * @mbggenerated
+     */
+    private Integer showStatus;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getCategoryId() {
@@ -60,6 +67,14 @@ public class PmsProductCategory implements Serializable {
         this.description = description;
     }
 
+    public Integer getShowStatus() {
+        return showStatus;
+    }
+
+    public void setShowStatus(Integer showStatus) {
+        this.showStatus = showStatus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -70,6 +85,7 @@ public class PmsProductCategory implements Serializable {
         sb.append(", categoryName=").append(categoryName);
         sb.append(", sort=").append(sort);
         sb.append(", description=").append(description);
+        sb.append(", showStatus=").append(showStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

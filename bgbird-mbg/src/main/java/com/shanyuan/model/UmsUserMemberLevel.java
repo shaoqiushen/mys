@@ -24,14 +24,14 @@ public class UmsUserMemberLevel implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean defaultStatus;
+    private Integer defaultStatus;
 
     /**
      * 是否有生日特权:0->否,1->是
      *
      * @mbggenerated
      */
-    private Boolean priviledgeBirthday;
+    private Integer priviledgeBirthday;
 
     private static final long serialVersionUID = 1L;
 
@@ -59,19 +59,19 @@ public class UmsUserMemberLevel implements Serializable {
         this.growthPoint = growthPoint;
     }
 
-    public Boolean getDefaultStatus() {
+    public Integer getDefaultStatus() {
         return defaultStatus;
     }
 
-    public void setDefaultStatus(Boolean defaultStatus) {
+    public void setDefaultStatus(Integer defaultStatus) {
         this.defaultStatus = defaultStatus;
     }
 
-    public Boolean getPriviledgeBirthday() {
+    public Integer getPriviledgeBirthday() {
         return priviledgeBirthday;
     }
 
-    public void setPriviledgeBirthday(Boolean priviledgeBirthday) {
+    public void setPriviledgeBirthday(Integer priviledgeBirthday) {
         this.priviledgeBirthday = priviledgeBirthday;
     }
 

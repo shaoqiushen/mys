@@ -5,8 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="money" jdbcType="INTEGER" property="money" />
-    <result column="change_type" jdbcType="BIT" property="changeType" />
-    <result column="recharge_status" jdbcType="BIT" property="rechargeStatus" />
+    <result column="change_type" jdbcType="INTEGER" property="changeType" />
+    <result column="recharge_status" jdbcType="INTEGER" property="rechargeStatus" />
     <result column="recharge_no" jdbcType="VARCHAR" property="rechargeNo" />
     <result column="transactionid" jdbcType="VARCHAR" property="transactionid" />
     <result column="change_reason" jdbcType="VARCHAR" property="changeReason" />
@@ -111,8 +111,8 @@
     insert into ums_user_recharge_record (user_id, money, change_type, 
       recharge_status, recharge_no, transactionid, 
       change_reason, create_time)
-    values (#{userId,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{changeType,jdbcType=BIT}, 
-      #{rechargeStatus,jdbcType=BIT}, #{rechargeNo,jdbcType=VARCHAR}, #{transactionid,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{changeType,jdbcType=INTEGER}, 
+      #{rechargeStatus,jdbcType=INTEGER}, #{rechargeNo,jdbcType=VARCHAR}, #{transactionid,jdbcType=VARCHAR}, 
       #{changeReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUserRechargeRecord">
@@ -154,10 +154,10 @@
         #{money,jdbcType=INTEGER},
       </if>
       <if test="changeType != null">
-        #{changeType,jdbcType=BIT},
+        #{changeType,jdbcType=INTEGER},
       </if>
       <if test="rechargeStatus != null">
-        #{rechargeStatus,jdbcType=BIT},
+        #{rechargeStatus,jdbcType=INTEGER},
       </if>
       <if test="rechargeNo != null">
         #{rechargeNo,jdbcType=VARCHAR},
@@ -192,10 +192,10 @@
         money = #{record.money,jdbcType=INTEGER},
       </if>
       <if test="record.changeType != null">
-        change_type = #{record.changeType,jdbcType=BIT},
+        change_type = #{record.changeType,jdbcType=INTEGER},
       </if>
       <if test="record.rechargeStatus != null">
-        recharge_status = #{record.rechargeStatus,jdbcType=BIT},
+        recharge_status = #{record.rechargeStatus,jdbcType=INTEGER},
       </if>
       <if test="record.rechargeNo != null">
         recharge_no = #{record.rechargeNo,jdbcType=VARCHAR},
@@ -219,8 +219,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=VARCHAR},
       money = #{record.money,jdbcType=INTEGER},
-      change_type = #{record.changeType,jdbcType=BIT},
-      recharge_status = #{record.rechargeStatus,jdbcType=BIT},
+      change_type = #{record.changeType,jdbcType=INTEGER},
+      recharge_status = #{record.rechargeStatus,jdbcType=INTEGER},
       recharge_no = #{record.rechargeNo,jdbcType=VARCHAR},
       transactionid = #{record.transactionid,jdbcType=VARCHAR},
       change_reason = #{record.changeReason,jdbcType=VARCHAR},
@@ -239,10 +239,10 @@
         money = #{money,jdbcType=INTEGER},
       </if>
       <if test="changeType != null">
-        change_type = #{changeType,jdbcType=BIT},
+        change_type = #{changeType,jdbcType=INTEGER},
       </if>
       <if test="rechargeStatus != null">
-        recharge_status = #{rechargeStatus,jdbcType=BIT},
+        recharge_status = #{rechargeStatus,jdbcType=INTEGER},
       </if>
       <if test="rechargeNo != null">
         recharge_no = #{rechargeNo,jdbcType=VARCHAR},
@@ -263,8 +263,8 @@
     update ums_user_recharge_record
     set user_id = #{userId,jdbcType=VARCHAR},
       money = #{money,jdbcType=INTEGER},
-      change_type = #{changeType,jdbcType=BIT},
-      recharge_status = #{rechargeStatus,jdbcType=BIT},
+      change_type = #{changeType,jdbcType=INTEGER},
+      recharge_status = #{rechargeStatus,jdbcType=INTEGER},
       recharge_no = #{rechargeNo,jdbcType=VARCHAR},
       transactionid = #{transactionid,jdbcType=VARCHAR},
       change_reason = #{changeReason,jdbcType=VARCHAR},

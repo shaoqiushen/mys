@@ -434,52 +434,52 @@ public class PmsProductAttributeExample {
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeEqualTo(Boolean value) {
+        public Criteria andAttrTypeEqualTo(Integer value) {
             addCriterion("attr_type =", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeNotEqualTo(Boolean value) {
+        public Criteria andAttrTypeNotEqualTo(Integer value) {
             addCriterion("attr_type <>", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeGreaterThan(Boolean value) {
+        public Criteria andAttrTypeGreaterThan(Integer value) {
             addCriterion("attr_type >", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andAttrTypeGreaterThanOrEqualTo(Integer value) {
             addCriterion("attr_type >=", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeLessThan(Boolean value) {
+        public Criteria andAttrTypeLessThan(Integer value) {
             addCriterion("attr_type <", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeLessThanOrEqualTo(Boolean value) {
+        public Criteria andAttrTypeLessThanOrEqualTo(Integer value) {
             addCriterion("attr_type <=", value, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeIn(List<Boolean> values) {
+        public Criteria andAttrTypeIn(List<Integer> values) {
             addCriterion("attr_type in", values, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeNotIn(List<Boolean> values) {
+        public Criteria andAttrTypeNotIn(List<Integer> values) {
             addCriterion("attr_type not in", values, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeBetween(Boolean value1, Boolean value2) {
+        public Criteria andAttrTypeBetween(Integer value1, Integer value2) {
             addCriterion("attr_type between", value1, value2, "attrType");
             return (Criteria) this;
         }
 
-        public Criteria andAttrTypeNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andAttrTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("attr_type not between", value1, value2, "attrType");
             return (Criteria) this;
         }

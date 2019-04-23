@@ -25,14 +25,14 @@ public class UmsUserRechargeRecord implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean changeType;
+    private Integer changeType;
 
     /**
      * 充值状态:0->失败，1->成功
      *
      * @mbggenerated
      */
-    private Boolean rechargeStatus;
+    private Integer rechargeStatus;
 
     /**
      * 充值编码
@@ -88,19 +88,19 @@ public class UmsUserRechargeRecord implements Serializable {
         this.money = money;
     }
 
-    public Boolean getChangeType() {
+    public Integer getChangeType() {
         return changeType;
     }
 
-    public void setChangeType(Boolean changeType) {
+    public void setChangeType(Integer changeType) {
         this.changeType = changeType;
     }
 
-    public Boolean getRechargeStatus() {
+    public Integer getRechargeStatus() {
         return rechargeStatus;
     }
 
-    public void setRechargeStatus(Boolean rechargeStatus) {
+    public void setRechargeStatus(Integer rechargeStatus) {
         this.rechargeStatus = rechargeStatus;
     }
 

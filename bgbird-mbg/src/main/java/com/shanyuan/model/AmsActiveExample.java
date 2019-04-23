@@ -445,52 +445,52 @@ public class AmsActiveExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableEqualTo(Boolean value) {
+        public Criteria andIsEnableEqualTo(Integer value) {
             addCriterion("is_enable =", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableNotEqualTo(Boolean value) {
+        public Criteria andIsEnableNotEqualTo(Integer value) {
             addCriterion("is_enable <>", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableGreaterThan(Boolean value) {
+        public Criteria andIsEnableGreaterThan(Integer value) {
             addCriterion("is_enable >", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andIsEnableGreaterThanOrEqualTo(Integer value) {
             addCriterion("is_enable >=", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableLessThan(Boolean value) {
+        public Criteria andIsEnableLessThan(Integer value) {
             addCriterion("is_enable <", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableLessThanOrEqualTo(Boolean value) {
+        public Criteria andIsEnableLessThanOrEqualTo(Integer value) {
             addCriterion("is_enable <=", value, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableIn(List<Boolean> values) {
+        public Criteria andIsEnableIn(List<Integer> values) {
             addCriterion("is_enable in", values, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableNotIn(List<Boolean> values) {
+        public Criteria andIsEnableNotIn(List<Integer> values) {
             addCriterion("is_enable not in", values, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsEnableBetween(Integer value1, Integer value2) {
             addCriterion("is_enable between", value1, value2, "isEnable");
             return (Criteria) this;
         }
 
-        public Criteria andIsEnableNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andIsEnableNotBetween(Integer value1, Integer value2) {
             addCriterion("is_enable not between", value1, value2, "isEnable");
             return (Criteria) this;
         }

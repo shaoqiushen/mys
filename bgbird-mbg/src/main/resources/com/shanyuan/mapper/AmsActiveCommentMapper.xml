@@ -8,7 +8,7 @@
     <result column="avartal_url" jdbcType="VARCHAR" property="avartalUrl" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
-    <result column="is_show" jdbcType="BIT" property="isShow" />
+    <result column="show_status" jdbcType="INTEGER" property="showStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, active_id, user_id, avartal_url, nickname, comment_content, is_show, create_time
+    id, active_id, user_id, avartal_url, nickname, comment_content, show_status, create_time
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.AmsActiveCommentExample" resultMap="BaseResultMap">
     select
@@ -107,10 +107,10 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ams_active_comment (active_id, user_id, avartal_url, 
-      nickname, comment_content, is_show, 
+      nickname, comment_content, show_status, 
       create_time)
     values (#{activeId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{avartalUrl,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{commentContent,jdbcType=VARCHAR}, #{isShow,jdbcType=BIT}, 
+      #{nickname,jdbcType=VARCHAR}, #{commentContent,jdbcType=VARCHAR}, #{showStatus,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.AmsActiveComment">
@@ -134,8 +134,8 @@
       <if test="commentContent != null">
         comment_content,
       </if>
-      <if test="isShow != null">
-        is_show,
+      <if test="showStatus != null">
+        show_status,
       </if>
       <if test="createTime != null">
         create_time,
@@ -157,8 +157,8 @@
       <if test="commentContent != null">
         #{commentContent,jdbcType=VARCHAR},
       </if>
-      <if test="isShow != null">
-        #{isShow,jdbcType=BIT},
+      <if test="showStatus != null">
+        #{showStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -192,8 +192,8 @@
       <if test="record.commentContent != null">
         comment_content = #{record.commentContent,jdbcType=VARCHAR},
       </if>
-      <if test="record.isShow != null">
-        is_show = #{record.isShow,jdbcType=BIT},
+      <if test="record.showStatus != null">
+        show_status = #{record.showStatus,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -211,7 +211,7 @@
       avartal_url = #{record.avartalUrl,jdbcType=VARCHAR},
       nickname = #{record.nickname,jdbcType=VARCHAR},
       comment_content = #{record.commentContent,jdbcType=VARCHAR},
-      is_show = #{record.isShow,jdbcType=BIT},
+      show_status = #{record.showStatus,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -235,8 +235,8 @@
       <if test="commentContent != null">
         comment_content = #{commentContent,jdbcType=VARCHAR},
       </if>
-      <if test="isShow != null">
-        is_show = #{isShow,jdbcType=BIT},
+      <if test="showStatus != null">
+        show_status = #{showStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -251,7 +251,7 @@
       avartal_url = #{avartalUrl,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR},
       comment_content = #{commentContent,jdbcType=VARCHAR},
-      is_show = #{isShow,jdbcType=BIT},
+      show_status = #{showStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

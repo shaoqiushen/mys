@@ -515,113 +515,113 @@ public class OmsProductCommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarEqualTo(Boolean value) {
+        public Criteria andCommentStarEqualTo(Integer value) {
             addCriterion("comment_star =", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarNotEqualTo(Boolean value) {
+        public Criteria andCommentStarNotEqualTo(Integer value) {
             addCriterion("comment_star <>", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarGreaterThan(Boolean value) {
+        public Criteria andCommentStarGreaterThan(Integer value) {
             addCriterion("comment_star >", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andCommentStarGreaterThanOrEqualTo(Integer value) {
             addCriterion("comment_star >=", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarLessThan(Boolean value) {
+        public Criteria andCommentStarLessThan(Integer value) {
             addCriterion("comment_star <", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarLessThanOrEqualTo(Boolean value) {
+        public Criteria andCommentStarLessThanOrEqualTo(Integer value) {
             addCriterion("comment_star <=", value, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarIn(List<Boolean> values) {
+        public Criteria andCommentStarIn(List<Integer> values) {
             addCriterion("comment_star in", values, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarNotIn(List<Boolean> values) {
+        public Criteria andCommentStarNotIn(List<Integer> values) {
             addCriterion("comment_star not in", values, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarBetween(Boolean value1, Boolean value2) {
+        public Criteria andCommentStarBetween(Integer value1, Integer value2) {
             addCriterion("comment_star between", value1, value2, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andCommentStarNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andCommentStarNotBetween(Integer value1, Integer value2) {
             addCriterion("comment_star not between", value1, value2, "commentStar");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIsNull() {
-            addCriterion("is_show is null");
+        public Criteria andShowStatusIsNull() {
+            addCriterion("show_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIsNotNull() {
-            addCriterion("is_show is not null");
+        public Criteria andShowStatusIsNotNull() {
+            addCriterion("show_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowEqualTo(Boolean value) {
-            addCriterion("is_show =", value, "isShow");
+        public Criteria andShowStatusEqualTo(Integer value) {
+            addCriterion("show_status =", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotEqualTo(Boolean value) {
-            addCriterion("is_show <>", value, "isShow");
+        public Criteria andShowStatusNotEqualTo(Integer value) {
+            addCriterion("show_status <>", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThan(Boolean value) {
-            addCriterion("is_show >", value, "isShow");
+        public Criteria andShowStatusGreaterThan(Integer value) {
+            addCriterion("show_status >", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_show >=", value, "isShow");
+        public Criteria andShowStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("show_status >=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThan(Boolean value) {
-            addCriterion("is_show <", value, "isShow");
+        public Criteria andShowStatusLessThan(Integer value) {
+            addCriterion("show_status <", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_show <=", value, "isShow");
+        public Criteria andShowStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("show_status <=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIn(List<Boolean> values) {
-            addCriterion("is_show in", values, "isShow");
+        public Criteria andShowStatusIn(List<Integer> values) {
+            addCriterion("show_status in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotIn(List<Boolean> values) {
-            addCriterion("is_show not in", values, "isShow");
+        public Criteria andShowStatusNotIn(List<Integer> values) {
+            addCriterion("show_status not in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_show between", value1, value2, "isShow");
+        public Criteria andShowStatusBetween(Integer value1, Integer value2) {
+            addCriterion("show_status between", value1, value2, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_show not between", value1, value2, "isShow");
+        public Criteria andShowStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("show_status not between", value1, value2, "showStatus");
             return (Criteria) this;
         }
 

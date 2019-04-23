@@ -2,6 +2,7 @@ package com.shanyuan.domain;
 
 import com.github.pagehelper.PageInfo;
 import lombok.Data;
+import org.springframework.validation.BindingResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +20,8 @@ public class CommonResult {
     public static final int SUCCESS = 200;
     //操作失败
     public static final int FAILED = 9999;
+    //参数校验失败
+    public static final int VALIDATE_FAILED = 5555;
     //返回码
     private int code;
     //返回消息
@@ -70,6 +73,26 @@ public class CommonResult {
     public CommonResult failed(String msg){
         this.code=code;
         this.msg=msg;
+        return this;
+    }
+
+    /**
+     * 参数验证失败使用
+     *
+     * @param message 错误信息
+     */
+    public CommonResult validateFailed(String message) {
+        this.code = VALIDATE_FAILED;
+        this.msg = message;
+        return this;
+    }
+
+    /**
+     * 参数验证失败使用
+     * @param result 错误信息
+     */
+    public CommonResult validateFailed(BindingResult result) {
+        this.validateFailed(result.getFieldError().getDefaultMessage());
         return this;
     }
 

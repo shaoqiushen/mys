@@ -18,4 +18,5 @@ public interface PmsProductService {
      */
     @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
     int createProduct(PmsProductParams productParams);
+
 }

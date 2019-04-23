@@ -7,7 +7,7 @@
     <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
     <result column="active_title" jdbcType="VARCHAR" property="activeTitle" />
     <result column="active_picture" jdbcType="VARCHAR" property="activePicture" />
-    <result column="is_enable" jdbcType="BIT" property="isEnable" />
+    <result column="is_enable" jdbcType="INTEGER" property="isEnable" />
     <result column="integration" jdbcType="INTEGER" property="integration" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -109,7 +109,7 @@
       active_picture, is_enable, integration
       )
     values (#{activeName,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{activeTitle,jdbcType=VARCHAR}, 
-      #{activePicture,jdbcType=VARCHAR}, #{isEnable,jdbcType=BIT}, #{integration,jdbcType=INTEGER}
+      #{activePicture,jdbcType=VARCHAR}, #{isEnable,jdbcType=INTEGER}, #{integration,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.AmsActive">
@@ -151,7 +151,7 @@
         #{activePicture,jdbcType=VARCHAR},
       </if>
       <if test="isEnable != null">
-        #{isEnable,jdbcType=BIT},
+        #{isEnable,jdbcType=INTEGER},
       </if>
       <if test="integration != null">
         #{integration,jdbcType=INTEGER},
@@ -183,7 +183,7 @@
         active_picture = #{record.activePicture,jdbcType=VARCHAR},
       </if>
       <if test="record.isEnable != null">
-        is_enable = #{record.isEnable,jdbcType=BIT},
+        is_enable = #{record.isEnable,jdbcType=INTEGER},
       </if>
       <if test="record.integration != null">
         integration = #{record.integration,jdbcType=INTEGER},
@@ -200,7 +200,7 @@
       active_time = #{record.activeTime,jdbcType=TIMESTAMP},
       active_title = #{record.activeTitle,jdbcType=VARCHAR},
       active_picture = #{record.activePicture,jdbcType=VARCHAR},
-      is_enable = #{record.isEnable,jdbcType=BIT},
+      is_enable = #{record.isEnable,jdbcType=INTEGER},
       integration = #{record.integration,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -222,7 +222,7 @@
         active_picture = #{activePicture,jdbcType=VARCHAR},
       </if>
       <if test="isEnable != null">
-        is_enable = #{isEnable,jdbcType=BIT},
+        is_enable = #{isEnable,jdbcType=INTEGER},
       </if>
       <if test="integration != null">
         integration = #{integration,jdbcType=INTEGER},
@@ -236,7 +236,7 @@
       active_time = #{activeTime,jdbcType=TIMESTAMP},
       active_title = #{activeTitle,jdbcType=VARCHAR},
       active_picture = #{activePicture,jdbcType=VARCHAR},
-      is_enable = #{isEnable,jdbcType=BIT},
+      is_enable = #{isEnable,jdbcType=INTEGER},
       integration = #{integration,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

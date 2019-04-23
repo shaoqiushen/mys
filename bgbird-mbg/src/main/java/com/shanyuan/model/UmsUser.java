@@ -53,7 +53,7 @@ public class UmsUser implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean gender;
+    private Integer gender;
 
     /**
      * 所在城市
@@ -74,7 +74,7 @@ public class UmsUser implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean actStatus;
+    private Integer actStatus;
 
     /**
      * 创建时间
@@ -82,6 +82,13 @@ public class UmsUser implements Serializable {
      * @mbggenerated
      */
     private Date createTime;
+
+    /**
+     * 0->普通用户,1->会员
+     *
+     * @mbggenerated
+     */
+    private Integer userStatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -141,11 +148,11 @@ public class UmsUser implements Serializable {
         this.tellPhone = tellPhone;
     }
 
-    public Boolean getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
@@ -165,11 +172,11 @@ public class UmsUser implements Serializable {
         this.birthday = birthday;
     }
 
-    public Boolean getActStatus() {
+    public Integer getActStatus() {
         return actStatus;
     }
 
-    public void setActStatus(Boolean actStatus) {
+    public void setActStatus(Integer actStatus) {
         this.actStatus = actStatus;
     }
 
@@ -179,6 +186,14 @@ public class UmsUser implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Integer userStatus) {
+        this.userStatus = userStatus;
     }
 
     @Override
@@ -199,6 +214,7 @@ public class UmsUser implements Serializable {
         sb.append(", birthday=").append(birthday);
         sb.append(", actStatus=").append(actStatus);
         sb.append(", createTime=").append(createTime);
+        sb.append(", userStatus=").append(userStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

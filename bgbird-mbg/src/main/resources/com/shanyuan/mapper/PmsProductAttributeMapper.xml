@@ -7,7 +7,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="input_list" jdbcType="VARCHAR" property="inputList" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
-    <result column="attr_type" jdbcType="BIT" property="attrType" />
+    <result column="attr_type" jdbcType="INTEGER" property="attrType" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -107,7 +107,7 @@
     insert into pms_product_attribute (attr_category_id, name, input_list, 
       sort, attr_type)
     values (#{attrCategoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{inputList,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=INTEGER}, #{attrType,jdbcType=BIT})
+      #{sort,jdbcType=INTEGER}, #{attrType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.PmsProductAttribute">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -145,7 +145,7 @@
         #{sort,jdbcType=INTEGER},
       </if>
       <if test="attrType != null">
-        #{attrType,jdbcType=BIT},
+        #{attrType,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -174,7 +174,7 @@
         sort = #{record.sort,jdbcType=INTEGER},
       </if>
       <if test="record.attrType != null">
-        attr_type = #{record.attrType,jdbcType=BIT},
+        attr_type = #{record.attrType,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -188,7 +188,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       input_list = #{record.inputList,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER},
-      attr_type = #{record.attrType,jdbcType=BIT}
+      attr_type = #{record.attrType,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -209,7 +209,7 @@
         sort = #{sort,jdbcType=INTEGER},
       </if>
       <if test="attrType != null">
-        attr_type = #{attrType,jdbcType=BIT},
+        attr_type = #{attrType,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -220,7 +220,7 @@
       name = #{name,jdbcType=VARCHAR},
       input_list = #{inputList,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
-      attr_type = #{attrType,jdbcType=BIT}
+      attr_type = #{attrType,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

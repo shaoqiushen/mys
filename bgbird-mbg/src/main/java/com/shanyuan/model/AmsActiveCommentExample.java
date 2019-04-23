@@ -505,63 +505,63 @@ public class AmsActiveCommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIsNull() {
-            addCriterion("is_show is null");
+        public Criteria andShowStatusIsNull() {
+            addCriterion("show_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIsNotNull() {
-            addCriterion("is_show is not null");
+        public Criteria andShowStatusIsNotNull() {
+            addCriterion("show_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowEqualTo(Boolean value) {
-            addCriterion("is_show =", value, "isShow");
+        public Criteria andShowStatusEqualTo(Integer value) {
+            addCriterion("show_status =", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotEqualTo(Boolean value) {
-            addCriterion("is_show <>", value, "isShow");
+        public Criteria andShowStatusNotEqualTo(Integer value) {
+            addCriterion("show_status <>", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThan(Boolean value) {
-            addCriterion("is_show >", value, "isShow");
+        public Criteria andShowStatusGreaterThan(Integer value) {
+            addCriterion("show_status >", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_show >=", value, "isShow");
+        public Criteria andShowStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("show_status >=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThan(Boolean value) {
-            addCriterion("is_show <", value, "isShow");
+        public Criteria andShowStatusLessThan(Integer value) {
+            addCriterion("show_status <", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_show <=", value, "isShow");
+        public Criteria andShowStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("show_status <=", value, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowIn(List<Boolean> values) {
-            addCriterion("is_show in", values, "isShow");
+        public Criteria andShowStatusIn(List<Integer> values) {
+            addCriterion("show_status in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotIn(List<Boolean> values) {
-            addCriterion("is_show not in", values, "isShow");
+        public Criteria andShowStatusNotIn(List<Integer> values) {
+            addCriterion("show_status not in", values, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_show between", value1, value2, "isShow");
+        public Criteria andShowStatusBetween(Integer value1, Integer value2) {
+            addCriterion("show_status between", value1, value2, "showStatus");
             return (Criteria) this;
         }
 
-        public Criteria andIsShowNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_show not between", value1, value2, "isShow");
+        public Criteria andShowStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("show_status not between", value1, value2, "showStatus");
             return (Criteria) this;
         }
 

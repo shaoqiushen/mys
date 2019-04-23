@@ -5,8 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="level_name" jdbcType="VARCHAR" property="levelName" />
     <result column="growth_point" jdbcType="INTEGER" property="growthPoint" />
-    <result column="default_status" jdbcType="BIT" property="defaultStatus" />
-    <result column="priviledge_birthday" jdbcType="BIT" property="priviledgeBirthday" />
+    <result column="default_status" jdbcType="INTEGER" property="defaultStatus" />
+    <result column="priviledge_birthday" jdbcType="INTEGER" property="priviledgeBirthday" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -105,8 +105,8 @@
     </selectKey>
     insert into ums_user_member_level (level_name, growth_point, default_status, 
       priviledge_birthday)
-    values (#{levelName,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, #{defaultStatus,jdbcType=BIT}, 
-      #{priviledgeBirthday,jdbcType=BIT})
+    values (#{levelName,jdbcType=VARCHAR}, #{growthPoint,jdbcType=INTEGER}, #{defaultStatus,jdbcType=INTEGER}, 
+      #{priviledgeBirthday,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUserMemberLevel">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -135,10 +135,10 @@
         #{growthPoint,jdbcType=INTEGER},
       </if>
       <if test="defaultStatus != null">
-        #{defaultStatus,jdbcType=BIT},
+        #{defaultStatus,jdbcType=INTEGER},
       </if>
       <if test="priviledgeBirthday != null">
-        #{priviledgeBirthday,jdbcType=BIT},
+        #{priviledgeBirthday,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -161,10 +161,10 @@
         growth_point = #{record.growthPoint,jdbcType=INTEGER},
       </if>
       <if test="record.defaultStatus != null">
-        default_status = #{record.defaultStatus,jdbcType=BIT},
+        default_status = #{record.defaultStatus,jdbcType=INTEGER},
       </if>
       <if test="record.priviledgeBirthday != null">
-        priviledge_birthday = #{record.priviledgeBirthday,jdbcType=BIT},
+        priviledge_birthday = #{record.priviledgeBirthday,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -176,8 +176,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       level_name = #{record.levelName,jdbcType=VARCHAR},
       growth_point = #{record.growthPoint,jdbcType=INTEGER},
-      default_status = #{record.defaultStatus,jdbcType=BIT},
-      priviledge_birthday = #{record.priviledgeBirthday,jdbcType=BIT}
+      default_status = #{record.defaultStatus,jdbcType=INTEGER},
+      priviledge_birthday = #{record.priviledgeBirthday,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -192,10 +192,10 @@
         growth_point = #{growthPoint,jdbcType=INTEGER},
       </if>
       <if test="defaultStatus != null">
-        default_status = #{defaultStatus,jdbcType=BIT},
+        default_status = #{defaultStatus,jdbcType=INTEGER},
       </if>
       <if test="priviledgeBirthday != null">
-        priviledge_birthday = #{priviledgeBirthday,jdbcType=BIT},
+        priviledge_birthday = #{priviledgeBirthday,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -204,8 +204,8 @@
     update ums_user_member_level
     set level_name = #{levelName,jdbcType=VARCHAR},
       growth_point = #{growthPoint,jdbcType=INTEGER},
-      default_status = #{defaultStatus,jdbcType=BIT},
-      priviledge_birthday = #{priviledgeBirthday,jdbcType=BIT}
+      default_status = #{defaultStatus,jdbcType=INTEGER},
+      priviledge_birthday = #{priviledgeBirthday,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
