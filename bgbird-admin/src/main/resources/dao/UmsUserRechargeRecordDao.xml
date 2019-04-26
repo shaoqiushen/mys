@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdadmin.dao.UmsUserRechargeRecordDao">
+
+    <select id="listUserRechargeRecord" resultMap="com.shanyuan.mapper.UmsUserRechargeRecordMapper.BaseResultMap">
+        select
+        a.money,a.change_type,a.change_reason,a.create_time,a.order_id
+        from ums_user_recharge_record a
+        left join ums_user b 
+        on a.user_id=b.user_id
+        where
+        a.recharge_status=1
+        <if test="umsRechargeRecordParams.changeType != null">
+            and a.change_type = #{umsRechargeRecordParams.changeType}
+        </if>
+
+        <if test="umsRechargeRecordParams.beginTime != null">
+            and a.create_time &gt;= #{umsRechargeRecordParams.beginTime}
+        </if>
+        <if test="umsRechargeRecordParams.endTime != null">
+            and a.create_time &lt;= #{umsRechargeRecordParams.endTime}
+        </if>
+
+        <if test="umsRechargeRecordParams.nickname !=null">
+            and (
+            nickname LIKE concat("%",#{umsRechargeRecordParams.nickname},"%")
+        </if>
+        order by a.id desc
+    </select>
+</mapper>

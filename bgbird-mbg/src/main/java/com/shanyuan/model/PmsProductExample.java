@@ -105,63 +105,63 @@ public class PmsProductExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andProductIdIsNull() {
-            addCriterion("product_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdIsNotNull() {
-            addCriterion("product_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdEqualTo(Integer value) {
-            addCriterion("product_id =", value, "productId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdNotEqualTo(Integer value) {
-            addCriterion("product_id <>", value, "productId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdGreaterThan(Integer value) {
-            addCriterion("product_id >", value, "productId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("product_id >=", value, "productId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdLessThan(Integer value) {
-            addCriterion("product_id <", value, "productId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdLessThanOrEqualTo(Integer value) {
-            addCriterion("product_id <=", value, "productId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdIn(List<Integer> values) {
-            addCriterion("product_id in", values, "productId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdNotIn(List<Integer> values) {
-            addCriterion("product_id not in", values, "productId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdBetween(Integer value1, Integer value2) {
-            addCriterion("product_id between", value1, value2, "productId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andProductIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("product_id not between", value1, value2, "productId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
@@ -515,52 +515,52 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusEqualTo(Boolean value) {
+        public Criteria andDeleteStatusEqualTo(Integer value) {
             addCriterion("delete_status =", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotEqualTo(Boolean value) {
+        public Criteria andDeleteStatusNotEqualTo(Integer value) {
             addCriterion("delete_status <>", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusGreaterThan(Boolean value) {
+        public Criteria andDeleteStatusGreaterThan(Integer value) {
             addCriterion("delete_status >", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andDeleteStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("delete_status >=", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusLessThan(Boolean value) {
+        public Criteria andDeleteStatusLessThan(Integer value) {
             addCriterion("delete_status <", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andDeleteStatusLessThanOrEqualTo(Integer value) {
             addCriterion("delete_status <=", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusIn(List<Boolean> values) {
+        public Criteria andDeleteStatusIn(List<Integer> values) {
             addCriterion("delete_status in", values, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotIn(List<Boolean> values) {
+        public Criteria andDeleteStatusNotIn(List<Integer> values) {
             addCriterion("delete_status not in", values, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andDeleteStatusBetween(Integer value1, Integer value2) {
             addCriterion("delete_status between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("delete_status not between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
@@ -865,63 +865,63 @@ public class PmsProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIsNull() {
-            addCriterion("current_price is null");
+        public Criteria andPromotionPriceIsNull() {
+            addCriterion("promotion_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIsNotNull() {
-            addCriterion("current_price is not null");
+        public Criteria andPromotionPriceIsNotNull() {
+            addCriterion("promotion_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceEqualTo(Integer value) {
-            addCriterion("current_price =", value, "currentPrice");
+        public Criteria andPromotionPriceEqualTo(Integer value) {
+            addCriterion("promotion_price =", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotEqualTo(Integer value) {
-            addCriterion("current_price <>", value, "currentPrice");
+        public Criteria andPromotionPriceNotEqualTo(Integer value) {
+            addCriterion("promotion_price <>", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceGreaterThan(Integer value) {
-            addCriterion("current_price >", value, "currentPrice");
+        public Criteria andPromotionPriceGreaterThan(Integer value) {
+            addCriterion("promotion_price >", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceGreaterThanOrEqualTo(Integer value) {
-            addCriterion("current_price >=", value, "currentPrice");
+        public Criteria andPromotionPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("promotion_price >=", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceLessThan(Integer value) {
-            addCriterion("current_price <", value, "currentPrice");
+        public Criteria andPromotionPriceLessThan(Integer value) {
+            addCriterion("promotion_price <", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceLessThanOrEqualTo(Integer value) {
-            addCriterion("current_price <=", value, "currentPrice");
+        public Criteria andPromotionPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("promotion_price <=", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIn(List<Integer> values) {
-            addCriterion("current_price in", values, "currentPrice");
+        public Criteria andPromotionPriceIn(List<Integer> values) {
+            addCriterion("promotion_price in", values, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotIn(List<Integer> values) {
-            addCriterion("current_price not in", values, "currentPrice");
+        public Criteria andPromotionPriceNotIn(List<Integer> values) {
+            addCriterion("promotion_price not in", values, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceBetween(Integer value1, Integer value2) {
-            addCriterion("current_price between", value1, value2, "currentPrice");
+        public Criteria andPromotionPriceBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_price between", value1, value2, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotBetween(Integer value1, Integer value2) {
-            addCriterion("current_price not between", value1, value2, "currentPrice");
+        public Criteria andPromotionPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_price not between", value1, value2, "promotionPrice");
             return (Criteria) this;
         }
 
@@ -1162,6 +1162,246 @@ public class PmsProductExample {
 
         public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeIsNull() {
+            addCriterion("promotion_start_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeIsNotNull() {
+            addCriterion("promotion_start_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeEqualTo(Date value) {
+            addCriterion("promotion_start_time =", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeNotEqualTo(Date value) {
+            addCriterion("promotion_start_time <>", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeGreaterThan(Date value) {
+            addCriterion("promotion_start_time >", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("promotion_start_time >=", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeLessThan(Date value) {
+            addCriterion("promotion_start_time <", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeLessThanOrEqualTo(Date value) {
+            addCriterion("promotion_start_time <=", value, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeIn(List<Date> values) {
+            addCriterion("promotion_start_time in", values, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeNotIn(List<Date> values) {
+            addCriterion("promotion_start_time not in", values, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeBetween(Date value1, Date value2) {
+            addCriterion("promotion_start_time between", value1, value2, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionStartTimeNotBetween(Date value1, Date value2) {
+            addCriterion("promotion_start_time not between", value1, value2, "promotionStartTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeIsNull() {
+            addCriterion("promotion_end_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeIsNotNull() {
+            addCriterion("promotion_end_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeEqualTo(Date value) {
+            addCriterion("promotion_end_time =", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeNotEqualTo(Date value) {
+            addCriterion("promotion_end_time <>", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeGreaterThan(Date value) {
+            addCriterion("promotion_end_time >", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("promotion_end_time >=", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeLessThan(Date value) {
+            addCriterion("promotion_end_time <", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("promotion_end_time <=", value, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeIn(List<Date> values) {
+            addCriterion("promotion_end_time in", values, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeNotIn(List<Date> values) {
+            addCriterion("promotion_end_time not in", values, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeBetween(Date value1, Date value2) {
+            addCriterion("promotion_end_time between", value1, value2, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("promotion_end_time not between", value1, value2, "promotionEndTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeIsNull() {
+            addCriterion("promotion_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeIsNotNull() {
+            addCriterion("promotion_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeEqualTo(Integer value) {
+            addCriterion("promotion_type =", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeNotEqualTo(Integer value) {
+            addCriterion("promotion_type <>", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeGreaterThan(Integer value) {
+            addCriterion("promotion_type >", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("promotion_type >=", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeLessThan(Integer value) {
+            addCriterion("promotion_type <", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("promotion_type <=", value, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeIn(List<Integer> values) {
+            addCriterion("promotion_type in", values, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeNotIn(List<Integer> values) {
+            addCriterion("promotion_type not in", values, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_type between", value1, value2, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_type not between", value1, value2, "promotionType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitIsNull() {
+            addCriterion("promotion_per_limit is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitIsNotNull() {
+            addCriterion("promotion_per_limit is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitEqualTo(Integer value) {
+            addCriterion("promotion_per_limit =", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitNotEqualTo(Integer value) {
+            addCriterion("promotion_per_limit <>", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitGreaterThan(Integer value) {
+            addCriterion("promotion_per_limit >", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitGreaterThanOrEqualTo(Integer value) {
+            addCriterion("promotion_per_limit >=", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitLessThan(Integer value) {
+            addCriterion("promotion_per_limit <", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitLessThanOrEqualTo(Integer value) {
+            addCriterion("promotion_per_limit <=", value, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitIn(List<Integer> values) {
+            addCriterion("promotion_per_limit in", values, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitNotIn(List<Integer> values) {
+            addCriterion("promotion_per_limit not in", values, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_per_limit between", value1, value2, "promotionPerLimit");
+            return (Criteria) this;
+        }
+
+        public Criteria andPromotionPerLimitNotBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_per_limit not between", value1, value2, "promotionPerLimit");
             return (Criteria) this;
         }
     }

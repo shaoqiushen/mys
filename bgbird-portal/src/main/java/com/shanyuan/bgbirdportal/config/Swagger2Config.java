@@ -30,7 +30,7 @@ public class Swagger2Config {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("布谷鸟咖啡厅手机端接口文档")
-                .description("欢迎访问~")
+                .description("大帅比在此~")
                 .contact("shenshaoqiu")
                 .version("1.0")
                 .build();

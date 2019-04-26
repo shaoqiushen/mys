@@ -1,5 +1,6 @@
 package com.shanyuan.bgbirdadmin;
 
+import com.shanyuan.utils.MyDateUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,7 @@ public class BgbirdAdminApplicationTests {
 
     @Test
     public void contextLoads() {
+
     }
 
 }

@@ -4,11 +4,18 @@
   <resultMap id="BaseResultMap" type="com.shanyuan.model.AmsActive">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="active_name" jdbcType="VARCHAR" property="activeName" />
-    <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
-    <result column="active_title" jdbcType="VARCHAR" property="activeTitle" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="active_introduce" jdbcType="VARCHAR" property="activeIntroduce" />
     <result column="active_picture" jdbcType="VARCHAR" property="activePicture" />
     <result column="is_enable" jdbcType="INTEGER" property="isEnable" />
     <result column="integration" jdbcType="INTEGER" property="integration" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="active_title" jdbcType="VARCHAR" property="activeTitle" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shanyuan.model.AmsActive">
+    <result column="active_content" jdbcType="LONGVARCHAR" property="activeContent" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,8 +76,28 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, active_name, active_time, active_title, active_picture, is_enable, integration
+    id, active_name, begin_time, active_introduce, active_picture, is_enable, integration, 
+    end_time, delete_status, create_time, active_title
   </sql>
+  <sql id="Blob_Column_List">
+    active_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.shanyuan.model.AmsActiveExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ams_active
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.shanyuan.model.AmsActiveExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -85,9 +112,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from ams_active
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -105,12 +134,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into ams_active (active_name, active_time, active_title, 
-      active_picture, is_enable, integration
-      )
-    values (#{activeName,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{activeTitle,jdbcType=VARCHAR}, 
-      #{activePicture,jdbcType=VARCHAR}, #{isEnable,jdbcType=INTEGER}, #{integration,jdbcType=INTEGER}
-      )
+    insert into ams_active (active_name, begin_time, active_introduce, 
+      active_picture, is_enable, integration, 
+      end_time, delete_status, create_time, 
+      active_title, active_content)
+    values (#{activeName,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{activeIntroduce,jdbcType=VARCHAR}, 
+      #{activePicture,jdbcType=VARCHAR}, #{isEnable,jdbcType=INTEGER}, #{integration,jdbcType=INTEGER}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{activeTitle,jdbcType=VARCHAR}, #{activeContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.AmsActive">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -121,11 +152,11 @@
       <if test="activeName != null">
         active_name,
       </if>
-      <if test="activeTime != null">
-        active_time,
+      <if test="beginTime != null">
+        begin_time,
       </if>
-      <if test="activeTitle != null">
-        active_title,
+      <if test="activeIntroduce != null">
+        active_introduce,
       </if>
       <if test="activePicture != null">
         active_picture,
@@ -136,16 +167,31 @@
       <if test="integration != null">
         integration,
       </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="activeTitle != null">
+        active_title,
+      </if>
+      <if test="activeContent != null">
+        active_content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="activeName != null">
         #{activeName,jdbcType=VARCHAR},
       </if>
-      <if test="activeTime != null">
-        #{activeTime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="activeTitle != null">
-        #{activeTitle,jdbcType=VARCHAR},
+      <if test="activeIntroduce != null">
+        #{activeIntroduce,jdbcType=VARCHAR},
       </if>
       <if test="activePicture != null">
         #{activePicture,jdbcType=VARCHAR},
@@ -155,6 +201,21 @@
       </if>
       <if test="integration != null">
         #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTitle != null">
+        #{activeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activeContent != null">
+        #{activeContent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -173,11 +234,11 @@
       <if test="record.activeName != null">
         active_name = #{record.activeName,jdbcType=VARCHAR},
       </if>
-      <if test="record.activeTime != null">
-        active_time = #{record.activeTime,jdbcType=TIMESTAMP},
+      <if test="record.beginTime != null">
+        begin_time = #{record.beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.activeTitle != null">
-        active_title = #{record.activeTitle,jdbcType=VARCHAR},
+      <if test="record.activeIntroduce != null">
+        active_introduce = #{record.activeIntroduce,jdbcType=VARCHAR},
       </if>
       <if test="record.activePicture != null">
         active_picture = #{record.activePicture,jdbcType=VARCHAR},
@@ -188,7 +249,40 @@
       <if test="record.integration != null">
         integration = #{record.integration,jdbcType=INTEGER},
       </if>
+      <if test="record.endTime != null">
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deleteStatus != null">
+        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.activeTitle != null">
+        active_title = #{record.activeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activeContent != null">
+        active_content = #{record.activeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update ams_active
+    set id = #{record.id,jdbcType=INTEGER},
+      active_name = #{record.activeName,jdbcType=VARCHAR},
+      begin_time = #{record.beginTime,jdbcType=TIMESTAMP},
+      active_introduce = #{record.activeIntroduce,jdbcType=VARCHAR},
+      active_picture = #{record.activePicture,jdbcType=VARCHAR},
+      is_enable = #{record.isEnable,jdbcType=INTEGER},
+      integration = #{record.integration,jdbcType=INTEGER},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      active_title = #{record.activeTitle,jdbcType=VARCHAR},
+      active_content = #{record.activeContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,11 +291,15 @@
     update ams_active
     set id = #{record.id,jdbcType=INTEGER},
       active_name = #{record.activeName,jdbcType=VARCHAR},
-      active_time = #{record.activeTime,jdbcType=TIMESTAMP},
-      active_title = #{record.activeTitle,jdbcType=VARCHAR},
+      begin_time = #{record.beginTime,jdbcType=TIMESTAMP},
+      active_introduce = #{record.activeIntroduce,jdbcType=VARCHAR},
       active_picture = #{record.activePicture,jdbcType=VARCHAR},
       is_enable = #{record.isEnable,jdbcType=INTEGER},
-      integration = #{record.integration,jdbcType=INTEGER}
+      integration = #{record.integration,jdbcType=INTEGER},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      active_title = #{record.activeTitle,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,11 +310,11 @@
       <if test="activeName != null">
         active_name = #{activeName,jdbcType=VARCHAR},
       </if>
-      <if test="activeTime != null">
-        active_time = #{activeTime,jdbcType=TIMESTAMP},
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="activeTitle != null">
-        active_title = #{activeTitle,jdbcType=VARCHAR},
+      <if test="activeIntroduce != null">
+        active_introduce = #{activeIntroduce,jdbcType=VARCHAR},
       </if>
       <if test="activePicture != null">
         active_picture = #{activePicture,jdbcType=VARCHAR},
@@ -227,17 +325,51 @@
       <if test="integration != null">
         integration = #{integration,jdbcType=INTEGER},
       </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteStatus != null">
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activeTitle != null">
+        active_title = #{activeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activeContent != null">
+        active_content = #{activeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.shanyuan.model.AmsActive">
+    update ams_active
+    set active_name = #{activeName,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      active_introduce = #{activeIntroduce,jdbcType=VARCHAR},
+      active_picture = #{activePicture,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=INTEGER},
+      integration = #{integration,jdbcType=INTEGER},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      active_title = #{activeTitle,jdbcType=VARCHAR},
+      active_content = #{activeContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shanyuan.model.AmsActive">
     update ams_active
     set active_name = #{activeName,jdbcType=VARCHAR},
-      active_time = #{activeTime,jdbcType=TIMESTAMP},
-      active_title = #{activeTitle,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      active_introduce = #{activeIntroduce,jdbcType=VARCHAR},
       active_picture = #{activePicture,jdbcType=VARCHAR},
       is_enable = #{isEnable,jdbcType=INTEGER},
-      integration = #{integration,jdbcType=INTEGER}
+      integration = #{integration,jdbcType=INTEGER},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      active_title = #{activeTitle,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

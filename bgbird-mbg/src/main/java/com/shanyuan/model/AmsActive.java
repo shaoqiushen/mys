@@ -18,14 +18,14 @@ public class AmsActive implements Serializable {
      *
      * @mbggenerated
      */
-    private Date activeTime;
+    private Date beginTime;
 
     /**
-     * 活动标题
+     * 活动简介
      *
      * @mbggenerated
      */
-    private String activeTitle;
+    private String activeIntroduce;
 
     /**
      * 活动介绍图片
@@ -48,6 +48,41 @@ public class AmsActive implements Serializable {
      */
     private Integer integration;
 
+    /**
+     * 活动结束时间
+     *
+     * @mbggenerated
+     */
+    private Date endTime;
+
+    /**
+     * 删除标志:0->否,1->是
+     *
+     * @mbggenerated
+     */
+    private Integer deleteStatus;
+
+    /**
+     * 创建时间
+     *
+     * @mbggenerated
+     */
+    private Date createTime;
+
+    /**
+     * 活动标题
+     *
+     * @mbggenerated
+     */
+    private String activeTitle;
+
+    /**
+     * 活动内容
+     *
+     * @mbggenerated
+     */
+    private String activeContent;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -66,20 +101,20 @@ public class AmsActive implements Serializable {
         this.activeName = activeName;
     }
 
-    public Date getActiveTime() {
-        return activeTime;
+    public Date getBeginTime() {
+        return beginTime;
     }
 
-    public void setActiveTime(Date activeTime) {
-        this.activeTime = activeTime;
+    public void setBeginTime(Date beginTime) {
+        this.beginTime = beginTime;
     }
 
-    public String getActiveTitle() {
-        return activeTitle;
+    public String getActiveIntroduce() {
+        return activeIntroduce;
     }
 
-    public void setActiveTitle(String activeTitle) {
-        this.activeTitle = activeTitle;
+    public void setActiveIntroduce(String activeIntroduce) {
+        this.activeIntroduce = activeIntroduce;
     }
 
     public String getActivePicture() {
@@ -106,6 +141,46 @@ public class AmsActive implements Serializable {
         this.integration = integration;
     }
 
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Integer getDeleteStatus() {
+        return deleteStatus;
+    }
+
+    public void setDeleteStatus(Integer deleteStatus) {
+        this.deleteStatus = deleteStatus;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getActiveTitle() {
+        return activeTitle;
+    }
+
+    public void setActiveTitle(String activeTitle) {
+        this.activeTitle = activeTitle;
+    }
+
+    public String getActiveContent() {
+        return activeContent;
+    }
+
+    public void setActiveContent(String activeContent) {
+        this.activeContent = activeContent;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -114,11 +189,16 @@ public class AmsActive implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", activeName=").append(activeName);
-        sb.append(", activeTime=").append(activeTime);
-        sb.append(", activeTitle=").append(activeTitle);
+        sb.append(", beginTime=").append(beginTime);
+        sb.append(", activeIntroduce=").append(activeIntroduce);
         sb.append(", activePicture=").append(activePicture);
         sb.append(", isEnable=").append(isEnable);
         sb.append(", integration=").append(integration);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", deleteStatus=").append(deleteStatus);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", activeTitle=").append(activeTitle);
+        sb.append(", activeContent=").append(activeContent);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

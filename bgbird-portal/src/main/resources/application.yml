@@ -1,18 +1,15 @@
-
-
 server:
   servlet:
     context-path: /bgbird-portal
-  port: 8060
+  port: 8062
 
 logging:
   config: classpath:log/logback.xml
 mybatis:
   mapper-locations:
-  - classpath*:com/**/mapper/*.xml
-  - classpath:dao/*.xml
-
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
 
 spring:
   profiles:
-    active: dev #默认开发环境
+    active: dev

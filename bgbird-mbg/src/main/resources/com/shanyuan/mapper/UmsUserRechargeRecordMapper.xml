@@ -11,6 +11,7 @@
     <result column="transactionid" jdbcType="VARCHAR" property="transactionid" />
     <result column="change_reason" jdbcType="VARCHAR" property="changeReason" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, user_id, money, change_type, recharge_status, recharge_no, transactionid, change_reason, 
-    create_time
+    create_time, order_id
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.UmsUserRechargeRecordExample" resultMap="BaseResultMap">
     select
@@ -110,10 +111,12 @@
     </selectKey>
     insert into ums_user_recharge_record (user_id, money, change_type, 
       recharge_status, recharge_no, transactionid, 
-      change_reason, create_time)
+      change_reason, create_time, order_id
+      )
     values (#{userId,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{changeType,jdbcType=INTEGER}, 
       #{rechargeStatus,jdbcType=INTEGER}, #{rechargeNo,jdbcType=VARCHAR}, #{transactionid,jdbcType=VARCHAR}, 
-      #{changeReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+      #{changeReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{orderId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUserRechargeRecord">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -145,6 +148,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -170,6 +176,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -209,6 +218,9 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,7 +236,8 @@
       recharge_no = #{record.rechargeNo,jdbcType=VARCHAR},
       transactionid = #{record.transactionid,jdbcType=VARCHAR},
       change_reason = #{record.changeReason,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      order_id = #{record.orderId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -256,6 +269,9 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -268,7 +284,8 @@
       recharge_no = #{rechargeNo,jdbcType=VARCHAR},
       transactionid = #{transactionid,jdbcType=VARCHAR},
       change_reason = #{changeReason,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      order_id = #{orderId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

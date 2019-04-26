@@ -68,6 +68,13 @@ public class AmsActiveDetail implements Serializable {
      */
     private String activeIntroduce;
 
+    /**
+     * 活动详情内容
+     *
+     * @mbggenerated
+     */
+    private String activeContent;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -150,6 +157,14 @@ public class AmsActiveDetail implements Serializable {
         this.activeIntroduce = activeIntroduce;
     }
 
+    public String getActiveContent() {
+        return activeContent;
+    }
+
+    public void setActiveContent(String activeContent) {
+        this.activeContent = activeContent;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -166,6 +181,7 @@ public class AmsActiveDetail implements Serializable {
         sb.append(", welfare=").append(welfare);
         sb.append(", applyNeedKnow=").append(applyNeedKnow);
         sb.append(", activeIntroduce=").append(activeIntroduce);
+        sb.append(", activeContent=").append(activeContent);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdadmin.dao.AmsActiveDao">
+    <resultMap id="BaseResultMap" type="com.shanyuan.bgbirdadmin.dto.AmsActiveResult">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="active_name" jdbcType="VARCHAR" property="activeName" />
+        <result column="begin_time" jdbcType="VARCHAR" property="beginTime" />
+        <result column="active_introduce" jdbcType="VARCHAR" property="activeIntroduce" />
+        <result column="active_picture" jdbcType="VARCHAR" property="activePicture" />
+        <result column="integration" jdbcType="INTEGER" property="integration" />
+        <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+
+    <update id="deleteActive">
+        update ams_active set delete_status = 1 where id=#{id}
+    </update>
+
+    <select id="listActiveInfo" resultMap="BaseResultMap">
+        select a.id,a.active_name,a.begin_time,a.active_introduce,a.active_picture,a.integration,a.end_time,a.create_time,
+        (select count(*) peopleCount from ams_active_user_apply b where a.id = b.active_id)
+        from ams_active a
+        where delete_status = 0
+        order by id
+    </select>
+</mapper>

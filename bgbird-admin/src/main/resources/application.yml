@@ -12,7 +12,6 @@ mybatis:
     - classpath:dao/*.xml
     - classpath*:com/**/mapper/*.xml
 
-
 spring:
   profiles:
     active: dev #开发环境

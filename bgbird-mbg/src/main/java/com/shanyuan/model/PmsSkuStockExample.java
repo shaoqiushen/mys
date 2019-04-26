@@ -224,63 +224,63 @@ public class PmsSkuStockExample {
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIsNull() {
-            addCriterion("current_price is null");
+        public Criteria andPromotionPriceIsNull() {
+            addCriterion("promotion_price is null");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIsNotNull() {
-            addCriterion("current_price is not null");
+        public Criteria andPromotionPriceIsNotNull() {
+            addCriterion("promotion_price is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceEqualTo(Integer value) {
-            addCriterion("current_price =", value, "currentPrice");
+        public Criteria andPromotionPriceEqualTo(Integer value) {
+            addCriterion("promotion_price =", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotEqualTo(Integer value) {
-            addCriterion("current_price <>", value, "currentPrice");
+        public Criteria andPromotionPriceNotEqualTo(Integer value) {
+            addCriterion("promotion_price <>", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceGreaterThan(Integer value) {
-            addCriterion("current_price >", value, "currentPrice");
+        public Criteria andPromotionPriceGreaterThan(Integer value) {
+            addCriterion("promotion_price >", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceGreaterThanOrEqualTo(Integer value) {
-            addCriterion("current_price >=", value, "currentPrice");
+        public Criteria andPromotionPriceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("promotion_price >=", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceLessThan(Integer value) {
-            addCriterion("current_price <", value, "currentPrice");
+        public Criteria andPromotionPriceLessThan(Integer value) {
+            addCriterion("promotion_price <", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceLessThanOrEqualTo(Integer value) {
-            addCriterion("current_price <=", value, "currentPrice");
+        public Criteria andPromotionPriceLessThanOrEqualTo(Integer value) {
+            addCriterion("promotion_price <=", value, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceIn(List<Integer> values) {
-            addCriterion("current_price in", values, "currentPrice");
+        public Criteria andPromotionPriceIn(List<Integer> values) {
+            addCriterion("promotion_price in", values, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotIn(List<Integer> values) {
-            addCriterion("current_price not in", values, "currentPrice");
+        public Criteria andPromotionPriceNotIn(List<Integer> values) {
+            addCriterion("promotion_price not in", values, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceBetween(Integer value1, Integer value2) {
-            addCriterion("current_price between", value1, value2, "currentPrice");
+        public Criteria andPromotionPriceBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_price between", value1, value2, "promotionPrice");
             return (Criteria) this;
         }
 
-        public Criteria andCurrentPriceNotBetween(Integer value1, Integer value2) {
-            addCriterion("current_price not between", value1, value2, "currentPrice");
+        public Criteria andPromotionPriceNotBetween(Integer value1, Integer value2) {
+            addCriterion("promotion_price not between", value1, value2, "promotionPrice");
             return (Criteria) this;
         }
 
@@ -811,6 +811,66 @@ public class PmsSkuStockExample {
 
         public Criteria andSkuCodeNotBetween(String value1, String value2) {
             addCriterion("sku_code not between", value1, value2, "skuCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockIsNull() {
+            addCriterion("lock_stock is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockIsNotNull() {
+            addCriterion("lock_stock is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockEqualTo(Integer value) {
+            addCriterion("lock_stock =", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockNotEqualTo(Integer value) {
+            addCriterion("lock_stock <>", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockGreaterThan(Integer value) {
+            addCriterion("lock_stock >", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockGreaterThanOrEqualTo(Integer value) {
+            addCriterion("lock_stock >=", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockLessThan(Integer value) {
+            addCriterion("lock_stock <", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockLessThanOrEqualTo(Integer value) {
+            addCriterion("lock_stock <=", value, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockIn(List<Integer> values) {
+            addCriterion("lock_stock in", values, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockNotIn(List<Integer> values) {
+            addCriterion("lock_stock not in", values, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockBetween(Integer value1, Integer value2) {
+            addCriterion("lock_stock between", value1, value2, "lockStock");
+            return (Criteria) this;
+        }
+
+        public Criteria andLockStockNotBetween(Integer value1, Integer value2) {
+            addCriterion("lock_stock not between", value1, value2, "lockStock");
             return (Criteria) this;
         }
     }

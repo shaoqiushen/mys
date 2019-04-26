@@ -1,6 +1,8 @@
 package com.shanyuan.bgbirdadmin.service.impl;
 
 import com.shanyuan.bgbirdadmin.dao.PmsProductAttributeValueDao;
+import com.shanyuan.bgbirdadmin.dao.PmsProductFullReductionDao;
+import com.shanyuan.bgbirdadmin.dao.PmsProductMemberPriceDao;
 import com.shanyuan.bgbirdadmin.dao.PmsSkuStockDao;
 import com.shanyuan.bgbirdadmin.dto.PmsProductParams;
 import com.shanyuan.bgbirdadmin.service.PmsProductService;
@@ -40,6 +42,12 @@ public class PmsProductServiceImpl implements PmsProductService {
     @Autowired
     PmsSkuStockDao pmsSkuStockDao;
 
+    @Autowired
+    PmsProductMemberPriceDao pmsProductMemberPriceDao;
+
+    @Autowired
+    PmsProductFullReductionDao pmsProductFullReductionDao;
+
     @Override
     public int createProduct(PmsProductParams productParams) {
         int count = 0;
@@ -47,12 +55,17 @@ public class PmsProductServiceImpl implements PmsProductService {
         PmsProduct pmsProduct = productParams;
         //添加商品基本信息
         pmsProductMapper.insertSelective( pmsProduct );
+        Integer productId = pmsProduct.getId();
+        //会员价格设置
+        relateAndInsertList(pmsProductMemberPriceDao,productParams.getMemberPriceList(),productId);
+        //满减价格设置
+        relateAndInsertList(pmsProductFullReductionDao,productParams.getFullReductionList(),productId);
         //处理sku -code编码
-        handleSkuStockCode(productParams.getSkuStockList(),pmsProduct.getProductId());
+        handleSkuStockCode(productParams.getSkuStockList(),productId);
         //添加sku库存信息
-        relateAndInsertList(pmsSkuStockDao,productParams.getSkuStockList(),pmsProduct.getProductId());
+        relateAndInsertList(pmsSkuStockDao,productParams.getSkuStockList(),productId);
         //添加自定义参数，规格
-        relateAndInsertList(pmsProductAttributeValueDao,productParams.getProductAttributeValueList(),pmsProduct.getProductId());
+        relateAndInsertList(pmsProductAttributeValueDao,productParams.getProductAttributeValueList(),productId);
         count=1;
         return count;
     }
@@ -77,7 +90,7 @@ public class PmsProductServiceImpl implements PmsProductService {
             Method insertList = dao.getClass().getMethod("insertList", List.class);
             insertList.invoke(dao, dataList);
         } catch (Exception e) {
-            log.error("创建产品出错:{}", e.getMessage());
+            log.error("创建产品出错:{}", e);
             throw new RuntimeException(e.getMessage());
         }
     }

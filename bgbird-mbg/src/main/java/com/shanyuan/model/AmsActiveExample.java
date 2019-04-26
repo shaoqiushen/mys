@@ -235,133 +235,133 @@ public class AmsActiveExample {
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeIsNull() {
-            addCriterion("active_time is null");
+        public Criteria andBeginTimeIsNull() {
+            addCriterion("begin_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeIsNotNull() {
-            addCriterion("active_time is not null");
+        public Criteria andBeginTimeIsNotNull() {
+            addCriterion("begin_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeEqualTo(Date value) {
-            addCriterion("active_time =", value, "activeTime");
+        public Criteria andBeginTimeEqualTo(Date value) {
+            addCriterion("begin_time =", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeNotEqualTo(Date value) {
-            addCriterion("active_time <>", value, "activeTime");
+        public Criteria andBeginTimeNotEqualTo(Date value) {
+            addCriterion("begin_time <>", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeGreaterThan(Date value) {
-            addCriterion("active_time >", value, "activeTime");
+        public Criteria andBeginTimeGreaterThan(Date value) {
+            addCriterion("begin_time >", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("active_time >=", value, "activeTime");
+        public Criteria andBeginTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("begin_time >=", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeLessThan(Date value) {
-            addCriterion("active_time <", value, "activeTime");
+        public Criteria andBeginTimeLessThan(Date value) {
+            addCriterion("begin_time <", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeLessThanOrEqualTo(Date value) {
-            addCriterion("active_time <=", value, "activeTime");
+        public Criteria andBeginTimeLessThanOrEqualTo(Date value) {
+            addCriterion("begin_time <=", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeIn(List<Date> values) {
-            addCriterion("active_time in", values, "activeTime");
+        public Criteria andBeginTimeIn(List<Date> values) {
+            addCriterion("begin_time in", values, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeNotIn(List<Date> values) {
-            addCriterion("active_time not in", values, "activeTime");
+        public Criteria andBeginTimeNotIn(List<Date> values) {
+            addCriterion("begin_time not in", values, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeBetween(Date value1, Date value2) {
-            addCriterion("active_time between", value1, value2, "activeTime");
+        public Criteria andBeginTimeBetween(Date value1, Date value2) {
+            addCriterion("begin_time between", value1, value2, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTimeNotBetween(Date value1, Date value2) {
-            addCriterion("active_time not between", value1, value2, "activeTime");
+        public Criteria andBeginTimeNotBetween(Date value1, Date value2) {
+            addCriterion("begin_time not between", value1, value2, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleIsNull() {
-            addCriterion("active_title is null");
+        public Criteria andActiveIntroduceIsNull() {
+            addCriterion("active_introduce is null");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleIsNotNull() {
-            addCriterion("active_title is not null");
+        public Criteria andActiveIntroduceIsNotNull() {
+            addCriterion("active_introduce is not null");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleEqualTo(String value) {
-            addCriterion("active_title =", value, "activeTitle");
+        public Criteria andActiveIntroduceEqualTo(String value) {
+            addCriterion("active_introduce =", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleNotEqualTo(String value) {
-            addCriterion("active_title <>", value, "activeTitle");
+        public Criteria andActiveIntroduceNotEqualTo(String value) {
+            addCriterion("active_introduce <>", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleGreaterThan(String value) {
-            addCriterion("active_title >", value, "activeTitle");
+        public Criteria andActiveIntroduceGreaterThan(String value) {
+            addCriterion("active_introduce >", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("active_title >=", value, "activeTitle");
+        public Criteria andActiveIntroduceGreaterThanOrEqualTo(String value) {
+            addCriterion("active_introduce >=", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleLessThan(String value) {
-            addCriterion("active_title <", value, "activeTitle");
+        public Criteria andActiveIntroduceLessThan(String value) {
+            addCriterion("active_introduce <", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleLessThanOrEqualTo(String value) {
-            addCriterion("active_title <=", value, "activeTitle");
+        public Criteria andActiveIntroduceLessThanOrEqualTo(String value) {
+            addCriterion("active_introduce <=", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleLike(String value) {
-            addCriterion("active_title like", value, "activeTitle");
+        public Criteria andActiveIntroduceLike(String value) {
+            addCriterion("active_introduce like", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleNotLike(String value) {
-            addCriterion("active_title not like", value, "activeTitle");
+        public Criteria andActiveIntroduceNotLike(String value) {
+            addCriterion("active_introduce not like", value, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleIn(List<String> values) {
-            addCriterion("active_title in", values, "activeTitle");
+        public Criteria andActiveIntroduceIn(List<String> values) {
+            addCriterion("active_introduce in", values, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleNotIn(List<String> values) {
-            addCriterion("active_title not in", values, "activeTitle");
+        public Criteria andActiveIntroduceNotIn(List<String> values) {
+            addCriterion("active_introduce not in", values, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleBetween(String value1, String value2) {
-            addCriterion("active_title between", value1, value2, "activeTitle");
+        public Criteria andActiveIntroduceBetween(String value1, String value2) {
+            addCriterion("active_introduce between", value1, value2, "activeIntroduce");
             return (Criteria) this;
         }
 
-        public Criteria andActiveTitleNotBetween(String value1, String value2) {
-            addCriterion("active_title not between", value1, value2, "activeTitle");
+        public Criteria andActiveIntroduceNotBetween(String value1, String value2) {
+            addCriterion("active_introduce not between", value1, value2, "activeIntroduce");
             return (Criteria) this;
         }
 
@@ -552,6 +552,256 @@ public class AmsActiveExample {
 
         public Criteria andIntegrationNotBetween(Integer value1, Integer value2) {
             addCriterion("integration not between", value1, value2, "integration");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeIsNull() {
+            addCriterion("end_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeIsNotNull() {
+            addCriterion("end_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeEqualTo(Date value) {
+            addCriterion("end_time =", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeNotEqualTo(Date value) {
+            addCriterion("end_time <>", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeGreaterThan(Date value) {
+            addCriterion("end_time >", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("end_time >=", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeLessThan(Date value) {
+            addCriterion("end_time <", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("end_time <=", value, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeIn(List<Date> values) {
+            addCriterion("end_time in", values, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeNotIn(List<Date> values) {
+            addCriterion("end_time not in", values, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeBetween(Date value1, Date value2) {
+            addCriterion("end_time between", value1, value2, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("end_time not between", value1, value2, "endTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNull() {
+            addCriterion("delete_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIsNotNull() {
+            addCriterion("delete_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusEqualTo(Integer value) {
+            addCriterion("delete_status =", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotEqualTo(Integer value) {
+            addCriterion("delete_status <>", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThan(Integer value) {
+            addCriterion("delete_status >", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("delete_status >=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThan(Integer value) {
+            addCriterion("delete_status <", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("delete_status <=", value, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusIn(List<Integer> values) {
+            addCriterion("delete_status in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotIn(List<Integer> values) {
+            addCriterion("delete_status not in", values, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status between", value1, value2, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("delete_status not between", value1, value2, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleIsNull() {
+            addCriterion("active_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleIsNotNull() {
+            addCriterion("active_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleEqualTo(String value) {
+            addCriterion("active_title =", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleNotEqualTo(String value) {
+            addCriterion("active_title <>", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleGreaterThan(String value) {
+            addCriterion("active_title >", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("active_title >=", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleLessThan(String value) {
+            addCriterion("active_title <", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleLessThanOrEqualTo(String value) {
+            addCriterion("active_title <=", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleLike(String value) {
+            addCriterion("active_title like", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleNotLike(String value) {
+            addCriterion("active_title not like", value, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleIn(List<String> values) {
+            addCriterion("active_title in", values, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleNotIn(List<String> values) {
+            addCriterion("active_title not in", values, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleBetween(String value1, String value2) {
+            addCriterion("active_title between", value1, value2, "activeTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andActiveTitleNotBetween(String value1, String value2) {
+            addCriterion("active_title not between", value1, value2, "activeTitle");
             return (Criteria) this;
         }
     }

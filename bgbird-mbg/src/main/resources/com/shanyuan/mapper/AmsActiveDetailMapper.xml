@@ -14,6 +14,7 @@
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.shanyuan.model.AmsActiveDetail">
     <result column="active_introduce" jdbcType="LONGVARCHAR" property="activeIntroduce" />
+    <result column="active_content" jdbcType="LONGVARCHAR" property="activeContent" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +79,7 @@
     recommend_people, welfare, apply_need_know
   </sql>
   <sql id="Blob_Column_List">
-    active_introduce
+    active_introduce, active_content
   </sql>
   <select id="selectByExampleWithBLOBs" parameterType="com.shanyuan.model.AmsActiveDetailExample" resultMap="ResultMapWithBLOBs">
     select
@@ -134,12 +135,12 @@
     </selectKey>
     insert into ams_active_detail (active_id, active_detail_picture, active_date, 
       active_time_interval, active_address, recommend_people, 
-      welfare, apply_need_know, active_introduce
-      )
+      welfare, apply_need_know, active_introduce, 
+      active_content)
     values (#{activeId,jdbcType=INTEGER}, #{activeDetailPicture,jdbcType=VARCHAR}, #{activeDate,jdbcType=VARCHAR}, 
       #{activeTimeInterval,jdbcType=VARCHAR}, #{activeAddress,jdbcType=VARCHAR}, #{recommendPeople,jdbcType=VARCHAR}, 
-      #{welfare,jdbcType=VARCHAR}, #{applyNeedKnow,jdbcType=VARCHAR}, #{activeIntroduce,jdbcType=LONGVARCHAR}
-      )
+      #{welfare,jdbcType=VARCHAR}, #{applyNeedKnow,jdbcType=VARCHAR}, #{activeIntroduce,jdbcType=LONGVARCHAR}, 
+      #{activeContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.AmsActiveDetail">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -174,6 +175,9 @@
       <if test="activeIntroduce != null">
         active_introduce,
       </if>
+      <if test="activeContent != null">
+        active_content,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="activeId != null">
@@ -202,6 +206,9 @@
       </if>
       <if test="activeIntroduce != null">
         #{activeIntroduce,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="activeContent != null">
+        #{activeContent,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -244,6 +251,9 @@
       <if test="record.activeIntroduce != null">
         active_introduce = #{record.activeIntroduce,jdbcType=LONGVARCHAR},
       </if>
+      <if test="record.activeContent != null">
+        active_content = #{record.activeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -260,7 +270,8 @@
       recommend_people = #{record.recommendPeople,jdbcType=VARCHAR},
       welfare = #{record.welfare,jdbcType=VARCHAR},
       apply_need_know = #{record.applyNeedKnow,jdbcType=VARCHAR},
-      active_introduce = #{record.activeIntroduce,jdbcType=LONGVARCHAR}
+      active_introduce = #{record.activeIntroduce,jdbcType=LONGVARCHAR},
+      active_content = #{record.activeContent,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -310,6 +321,9 @@
       <if test="activeIntroduce != null">
         active_introduce = #{activeIntroduce,jdbcType=LONGVARCHAR},
       </if>
+      <if test="activeContent != null">
+        active_content = #{activeContent,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -323,7 +337,8 @@
       recommend_people = #{recommendPeople,jdbcType=VARCHAR},
       welfare = #{welfare,jdbcType=VARCHAR},
       apply_need_know = #{applyNeedKnow,jdbcType=VARCHAR},
-      active_introduce = #{activeIntroduce,jdbcType=LONGVARCHAR}
+      active_introduce = #{activeIntroduce,jdbcType=LONGVARCHAR},
+      active_content = #{activeContent,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shanyuan.model.AmsActiveDetail">

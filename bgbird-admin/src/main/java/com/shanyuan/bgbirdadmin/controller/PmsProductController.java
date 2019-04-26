@@ -8,6 +8,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * desc
  **/
 @RestController
-@Api(tags="PmsProductController",description="商品管理控制器")
+@Api(tags="PmsProductController",description="商品管理")
 @Slf4j
 @RequestMapping("/product")
 public class PmsProductController {
@@ -31,7 +33,7 @@ public class PmsProductController {
 
     @ApiOperation( value="创建商品" )
     @PostMapping("/createProduct")
-    public CommonResult createProduct(@RequestBody PmsProductParams pmsProductParams){
+    public CommonResult createProduct(@Validated @RequestBody PmsProductParams pmsProductParams, BindingResult bindingResult){
 
         int count=pmsProductService.createProduct( pmsProductParams );
         return ResultUtil.result( count );

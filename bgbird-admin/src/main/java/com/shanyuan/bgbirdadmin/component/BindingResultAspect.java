@@ -20,7 +20,7 @@ import org.springframework.validation.BindingResult;
 @Component
 @Order(2)//加载顺序
 public class BindingResultAspect {
-    @Pointcut("execution(public * com.shanyuan.*.controller.*.*(..))")
+    @Pointcut("execution(public * com.shanyuan.bgbirdadmin.controller.*.*(..))")
     public void BindingResult() {
     }
 

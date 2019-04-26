@@ -34,6 +34,34 @@ public class CmsShuffling implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 轮播顺序
+     *
+     * @mbggenerated
+     */
+    private Integer sort;
+
+    /**
+     * 外链地址
+     *
+     * @mbggenerated
+     */
+    private String url;
+
+    /**
+     * 0->App首页，1->PC首页
+     *
+     * @mbggenerated
+     */
+    private Integer type;
+
+    /**
+     * 上线状态:0->下线,1->上线
+     *
+     * @mbggenerated
+     */
+    private Integer status;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getShuffingId() {
@@ -76,6 +104,38 @@ public class CmsShuffling implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -87,6 +147,10 @@ public class CmsShuffling implements Serializable {
         sb.append(", productId=").append(productId);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", sort=").append(sort);
+        sb.append(", url=").append(url);
+        sb.append(", type=").append(type);
+        sb.append(", status=").append(status);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

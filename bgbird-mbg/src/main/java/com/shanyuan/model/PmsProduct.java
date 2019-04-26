@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class PmsProduct implements Serializable {
-    private Integer productId;
+    private Integer id;
 
     /**
      * 商品分类id
@@ -46,7 +46,7 @@ public class PmsProduct implements Serializable {
      *
      * @mbggenerated
      */
-    private Boolean deleteStatus;
+    private Integer deleteStatus;
 
     /**
      * 上架状态：0->下架；1->上架
@@ -84,11 +84,11 @@ public class PmsProduct implements Serializable {
     private Integer price;
 
     /**
-     * 现价，单位分
+     * 促销价，单位分
      *
      * @mbggenerated
      */
-    private Integer currentPrice;
+    private Integer promotionPrice;
 
     /**
      * 赠送的积分
@@ -118,14 +118,42 @@ public class PmsProduct implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * 商品促销开始时间
+     *
+     * @mbggenerated
+     */
+    private Date promotionStartTime;
+
+    /**
+     * 商品促销结束时间
+     *
+     * @mbggenerated
+     */
+    private Date promotionEndTime;
+
+    /**
+     * 促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购
+     *
+     * @mbggenerated
+     */
+    private Integer promotionType;
+
+    /**
+     * 活动限购数量
+     *
+     * @mbggenerated
+     */
+    private Integer promotionPerLimit;
+
     private static final long serialVersionUID = 1L;
 
-    public Integer getProductId() {
-        return productId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getProductCategoryId() {
@@ -168,11 +196,11 @@ public class PmsProduct implements Serializable {
         this.pictuteDetail = pictuteDetail;
     }
 
-    public Boolean getDeleteStatus() {
+    public Integer getDeleteStatus() {
         return deleteStatus;
     }
 
-    public void setDeleteStatus(Boolean deleteStatus) {
+    public void setDeleteStatus(Integer deleteStatus) {
         this.deleteStatus = deleteStatus;
     }
 
@@ -216,12 +244,12 @@ public class PmsProduct implements Serializable {
         this.price = price;
     }
 
-    public Integer getCurrentPrice() {
-        return currentPrice;
+    public Integer getPromotionPrice() {
+        return promotionPrice;
     }
 
-    public void setCurrentPrice(Integer currentPrice) {
-        this.currentPrice = currentPrice;
+    public void setPromotionPrice(Integer promotionPrice) {
+        this.promotionPrice = promotionPrice;
     }
 
     public Integer getGiftPoint() {
@@ -256,13 +284,45 @@ public class PmsProduct implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public Date getPromotionStartTime() {
+        return promotionStartTime;
+    }
+
+    public void setPromotionStartTime(Date promotionStartTime) {
+        this.promotionStartTime = promotionStartTime;
+    }
+
+    public Date getPromotionEndTime() {
+        return promotionEndTime;
+    }
+
+    public void setPromotionEndTime(Date promotionEndTime) {
+        this.promotionEndTime = promotionEndTime;
+    }
+
+    public Integer getPromotionType() {
+        return promotionType;
+    }
+
+    public void setPromotionType(Integer promotionType) {
+        this.promotionType = promotionType;
+    }
+
+    public Integer getPromotionPerLimit() {
+        return promotionPerLimit;
+    }
+
+    public void setPromotionPerLimit(Integer promotionPerLimit) {
+        this.promotionPerLimit = promotionPerLimit;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", productId=").append(productId);
+        sb.append(", id=").append(id);
         sb.append(", productCategoryId=").append(productCategoryId);
         sb.append(", productName=").append(productName);
         sb.append(", productIntroduce=").append(productIntroduce);
@@ -274,11 +334,15 @@ public class PmsProduct implements Serializable {
         sb.append(", exchangeStatus=").append(exchangeStatus);
         sb.append(", saleAmount=").append(saleAmount);
         sb.append(", price=").append(price);
-        sb.append(", currentPrice=").append(currentPrice);
+        sb.append(", promotionPrice=").append(promotionPrice);
         sb.append(", giftPoint=").append(giftPoint);
         sb.append(", stock=").append(stock);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
+        sb.append(", promotionStartTime=").append(promotionStartTime);
+        sb.append(", promotionEndTime=").append(promotionEndTime);
+        sb.append(", promotionType=").append(promotionType);
+        sb.append(", promotionPerLimit=").append(promotionPerLimit);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

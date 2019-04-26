@@ -70,7 +70,7 @@ public class CommonResult {
     }
 
     /*返回自定义失败报文*/
-    public CommonResult failed(String msg){
+    public CommonResult failed(int code,String msg){
         this.code=code;
         this.msg=msg;
         return this;

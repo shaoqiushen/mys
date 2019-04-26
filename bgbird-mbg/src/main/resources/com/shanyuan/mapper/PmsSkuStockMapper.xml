@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.shanyuan.model.PmsSkuStock">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="current_price" jdbcType="INTEGER" property="currentPrice" />
+    <result column="promotion_price" jdbcType="INTEGER" property="promotionPrice" />
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="sp1" jdbcType="VARCHAR" property="sp1" />
@@ -13,6 +13,7 @@
     <result column="picture" jdbcType="VARCHAR" property="picture" />
     <result column="sale_count" jdbcType="INTEGER" property="saleCount" />
     <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, current_price, price, stock, sp1, sp2, sp3, picture, sale_count, 
-    sku_code
+    id, product_id, promotion_price, price, stock, sp1, sp2, sp3, picture, sale_count, 
+    sku_code, lock_stock
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.PmsSkuStockExample" resultMap="BaseResultMap">
     select
@@ -110,14 +111,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_sku_stock (product_id, current_price, price, 
+    insert into pms_sku_stock (product_id, promotion_price, price, 
       stock, sp1, sp2, sp3, 
-      picture, sale_count, sku_code
-      )
-    values (#{productId,jdbcType=INTEGER}, #{currentPrice,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
+      picture, sale_count, sku_code, 
+      lock_stock)
+    values (#{productId,jdbcType=INTEGER}, #{promotionPrice,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
       #{stock,jdbcType=INTEGER}, #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, 
-      #{picture,jdbcType=VARCHAR}, #{saleCount,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}
-      )
+      #{picture,jdbcType=VARCHAR}, #{saleCount,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}, 
+      #{lockStock,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.PmsSkuStock">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -128,8 +129,8 @@
       <if test="productId != null">
         product_id,
       </if>
-      <if test="currentPrice != null">
-        current_price,
+      <if test="promotionPrice != null">
+        promotion_price,
       </if>
       <if test="price != null">
         price,
@@ -155,13 +156,16 @@
       <if test="skuCode != null">
         sku_code,
       </if>
+      <if test="lockStock != null">
+        lock_stock,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
         #{productId,jdbcType=INTEGER},
       </if>
-      <if test="currentPrice != null">
-        #{currentPrice,jdbcType=INTEGER},
+      <if test="promotionPrice != null">
+        #{promotionPrice,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=INTEGER},
@@ -187,6 +191,9 @@
       <if test="skuCode != null">
         #{skuCode,jdbcType=VARCHAR},
       </if>
+      <if test="lockStock != null">
+        #{lockStock,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.shanyuan.model.PmsSkuStockExample" resultType="java.lang.Integer">
@@ -204,8 +211,8 @@
       <if test="record.productId != null">
         product_id = #{record.productId,jdbcType=INTEGER},
       </if>
-      <if test="record.currentPrice != null">
-        current_price = #{record.currentPrice,jdbcType=INTEGER},
+      <if test="record.promotionPrice != null">
+        promotion_price = #{record.promotionPrice,jdbcType=INTEGER},
       </if>
       <if test="record.price != null">
         price = #{record.price,jdbcType=INTEGER},
@@ -231,6 +238,9 @@
       <if test="record.skuCode != null">
         sku_code = #{record.skuCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.lockStock != null">
+        lock_stock = #{record.lockStock,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -240,7 +250,7 @@
     update pms_sku_stock
     set id = #{record.id,jdbcType=INTEGER},
       product_id = #{record.productId,jdbcType=INTEGER},
-      current_price = #{record.currentPrice,jdbcType=INTEGER},
+      promotion_price = #{record.promotionPrice,jdbcType=INTEGER},
       price = #{record.price,jdbcType=INTEGER},
       stock = #{record.stock,jdbcType=INTEGER},
       sp1 = #{record.sp1,jdbcType=VARCHAR},
@@ -248,7 +258,8 @@
       sp3 = #{record.sp3,jdbcType=VARCHAR},
       picture = #{record.picture,jdbcType=VARCHAR},
       sale_count = #{record.saleCount,jdbcType=INTEGER},
-      sku_code = #{record.skuCode,jdbcType=VARCHAR}
+      sku_code = #{record.skuCode,jdbcType=VARCHAR},
+      lock_stock = #{record.lockStock,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -259,8 +270,8 @@
       <if test="productId != null">
         product_id = #{productId,jdbcType=INTEGER},
       </if>
-      <if test="currentPrice != null">
-        current_price = #{currentPrice,jdbcType=INTEGER},
+      <if test="promotionPrice != null">
+        promotion_price = #{promotionPrice,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=INTEGER},
@@ -286,13 +297,16 @@
       <if test="skuCode != null">
         sku_code = #{skuCode,jdbcType=VARCHAR},
       </if>
+      <if test="lockStock != null">
+        lock_stock = #{lockStock,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shanyuan.model.PmsSkuStock">
     update pms_sku_stock
     set product_id = #{productId,jdbcType=INTEGER},
-      current_price = #{currentPrice,jdbcType=INTEGER},
+      promotion_price = #{promotionPrice,jdbcType=INTEGER},
       price = #{price,jdbcType=INTEGER},
       stock = #{stock,jdbcType=INTEGER},
       sp1 = #{sp1,jdbcType=VARCHAR},
@@ -300,7 +314,8 @@
       sp3 = #{sp3,jdbcType=VARCHAR},
       picture = #{picture,jdbcType=VARCHAR},
       sale_count = #{saleCount,jdbcType=INTEGER},
-      sku_code = #{skuCode,jdbcType=VARCHAR}
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      lock_stock = #{lockStock,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

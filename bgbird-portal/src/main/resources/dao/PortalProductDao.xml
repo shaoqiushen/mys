@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdportal.dao.PortalProductDao">
+
+  <select id="listProductByCategoryId" resultMap="com.shanyuan.mapper.PmsProductMapper.BaseResultMap" >
+    select product_id,product_name,product_introduce,picture,sale_amount,price,promotion_price
+
+    from pms_product
+    where product_category_id = #{categoryId}
+    and delete_status = 0
+    and publish_status = 1
+    order by sale_amount desc
+  </select>
+
+</mapper>

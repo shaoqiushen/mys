@@ -19,7 +19,7 @@ import java.util.List;
  * <p>
  * desc 普通用户
  **/
-@Api("普通用户管理")
+@Api(value="UmsUserController",description="用户管理")
 @RequestMapping("/user")
 @RestController
 public class UmsUserController {

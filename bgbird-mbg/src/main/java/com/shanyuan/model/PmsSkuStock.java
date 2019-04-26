@@ -17,7 +17,7 @@ public class PmsSkuStock implements Serializable {
      *
      * @mbggenerated
      */
-    private Integer currentPrice;
+    private Integer promotionPrice;
 
     /**
      * 产品价格，单位分
@@ -75,6 +75,13 @@ public class PmsSkuStock implements Serializable {
      */
     private String skuCode;
 
+    /**
+     * 锁定库存(即买多少锁多少，取消的时候还原)
+     *
+     * @mbggenerated
+     */
+    private Integer lockStock;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -93,12 +100,12 @@ public class PmsSkuStock implements Serializable {
         this.productId = productId;
     }
 
-    public Integer getCurrentPrice() {
-        return currentPrice;
+    public Integer getPromotionPrice() {
+        return promotionPrice;
     }
 
-    public void setCurrentPrice(Integer currentPrice) {
-        this.currentPrice = currentPrice;
+    public void setPromotionPrice(Integer promotionPrice) {
+        this.promotionPrice = promotionPrice;
     }
 
     public Integer getPrice() {
@@ -165,6 +172,14 @@ public class PmsSkuStock implements Serializable {
         this.skuCode = skuCode;
     }
 
+    public Integer getLockStock() {
+        return lockStock;
+    }
+
+    public void setLockStock(Integer lockStock) {
+        this.lockStock = lockStock;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -173,7 +188,7 @@ public class PmsSkuStock implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", productId=").append(productId);
-        sb.append(", currentPrice=").append(currentPrice);
+        sb.append(", promotionPrice=").append(promotionPrice);
         sb.append(", price=").append(price);
         sb.append(", stock=").append(stock);
         sb.append(", sp1=").append(sp1);
@@ -182,6 +197,7 @@ public class PmsSkuStock implements Serializable {
         sb.append(", picture=").append(picture);
         sb.append(", saleCount=").append(saleCount);
         sb.append(", skuCode=").append(skuCode);
+        sb.append(", lockStock=").append(lockStock);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

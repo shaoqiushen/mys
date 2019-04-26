@@ -5,7 +5,6 @@ import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
 import com.shanyuan.bgbirdadmin.service.OmsOrderService;
 import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.OmsOrder;
-import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

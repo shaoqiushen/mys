@@ -14,7 +14,7 @@ public class UmsUserRechargeRecord implements Serializable {
     private String userId;
 
     /**
-     * 金额,单位分
+     * 金额,单位分(消费为负数)
      *
      * @mbggenerated
      */
@@ -61,6 +61,13 @@ public class UmsUserRechargeRecord implements Serializable {
      * @mbggenerated
      */
     private Date createTime;
+
+    /**
+     * 消费订单号
+     *
+     * @mbggenerated
+     */
+    private Integer orderId;
 
     private static final long serialVersionUID = 1L;
 
@@ -136,6 +143,14 @@ public class UmsUserRechargeRecord implements Serializable {
         this.createTime = createTime;
     }
 
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -151,6 +166,7 @@ public class UmsUserRechargeRecord implements Serializable {
         sb.append(", transactionid=").append(transactionid);
         sb.append(", changeReason=").append(changeReason);
         sb.append(", createTime=").append(createTime);
+        sb.append(", orderId=").append(orderId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -84,7 +84,7 @@ public class OmsOrder implements Serializable {
     private Integer sourceType;
 
     /**
-     * 订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
+     * 订单状态：0->待付款；1->已支付，待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
      *
      * @mbggenerated
      */

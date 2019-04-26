@@ -16,15 +16,21 @@ public interface AmsActiveMapper {
 
     int insertSelective(AmsActive record);
 
+    List<AmsActive> selectByExampleWithBLOBs(AmsActiveExample example);
+
     List<AmsActive> selectByExample(AmsActiveExample example);
 
     AmsActive selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") AmsActive record, @Param("example") AmsActiveExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") AmsActive record, @Param("example") AmsActiveExample example);
+
     int updateByExample(@Param("record") AmsActive record, @Param("example") AmsActiveExample example);
 
     int updateByPrimaryKeySelective(AmsActive record);
+
+    int updateByPrimaryKeyWithBLOBs(AmsActive record);
 
     int updateByPrimaryKey(AmsActive record);
 }
