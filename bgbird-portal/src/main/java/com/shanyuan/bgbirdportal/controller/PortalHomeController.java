@@ -1,8 +1,7 @@
 package com.shanyuan.bgbirdportal.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.shanyuan.bgbirdportal.dto.HomeContentResult;
-import com.shanyuan.bgbirdportal.dto.PortalProductDetailResult;
+import com.shanyuan.bgbirdportal.dto.*;
 import com.shanyuan.bgbirdportal.service.HomeService;
 import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.PmsProduct;
@@ -21,9 +20,9 @@ import java.util.List;
  * desc
  **/
 @RequestMapping("/home")
-@Api(value="HomeController",description="首页内容管理")
+@Api(value="PortalHomeController",description="首页内容管理")
 @RestController
-public class HomeController {
+public class PortalHomeController {
 
     @Autowired
     HomeService homeService;
@@ -50,6 +49,20 @@ public class HomeController {
     public CommonResult findProductDetail(@PathVariable Integer productId){
         PortalProductDetailResult productDetail=homeService.findProductDetail( productId );
         return new CommonResult().success( productDetail );
+    }
+
+    @GetMapping("/getAttributeParamsByProductId/{productId}")
+    @ApiOperation( "根据商品id查询规格信息" )
+    public CommonResult getAttributeParamsByProductId(@PathVariable Integer productId){
+        List <PortalProductAttirbuteParamsResult> productSpecByProductId=homeService.getAttributeParamsByProductId( productId,0 );
+        return new CommonResult().success( productSpecByProductId );
+    }
+
+    @ApiOperation( "根据商品id,规格信息查询商品的价格" )
+    @PostMapping("/getProductPriceByAttribute/{productId}")
+    public CommonResult getProductPriceByAttribute(@PathVariable Integer productId,@RequestBody PortalProductAttributeValueParams portalProductAttributeValueParams){
+        List <PortalProductPriceStockResult> productPriceByAttribute=homeService.getProductPriceByAttribute( productId, portalProductAttributeValueParams );
+        return new CommonResult().success( productPriceByAttribute );
     }
 
 }

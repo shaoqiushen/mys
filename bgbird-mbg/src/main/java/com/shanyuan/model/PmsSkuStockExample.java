@@ -873,6 +873,76 @@ public class PmsSkuStockExample {
             addCriterion("lock_stock not between", value1, value2, "lockStock");
             return (Criteria) this;
         }
+
+        public Criteria andAttributeValueIdIsNull() {
+            addCriterion("attribute_value_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdIsNotNull() {
+            addCriterion("attribute_value_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdEqualTo(String value) {
+            addCriterion("attribute_value_id =", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdNotEqualTo(String value) {
+            addCriterion("attribute_value_id <>", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdGreaterThan(String value) {
+            addCriterion("attribute_value_id >", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdGreaterThanOrEqualTo(String value) {
+            addCriterion("attribute_value_id >=", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdLessThan(String value) {
+            addCriterion("attribute_value_id <", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdLessThanOrEqualTo(String value) {
+            addCriterion("attribute_value_id <=", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdLike(String value) {
+            addCriterion("attribute_value_id like", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdNotLike(String value) {
+            addCriterion("attribute_value_id not like", value, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdIn(List<String> values) {
+            addCriterion("attribute_value_id in", values, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdNotIn(List<String> values) {
+            addCriterion("attribute_value_id not in", values, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdBetween(String value1, String value2) {
+            addCriterion("attribute_value_id between", value1, value2, "attributeValueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttributeValueIdNotBetween(String value1, String value2) {
+            addCriterion("attribute_value_id not between", value1, value2, "attributeValueId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -374,73 +374,73 @@ public class UmsUserReceiveAddressExample {
             return (Criteria) this;
         }
 
-        public Criteria andAddressIsNull() {
-            addCriterion("address is null");
+        public Criteria andAddressAreaIsNull() {
+            addCriterion("address_area is null");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIsNotNull() {
-            addCriterion("address is not null");
+        public Criteria andAddressAreaIsNotNull() {
+            addCriterion("address_area is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAddressEqualTo(String value) {
-            addCriterion("address =", value, "address");
+        public Criteria andAddressAreaEqualTo(String value) {
+            addCriterion("address_area =", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressNotEqualTo(String value) {
-            addCriterion("address <>", value, "address");
+        public Criteria andAddressAreaNotEqualTo(String value) {
+            addCriterion("address_area <>", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressGreaterThan(String value) {
-            addCriterion("address >", value, "address");
+        public Criteria andAddressAreaGreaterThan(String value) {
+            addCriterion("address_area >", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("address >=", value, "address");
+        public Criteria andAddressAreaGreaterThanOrEqualTo(String value) {
+            addCriterion("address_area >=", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressLessThan(String value) {
-            addCriterion("address <", value, "address");
+        public Criteria andAddressAreaLessThan(String value) {
+            addCriterion("address_area <", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressLessThanOrEqualTo(String value) {
-            addCriterion("address <=", value, "address");
+        public Criteria andAddressAreaLessThanOrEqualTo(String value) {
+            addCriterion("address_area <=", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressLike(String value) {
-            addCriterion("address like", value, "address");
+        public Criteria andAddressAreaLike(String value) {
+            addCriterion("address_area like", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressNotLike(String value) {
-            addCriterion("address not like", value, "address");
+        public Criteria andAddressAreaNotLike(String value) {
+            addCriterion("address_area not like", value, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressIn(List<String> values) {
-            addCriterion("address in", values, "address");
+        public Criteria andAddressAreaIn(List<String> values) {
+            addCriterion("address_area in", values, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressNotIn(List<String> values) {
-            addCriterion("address not in", values, "address");
+        public Criteria andAddressAreaNotIn(List<String> values) {
+            addCriterion("address_area not in", values, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressBetween(String value1, String value2) {
-            addCriterion("address between", value1, value2, "address");
+        public Criteria andAddressAreaBetween(String value1, String value2) {
+            addCriterion("address_area between", value1, value2, "addressArea");
             return (Criteria) this;
         }
 
-        public Criteria andAddressNotBetween(String value1, String value2) {
-            addCriterion("address not between", value1, value2, "address");
+        public Criteria andAddressAreaNotBetween(String value1, String value2) {
+            addCriterion("address_area not between", value1, value2, "addressArea");
             return (Criteria) this;
         }
 
@@ -501,6 +501,76 @@ public class UmsUserReceiveAddressExample {
 
         public Criteria andDefaultStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("default_status not between", value1, value2, "defaultStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailIsNull() {
+            addCriterion("address_detail is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailIsNotNull() {
+            addCriterion("address_detail is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailEqualTo(String value) {
+            addCriterion("address_detail =", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailNotEqualTo(String value) {
+            addCriterion("address_detail <>", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailGreaterThan(String value) {
+            addCriterion("address_detail >", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailGreaterThanOrEqualTo(String value) {
+            addCriterion("address_detail >=", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailLessThan(String value) {
+            addCriterion("address_detail <", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailLessThanOrEqualTo(String value) {
+            addCriterion("address_detail <=", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailLike(String value) {
+            addCriterion("address_detail like", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailNotLike(String value) {
+            addCriterion("address_detail not like", value, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailIn(List<String> values) {
+            addCriterion("address_detail in", values, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailNotIn(List<String> values) {
+            addCriterion("address_detail not in", values, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailBetween(String value1, String value2) {
+            addCriterion("address_detail between", value1, value2, "addressDetail");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddressDetailNotBetween(String value1, String value2) {
+            addCriterion("address_detail not between", value1, value2, "addressDetail");
             return (Criteria) this;
         }
     }

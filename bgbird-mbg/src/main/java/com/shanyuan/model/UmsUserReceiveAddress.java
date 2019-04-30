@@ -27,11 +27,11 @@ public class UmsUserReceiveAddress implements Serializable {
     private String receiverPhone;
 
     /**
-     * 收货地址
+     * 所在区域
      *
      * @mbggenerated
      */
-    private String address;
+    private String addressArea;
 
     /**
      * 默认地址：0->否，1->是
@@ -39,6 +39,13 @@ public class UmsUserReceiveAddress implements Serializable {
      * @mbggenerated
      */
     private Integer defaultStatus;
+
+    /**
+     * 详细地址
+     *
+     * @mbggenerated
+     */
+    private String addressDetail;
 
     private static final long serialVersionUID = 1L;
 
@@ -74,12 +81,12 @@ public class UmsUserReceiveAddress implements Serializable {
         this.receiverPhone = receiverPhone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressArea() {
+        return addressArea;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressArea(String addressArea) {
+        this.addressArea = addressArea;
     }
 
     public Integer getDefaultStatus() {
@@ -88,6 +95,14 @@ public class UmsUserReceiveAddress implements Serializable {
 
     public void setDefaultStatus(Integer defaultStatus) {
         this.defaultStatus = defaultStatus;
+    }
+
+    public String getAddressDetail() {
+        return addressDetail;
+    }
+
+    public void setAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail;
     }
 
     @Override
@@ -100,8 +115,9 @@ public class UmsUserReceiveAddress implements Serializable {
         sb.append(", userId=").append(userId);
         sb.append(", receiverName=").append(receiverName);
         sb.append(", receiverPhone=").append(receiverPhone);
-        sb.append(", address=").append(address);
+        sb.append(", addressArea=").append(addressArea);
         sb.append(", defaultStatus=").append(defaultStatus);
+        sb.append(", addressDetail=").append(addressDetail);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

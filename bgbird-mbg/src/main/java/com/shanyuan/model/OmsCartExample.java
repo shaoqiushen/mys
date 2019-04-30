@@ -425,52 +425,52 @@ public class OmsCartExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusEqualTo(Boolean value) {
+        public Criteria andDeleteStatusEqualTo(Integer value) {
             addCriterion("delete_status =", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotEqualTo(Boolean value) {
+        public Criteria andDeleteStatusNotEqualTo(Integer value) {
             addCriterion("delete_status <>", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusGreaterThan(Boolean value) {
+        public Criteria andDeleteStatusGreaterThan(Integer value) {
             addCriterion("delete_status >", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andDeleteStatusGreaterThanOrEqualTo(Integer value) {
             addCriterion("delete_status >=", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusLessThan(Boolean value) {
+        public Criteria andDeleteStatusLessThan(Integer value) {
             addCriterion("delete_status <", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusLessThanOrEqualTo(Boolean value) {
+        public Criteria andDeleteStatusLessThanOrEqualTo(Integer value) {
             addCriterion("delete_status <=", value, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusIn(List<Boolean> values) {
+        public Criteria andDeleteStatusIn(List<Integer> values) {
             addCriterion("delete_status in", values, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotIn(List<Boolean> values) {
+        public Criteria andDeleteStatusNotIn(List<Integer> values) {
             addCriterion("delete_status not in", values, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusBetween(Boolean value1, Boolean value2) {
+        public Criteria andDeleteStatusBetween(Integer value1, Integer value2) {
             addCriterion("delete_status between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
 
-        public Criteria andDeleteStatusNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("delete_status not between", value1, value2, "deleteStatus");
             return (Criteria) this;
         }
@@ -602,6 +602,216 @@ public class OmsCartExample {
 
         public Criteria andSpecDescNotBetween(String value1, String value2) {
             addCriterion("spec_desc not between", value1, value2, "specDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1IsNull() {
+            addCriterion("sp1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1IsNotNull() {
+            addCriterion("sp1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1EqualTo(String value) {
+            addCriterion("sp1 =", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1NotEqualTo(String value) {
+            addCriterion("sp1 <>", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1GreaterThan(String value) {
+            addCriterion("sp1 >", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1GreaterThanOrEqualTo(String value) {
+            addCriterion("sp1 >=", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1LessThan(String value) {
+            addCriterion("sp1 <", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1LessThanOrEqualTo(String value) {
+            addCriterion("sp1 <=", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1Like(String value) {
+            addCriterion("sp1 like", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1NotLike(String value) {
+            addCriterion("sp1 not like", value, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1In(List<String> values) {
+            addCriterion("sp1 in", values, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1NotIn(List<String> values) {
+            addCriterion("sp1 not in", values, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1Between(String value1, String value2) {
+            addCriterion("sp1 between", value1, value2, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp1NotBetween(String value1, String value2) {
+            addCriterion("sp1 not between", value1, value2, "sp1");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2IsNull() {
+            addCriterion("sp2 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2IsNotNull() {
+            addCriterion("sp2 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2EqualTo(String value) {
+            addCriterion("sp2 =", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2NotEqualTo(String value) {
+            addCriterion("sp2 <>", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2GreaterThan(String value) {
+            addCriterion("sp2 >", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2GreaterThanOrEqualTo(String value) {
+            addCriterion("sp2 >=", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2LessThan(String value) {
+            addCriterion("sp2 <", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2LessThanOrEqualTo(String value) {
+            addCriterion("sp2 <=", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2Like(String value) {
+            addCriterion("sp2 like", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2NotLike(String value) {
+            addCriterion("sp2 not like", value, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2In(List<String> values) {
+            addCriterion("sp2 in", values, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2NotIn(List<String> values) {
+            addCriterion("sp2 not in", values, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2Between(String value1, String value2) {
+            addCriterion("sp2 between", value1, value2, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp2NotBetween(String value1, String value2) {
+            addCriterion("sp2 not between", value1, value2, "sp2");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3IsNull() {
+            addCriterion("sp3 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3IsNotNull() {
+            addCriterion("sp3 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3EqualTo(String value) {
+            addCriterion("sp3 =", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3NotEqualTo(String value) {
+            addCriterion("sp3 <>", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3GreaterThan(String value) {
+            addCriterion("sp3 >", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3GreaterThanOrEqualTo(String value) {
+            addCriterion("sp3 >=", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3LessThan(String value) {
+            addCriterion("sp3 <", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3LessThanOrEqualTo(String value) {
+            addCriterion("sp3 <=", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3Like(String value) {
+            addCriterion("sp3 like", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3NotLike(String value) {
+            addCriterion("sp3 not like", value, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3In(List<String> values) {
+            addCriterion("sp3 in", values, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3NotIn(List<String> values) {
+            addCriterion("sp3 not in", values, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3Between(String value1, String value2) {
+            addCriterion("sp3 between", value1, value2, "sp3");
+            return (Criteria) this;
+        }
+
+        public Criteria andSp3NotBetween(String value1, String value2) {
+            addCriterion("sp3 not between", value1, value2, "sp3");
             return (Criteria) this;
         }
     }

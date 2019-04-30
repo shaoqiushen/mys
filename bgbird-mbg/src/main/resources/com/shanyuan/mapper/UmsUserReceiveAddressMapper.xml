@@ -6,8 +6,9 @@
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
     <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
-    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="address_area" jdbcType="VARCHAR" property="addressArea" />
     <result column="default_status" jdbcType="INTEGER" property="defaultStatus" />
+    <result column="address_detail" jdbcType="VARCHAR" property="addressDetail" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_id, receiver_name, receiver_phone, address, default_status
+    id, user_id, receiver_name, receiver_phone, address_area, default_status, address_detail
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.UmsUserReceiveAddressExample" resultMap="BaseResultMap">
     select
@@ -105,9 +106,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into ums_user_receive_address (user_id, receiver_name, receiver_phone, 
-      address, default_status)
+      address_area, default_status, address_detail
+      )
     values (#{userId,jdbcType=VARCHAR}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{defaultStatus,jdbcType=INTEGER})
+      #{addressArea,jdbcType=VARCHAR}, #{defaultStatus,jdbcType=INTEGER}, #{addressDetail,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUserReceiveAddress">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -124,11 +127,14 @@
       <if test="receiverPhone != null">
         receiver_phone,
       </if>
-      <if test="address != null">
-        address,
+      <if test="addressArea != null">
+        address_area,
       </if>
       <if test="defaultStatus != null">
         default_status,
+      </if>
+      <if test="addressDetail != null">
+        address_detail,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -141,11 +147,14 @@
       <if test="receiverPhone != null">
         #{receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
-        #{address,jdbcType=VARCHAR},
+      <if test="addressArea != null">
+        #{addressArea,jdbcType=VARCHAR},
       </if>
       <if test="defaultStatus != null">
         #{defaultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        #{addressDetail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -170,11 +179,14 @@
       <if test="record.receiverPhone != null">
         receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="record.addressArea != null">
+        address_area = #{record.addressArea,jdbcType=VARCHAR},
       </if>
       <if test="record.defaultStatus != null">
         default_status = #{record.defaultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.addressDetail != null">
+        address_detail = #{record.addressDetail,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -187,8 +199,9 @@
       user_id = #{record.userId,jdbcType=VARCHAR},
       receiver_name = #{record.receiverName,jdbcType=VARCHAR},
       receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      default_status = #{record.defaultStatus,jdbcType=INTEGER}
+      address_area = #{record.addressArea,jdbcType=VARCHAR},
+      default_status = #{record.defaultStatus,jdbcType=INTEGER},
+      address_detail = #{record.addressDetail,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -205,11 +218,14 @@
       <if test="receiverPhone != null">
         receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=VARCHAR},
+      <if test="addressArea != null">
+        address_area = #{addressArea,jdbcType=VARCHAR},
       </if>
       <if test="defaultStatus != null">
         default_status = #{defaultStatus,jdbcType=INTEGER},
+      </if>
+      <if test="addressDetail != null">
+        address_detail = #{addressDetail,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -219,8 +235,9 @@
     set user_id = #{userId,jdbcType=VARCHAR},
       receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      default_status = #{defaultStatus,jdbcType=INTEGER}
+      address_area = #{addressArea,jdbcType=VARCHAR},
+      default_status = #{defaultStatus,jdbcType=INTEGER},
+      address_detail = #{addressDetail,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

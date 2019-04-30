@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 26/04/2019 18:00:02
+ Date: 30/04/2019 18:03:04
 */
 
 SET NAMES utf8mb4;
@@ -111,7 +111,7 @@ CREATE TABLE `cms_shuffling`  (
   `type` int(1) NOT NULL DEFAULT 0 COMMENT '0->App首页，1->PC首页',
   `status` int(1) NULL DEFAULT 0 COMMENT '上线状态:0->下线,1->上线',
   PRIMARY KEY (`shuffing_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '轮播图表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '轮播图表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of cms_shuffling
@@ -128,12 +128,20 @@ CREATE TABLE `oms_cart`  (
   `product_attr_value_id` int(11) NULL DEFAULT NULL COMMENT '参数表id',
   `user_id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户id',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
-  `delete_status` tinyint(1) NULL DEFAULT 0 COMMENT '删除状态:0->否，1->是',
+  `delete_status` int(1) NULL DEFAULT 0 COMMENT '删除状态:0->否，1->是',
   `buy_count` int(6) NOT NULL COMMENT '购买数量',
   `spec_desc` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规格描述,多个以逗号分隔',
+  `sp1` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售属性1',
+  `sp2` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售属性2',
+  `sp3` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '销售属性3',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '购物车表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '购物车表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of oms_cart
+-- ----------------------------
+INSERT INTO `oms_cart` VALUES (1, 100044, NULL, '111', NULL, 0, 1, NULL, 'string', 'string', 'string');
 
 -- ----------------------------
 -- Table structure for oms_order
@@ -141,14 +149,13 @@ CREATE TABLE `oms_cart`  (
 DROP TABLE IF EXISTS `oms_order`;
 CREATE TABLE `oms_order`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL COMMENT '商品id',
   `user_id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户id',
   `coupon_id` bigint(20) NULL DEFAULT NULL COMMENT '优惠券id',
   `order_id` bigint(20) NOT NULL COMMENT '订单编号',
   `total_amount` int(11) NOT NULL COMMENT '订单总金额',
   `pay_amount` int(11) NOT NULL COMMENT '实际支付金额',
-  `freight_amount` int(11) NULL DEFAULT NULL COMMENT '运费金额',
-  `promotion_amount` int(11) NULL DEFAULT NULL COMMENT '促销优惠金额',
+  `freight_amount` int(11) NULL DEFAULT 0 COMMENT '运费金额',
+  `promotion_amount` int(11) NULL DEFAULT NULL COMMENT '促销优惠金额（促销价、满减、阶梯价）',
   `coupon_amount` int(11) NULL DEFAULT NULL COMMENT '优惠券抵扣金额',
   `pay_type` int(1) NULL DEFAULT 0 COMMENT '支付方式:0->未支付,1->微信支付,2->支付宝支付',
   `source_type` int(1) NULL DEFAULT 0 COMMENT '订单来源:0->app订单,1->PC订单',
@@ -167,14 +174,10 @@ CREATE TABLE `oms_order`  (
   `create_time` datetime(0) NOT NULL COMMENT '创建时间',
   `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `delete_status` int(1) NOT NULL DEFAULT 0 COMMENT '删除状态:0->否，1->是',
+  `confirm_status` int(1) NOT NULL COMMENT '确认收货:0->否，1->是',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `order_id_index`(`order_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of oms_order
--- ----------------------------
-INSERT INTO `oms_order` VALUES (1, 1, 'xxx', 423, 44444222, 4324, 34, 43, 434, 54, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 'fssf', '111111111', 'dddddd', NULL, NULL, NULL, '2019-04-23 18:04:08', NULL, 0);
 
 -- ----------------------------
 -- Table structure for oms_order_detail
@@ -221,19 +224,34 @@ CREATE TABLE `oms_product_comment`  (
   `user_id` varchar(38) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户id',
   `avartal_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户头像',
   `nickname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户昵称',
-  `comment_content` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评价内容',
+  `comment_content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评价内容',
   `comment_star` int(1) NULL DEFAULT NULL COMMENT '评价星级: 1-5颗星',
   `show_status` int(1) NULL DEFAULT 1 COMMENT '是否显示在手机端:0->否,1->是',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `product_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名称',
+  `comment_picture` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评价图片',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id_index`(`product_id`) USING BTREE,
   INDEX `user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评价表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评价表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of oms_product_comment
 -- ----------------------------
-INSERT INTO `oms_product_comment` VALUES (1, 100001, 'dxx', 'x\'x\'x', 'fsadf', 'cvvvvvvvvvvvvvvvvvvvvvvvvvvvv', 4, 1, '2019-04-25 14:53:11');
+INSERT INTO `oms_product_comment` VALUES (1, 100044, 'dxx', 'x\'x\'x', 'fsadf', 'cvvvvvvvvvvvvvvvvvvvvvvvvvvvv', 4, 1, '2019-04-25 14:53:11', '', NULL);
+
+-- ----------------------------
+-- Table structure for oms_product_comment_reply
+-- ----------------------------
+DROP TABLE IF EXISTS `oms_product_comment_reply`;
+CREATE TABLE `oms_product_comment_reply`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `comment_id` int(11) NOT NULL COMMENT '评价id',
+  `reply_content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '回复内容',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '回复时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `comment_id_index`(`comment_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '店家评价回复表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for pms_product
@@ -263,12 +281,13 @@ CREATE TABLE `pms_product`  (
   `promotion_per_limit` int(5) NULL DEFAULT NULL COMMENT '活动限购数量',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_category_id_index`(`product_category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 100044 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 100045 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product
 -- ----------------------------
-INSERT INTO `pms_product` VALUES (100043, 37, '原味奶茶', '一杯会说话的奶茶', 'xxx.png', 'sss.png', 0, 1, 0, 0, 0, 1000, NULL, 0, 9999, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `pms_product` VALUES (100043, 0, 'string', 'string', 'string', 'string', 0, 1, 0, 0, 0, 0, 0, 0, 0, '2019-04-29 18:00:08', '2019-04-29 18:00:08', '2019-04-29 18:00:08', '2019-04-29 18:00:08', 0, 0);
+INSERT INTO `pms_product` VALUES (100044, 37, '原味奶茶', '一杯会说话的奶茶', 'xxx.png', 'sss.png', 0, 1, 0, 0, 0, 1000, NULL, 0, 9999, NULL, NULL, NULL, NULL, 0, NULL);
 
 -- ----------------------------
 -- Table structure for pms_product_attribute
@@ -282,13 +301,15 @@ CREATE TABLE `pms_product_attribute`  (
   `sort` int(11) NULL DEFAULT NULL COMMENT '排序，值越小越靠前',
   `attr_type` int(1) NULL DEFAULT NULL COMMENT '属性的类型；0->规格；1->参数',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性参数表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性参数表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_attribute
 -- ----------------------------
-INSERT INTO `pms_product_attribute` VALUES (2, 23, '重量', '', 2, 1);
-INSERT INTO `pms_product_attribute` VALUES (3, 23, '温度', NULL, 3, 1);
+INSERT INTO `pms_product_attribute` VALUES (2, 23, '大小', '', 2, 0);
+INSERT INTO `pms_product_attribute` VALUES (3, 23, '温度', NULL, 3, 0);
+INSERT INTO `pms_product_attribute` VALUES (13, 23, '主料', NULL, 1, 1);
+INSERT INTO `pms_product_attribute` VALUES (14, 23, '保质期', NULL, 2, 1);
 
 -- ----------------------------
 -- Table structure for pms_product_attribute_category
@@ -298,12 +319,13 @@ CREATE TABLE `pms_product_attribute_category`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品类型名称',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性分类表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性分类表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_attribute_category
 -- ----------------------------
 INSERT INTO `pms_product_attribute_category` VALUES (23, '奶茶');
+INSERT INTO `pms_product_attribute_category` VALUES (33, '类型1');
 
 -- ----------------------------
 -- Table structure for pms_product_attribute_value
@@ -317,13 +339,16 @@ CREATE TABLE `pms_product_attribute_value`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id_index`(`product_id`) USING BTREE,
   INDEX `product_attribute_id_index`(`product_attribute_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性参数信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性参数信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_attribute_value
 -- ----------------------------
-INSERT INTO `pms_product_attribute_value` VALUES (11, 100043, 2, '200g');
-INSERT INTO `pms_product_attribute_value` VALUES (12, 100043, 3, '加冰');
+INSERT INTO `pms_product_attribute_value` VALUES (17, 100043, 0, 'string');
+INSERT INTO `pms_product_attribute_value` VALUES (18, 100044, 2, '大杯,中杯,小杯');
+INSERT INTO `pms_product_attribute_value` VALUES (19, 100044, 3, '加冰,常温,加热');
+INSERT INTO `pms_product_attribute_value` VALUES (20, 100044, 13, '咖啡/水');
+INSERT INTO `pms_product_attribute_value` VALUES (21, 100044, 13, '当天饮用');
 
 -- ----------------------------
 -- Table structure for pms_product_category
@@ -336,7 +361,7 @@ CREATE TABLE `pms_product_category`  (
   `description` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
   `show_status` int(1) NULL DEFAULT NULL COMMENT '是否显示:0->否，1->是',
   PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品分类目录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品分类目录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_category
@@ -348,6 +373,8 @@ INSERT INTO `pms_product_category` VALUES (37, '奶茶', 4, NULL, 1);
 INSERT INTO `pms_product_category` VALUES (38, '新鲜果汁', 5, NULL, 1);
 INSERT INTO `pms_product_category` VALUES (39, '下午茶', 6, NULL, 1);
 INSERT INTO `pms_product_category` VALUES (40, '西点', 7, NULL, 1);
+INSERT INTO `pms_product_category` VALUES (41, '凤飞飞', 1, '飞飞', 1);
+INSERT INTO `pms_product_category` VALUES (42, '这是一个名字很长的分类', 1, '这是一个名字很长的分类', 1);
 
 -- ----------------------------
 -- Table structure for pms_product_full_reduction
@@ -360,12 +387,13 @@ CREATE TABLE `pms_product_full_reduction`  (
   `reduce_price` int(11) NULL DEFAULT NULL COMMENT '减金额，单位分',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id_index`(`product_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品满减表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品满减表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_full_reduction
 -- ----------------------------
-INSERT INTO `pms_product_full_reduction` VALUES (10, 100043, 1500, 300);
+INSERT INTO `pms_product_full_reduction` VALUES (11, 100043, 0, 0);
+INSERT INTO `pms_product_full_reduction` VALUES (12, 100044, 1500, 300);
 
 -- ----------------------------
 -- Table structure for pms_product_member_price
@@ -380,12 +408,13 @@ CREATE TABLE `pms_product_member_price`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id_index`(`product_id`) USING BTREE,
   INDEX `member_level_id_index`(`member_level_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员价格表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员价格表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_product_member_price
 -- ----------------------------
-INSERT INTO `pms_product_member_price` VALUES (9, 100043, 1, '白金', 800);
+INSERT INTO `pms_product_member_price` VALUES (10, 100043, 0, 'string', 0);
+INSERT INTO `pms_product_member_price` VALUES (11, 100044, 1, '白金', 800);
 
 -- ----------------------------
 -- Table structure for pms_sku_stock
@@ -404,15 +433,18 @@ CREATE TABLE `pms_sku_stock`  (
   `sale_count` int(10) NULL DEFAULT 0 COMMENT '销量',
   `sku_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'sku编码',
   `lock_stock` int(10) NULL DEFAULT 0 COMMENT '锁定库存(即买多少锁多少，取消的时候还原)',
+  `attribute_value_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `product_id_index`(`product_id`) USING BTREE,
-  UNIQUE INDEX `code_index`(`sku_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'sku库存表' ROW_FORMAT = Dynamic;
+  UNIQUE INDEX `code_index`(`sku_code`) USING BTREE,
+  INDEX `product_id_index`(`product_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'sku库存表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pms_sku_stock
 -- ----------------------------
-INSERT INTO `pms_sku_stock` VALUES (11, 100043, NULL, 1000, 9999, '大杯', '不要珍珠', NULL, 'hh.png', 0, '20190426100043001', 0);
+INSERT INTO `pms_sku_stock` VALUES (12, 100043, 0, 0, 0, 'string', 'string', 'string', 'string', 0, 'string', 0, NULL);
+INSERT INTO `pms_sku_stock` VALUES (13, 100044, NULL, 1000, 9999, '大杯', '常温', NULL, 'hh.png', 0, '20190429100044001', 6, NULL);
+INSERT INTO `pms_sku_stock` VALUES (14, 100044, NULL, 1000, 9999, '大杯', '加冰', NULL, 'xx', 0, '4444444444', 0, NULL);
 
 -- ----------------------------
 -- Table structure for ums_admin
@@ -428,12 +460,12 @@ CREATE TABLE `ums_admin`  (
   `account_status` int(1) NULL DEFAULT 0 COMMENT '帐号启用状态：0->禁用；1->启用',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `account_index`(`account`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员账号信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '管理员账号信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ums_admin
 -- ----------------------------
-INSERT INTO `ums_admin` VALUES (3, 'admin', '123456', NULL, NULL, '2019-04-26 17:54:37', 1);
+INSERT INTO `ums_admin` VALUES (3, 'admin', '123456', NULL, NULL, '2019-04-28 17:45:32', 1);
 
 -- ----------------------------
 -- Table structure for ums_user
@@ -493,7 +525,7 @@ CREATE TABLE `ums_user_member_level`  (
   `default_status` int(1) NULL DEFAULT NULL COMMENT '是否为默认等级:0->否,1->是',
   `priviledge_birthday` int(1) NULL DEFAULT NULL COMMENT '是否有生日特权:0->否,1->是',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员等级表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员等级表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ums_user_member_level
@@ -509,21 +541,25 @@ CREATE TABLE `ums_user_receive_address`  (
   `user_id` varchar(36) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户id',
   `receiver_name` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '收货人名称',
   `receiver_phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '收货人电话',
-  `address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收货地址',
+  `address_area` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '所在区域',
   `default_status` int(1) NULL DEFAULT NULL COMMENT '默认地址：0->否，1->是',
+  `address_detail` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户收货地址表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户收货地址表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ums_user_receive_address
 -- ----------------------------
-INSERT INTO `ums_user_receive_address` VALUES (3, '11111', '哈哈', '13457689259', '广西北海西南达到', 0);
-INSERT INTO `ums_user_receive_address` VALUES (4, '11111', 'string', 'string', 'string', 0);
-INSERT INTO `ums_user_receive_address` VALUES (5, '11111', 'string', 'string', 'string', 0);
-INSERT INTO `ums_user_receive_address` VALUES (6, 'string', 'string', 'string', 'string', 0);
-INSERT INTO `ums_user_receive_address` VALUES (7, '11111', '神', 'string', '国际控股可根据', 1);
-INSERT INTO `ums_user_receive_address` VALUES (8, '11111', 'ssq', 'string', '灌灌灌灌', 0);
-INSERT INTO `ums_user_receive_address` VALUES (9, '11111', 'ssq', 'string', '哈哈哈哈哈是', 0);
+INSERT INTO `ums_user_receive_address` VALUES (3, '11111', '哈哈', '13457689259', '广西北海西南达到', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (4, '11111', 'string', 'string', 'string', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (5, '11111', 'string', 'string', 'string', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (6, 'string', 'string', 'string', 'string', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (7, '11111', '神', 'string', '国际控股可根据', 1, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (8, '11111', 'ssq', 'string', '灌灌灌灌', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (9, '11111', 'ssq', 'string', '哈哈哈哈哈是', 0, NULL);
+INSERT INTO `ums_user_receive_address` VALUES (10, 'x0x', '外星人', '15844445555', '小行星带', 0, '谷神星');
+INSERT INTO `ums_user_receive_address` VALUES (19, 'shinratensei', '邯郸发达纺织招待处', '18744441746', '陕西省,西安市,新城区', 0, '89号');
+INSERT INTO `ums_user_receive_address` VALUES (24, 'shinratensei', '张仁兵', '11455557444', '河北省,邢台市,邢台县', 1, '尔雅居');
 
 -- ----------------------------
 -- Table structure for ums_user_recharge_over
@@ -556,7 +592,7 @@ CREATE TABLE `ums_user_recharge_record`  (
   `order_id` int(11) NULL DEFAULT NULL COMMENT '消费订单号',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id_index`(`user_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '充值消费记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '充值消费记录表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of ums_user_recharge_record

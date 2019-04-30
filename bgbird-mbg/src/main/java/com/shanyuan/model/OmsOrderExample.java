@@ -165,66 +165,6 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andProductIdIsNull() {
-            addCriterion("product_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdIsNotNull() {
-            addCriterion("product_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdEqualTo(Integer value) {
-            addCriterion("product_id =", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdNotEqualTo(Integer value) {
-            addCriterion("product_id <>", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdGreaterThan(Integer value) {
-            addCriterion("product_id >", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("product_id >=", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdLessThan(Integer value) {
-            addCriterion("product_id <", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdLessThanOrEqualTo(Integer value) {
-            addCriterion("product_id <=", value, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdIn(List<Integer> values) {
-            addCriterion("product_id in", values, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdNotIn(List<Integer> values) {
-            addCriterion("product_id not in", values, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdBetween(Integer value1, Integer value2) {
-            addCriterion("product_id between", value1, value2, "productId");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("product_id not between", value1, value2, "productId");
-            return (Criteria) this;
-        }
-
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;
@@ -1782,6 +1722,66 @@ public class OmsOrderExample {
 
         public Criteria andDeleteStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("delete_status not between", value1, value2, "deleteStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusIsNull() {
+            addCriterion("confirm_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusIsNotNull() {
+            addCriterion("confirm_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusEqualTo(Integer value) {
+            addCriterion("confirm_status =", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusNotEqualTo(Integer value) {
+            addCriterion("confirm_status <>", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusGreaterThan(Integer value) {
+            addCriterion("confirm_status >", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("confirm_status >=", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusLessThan(Integer value) {
+            addCriterion("confirm_status <", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("confirm_status <=", value, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusIn(List<Integer> values) {
+            addCriterion("confirm_status in", values, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusNotIn(List<Integer> values) {
+            addCriterion("confirm_status not in", values, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusBetween(Integer value1, Integer value2) {
+            addCriterion("confirm_status between", value1, value2, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfirmStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("confirm_status not between", value1, value2, "confirmStatus");
             return (Criteria) this;
         }
     }

@@ -3,7 +3,7 @@
 <mapper namespace="com.shanyuan.bgbirdportal.dao.PortalProductDao">
 
   <select id="listProductByCategoryId" resultMap="com.shanyuan.mapper.PmsProductMapper.BaseResultMap" >
-    select product_id,product_name,product_introduce,picture,sale_amount,price,promotion_price
+    select id,product_name,product_introduce,picture,sale_amount,price,promotion_price
 
     from pms_product
     where product_category_id = #{categoryId}
@@ -11,5 +11,30 @@
     and publish_status = 1
     order by sale_amount desc
   </select>
+
+  <select id="findProductInfoByParams" resultType="com.shanyuan.bgbirdportal.dto.PortalProductInfoResult">
+    select DISTINCT a.product_name productName,a.price,a.promotion_price promotionPrice,a.picture,a.id,
+    b.stock,b.id skuId,b.sp1,b.sp2,
+    c.full_price fullPrice,c.reduce_price reducePrice
+    from pms_product a
+    left join pms_sku_stock b
+    on a.id=b.product_id
+    right join pms_product_full_reduction c
+    on a.id=c.product_id
+    where
+    a.delete_status = 0
+    and a.publish_status = 1
+    and a.id=#{portalOrderParams.productId}
+    <if test="portalOrderParams.sp1 != null">
+      and b.sp1=#{portalOrderParams.sp1}
+    </if>
+    <if test="portalOrderParams.sp2 != null">
+      and b.sp2=#{portalOrderParams.sp2}
+    </if>
+    <if test="portalOrderParams.sp3 != null">
+      and b.sp3=#{portalOrderParams.sp3}
+    </if>
+  </select>
+
 
 </mapper>

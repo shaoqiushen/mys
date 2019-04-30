@@ -1,6 +1,7 @@
 package com.shanyuan.bgbirdportal.dao;
 
 import com.shanyuan.bgbirdportal.dto.PortalProductAttirbuteParamsResult;
+import com.shanyuan.bgbirdportal.dto.PortalProductAttributeResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -15,4 +16,5 @@ import java.util.List;
 
 public interface PortalProductAttributeValueDao {
     List<PortalProductAttirbuteParamsResult> getAttributeParamsByProductId(@Param( "productId" )Integer productId);
+    List<PortalProductAttributeResult> findProductSpecByProductId(@Param( "productId" )Integer productId);
 }

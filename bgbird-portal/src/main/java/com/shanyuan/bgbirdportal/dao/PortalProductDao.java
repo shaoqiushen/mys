@@ -1,6 +1,7 @@
 package com.shanyuan.bgbirdportal.dao;
 
-import com.shanyuan.bgbirdportal.dto.PortalProductDetailResult;
+import com.shanyuan.bgbirdportal.dto.PortalOrderParams;
+import com.shanyuan.bgbirdportal.dto.PortalProductInfoResult;
 import com.shanyuan.model.PmsProduct;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,7 +15,8 @@ import java.util.List;
  * desc
  **/
 public interface PortalProductDao {
+    /*根据分类id查询商品列表*/
     List<PmsProduct> listProductByCategoryId(@Param( "categoryId" ) Integer categoryId);
-    PmsProduct findProductInfoById(@Param( "productId" ) Integer productId);
-
+    /*根据商品id,规格信息查询商品信息*/
+    PortalProductInfoResult findProductInfoByParams(@Param("portalOrderParams") PortalOrderParams portalOrderParams);
 }

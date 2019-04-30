@@ -1,9 +1,12 @@
 package com.shanyuan.bgbirdadmin.shiro;
 
+import com.shanyuan.bgbirdadmin.component.CorsFilter;
+import com.shanyuan.bgbirdadmin.config.CorsConfig;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,7 +34,8 @@ public class ShiroConfig {
         //配置拦截器
         Map<String, Filter> filterMap = new LinkedHashMap<>(1);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-
+        //配置跨域拦截器
+        //filterMap.put( "custom",new CorsFilter() );
         //开放登陆接口
         filterChainDefinitionMap.put("/admin/login", "anon");
         //开放swagger
@@ -40,8 +44,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/webjars/**", "anon");
         filterChainDefinitionMap.put("/v2/**", "anon");
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
-        filterChainDefinitionMap.put("/**", "authc");//其他路径均拦截
+        // 使用该过滤器过滤所有的链接
+        //filterChainDefinitionMap.put("/**","custom");
+//        filterChainDefinitionMap.put("/**", "authc");//其他路径均拦截
         shiroFilterFactoryBean.setFilterChainDefinitionMap( filterChainDefinitionMap );
+       // shiroFilterFactoryBean.setFilters( filterMap );
         return shiroFilterFactoryBean;
     }
 
@@ -69,4 +76,6 @@ public class ShiroConfig {
     public SessionManager sessionManager(){
         return new MySessionManager();
     }
+
+
 }

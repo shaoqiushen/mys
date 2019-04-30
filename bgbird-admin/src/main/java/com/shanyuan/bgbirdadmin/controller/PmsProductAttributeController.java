@@ -16,7 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.Query;
 import java.util.List;
 
 /**
@@ -29,6 +28,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/productAttribute")
 @Api(value="PmsProductAttributeController",description="产品属性管理")
+
 public class PmsProductAttributeController {
 
     @Autowired

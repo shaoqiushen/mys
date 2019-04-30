@@ -69,6 +69,13 @@ public class CommonResult {
         return this;
     }
 
+    /*返回普通失败报文*/
+    public CommonResult failed(String msg){
+        this.code=FAILED;
+        this.msg=msg;
+        return this;
+    }
+
     /*返回自定义失败报文*/
     public CommonResult failed(int code,String msg){
         this.code=code;

@@ -3,15 +3,15 @@ package com.shanyuan.bgbirdportal.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.shanyuan.bgbirdportal.dao.PortalProductAttributeValueDao;
 import com.shanyuan.bgbirdportal.dao.PortalProductDao;
-import com.shanyuan.bgbirdportal.dto.HomeContentResult;
-import com.shanyuan.bgbirdportal.dto.PortalProductDetailResult;
-import com.shanyuan.bgbirdportal.dto.PortalProductAttirbuteParamsResult;
+import com.shanyuan.bgbirdportal.dto.*;
 import com.shanyuan.bgbirdportal.service.HomeService;
 import com.shanyuan.mapper.*;
 import com.shanyuan.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -72,13 +72,15 @@ public class HomeServiceImpl implements HomeService {
         //商品信息
         result.setProductList( getProductInfo( productId ) );
         //商品参数
-        result.setAttributeList( getProductParams( productId ) );
+        result.setAttributeList( getAttributeParamsByProductId( productId,1) );
         //商品评价
         result.setCommentList( getProductComment( productId ) );
         //规格参数
+        //sku信息
         result.setSkuStockList( getSkuStocks( productId ) );
         return result;
     }
+
 
     private List<CmsShuffling> getHomeShufflingList(){
         CmsShufflingExample example = new CmsShufflingExample();
@@ -112,8 +114,38 @@ public class HomeServiceImpl implements HomeService {
         return pmsProductMapper.selectByExample( example );
     }
 
-    private List<PortalProductAttirbuteParamsResult> getProductParams(Integer productId){
-        return portalProductAttributeValueDao.getAttributeParamsByProductId( productId );
+    public List<PortalProductAttirbuteParamsResult> getAttributeParamsByProductId(Integer productId,Integer attrType ){
+        //查询参数\规格
+        return portalProductAttributeValueDao.getAttributeParamsByProductId( productId);
+    }
+
+    @Override
+    public List<PortalProductPriceStockResult> getProductPriceByAttribute(Integer productId, PortalProductAttributeValueParams portalProductAttributeValueParams) {
+        String sp1 = portalProductAttributeValueParams.getSp1();
+        String sp2 = portalProductAttributeValueParams.getSp2();
+        String sp3 = portalProductAttributeValueParams.getSp3();
+        PmsSkuStockExample example = new PmsSkuStockExample();
+        PmsSkuStockExample.Criteria criteria=example.createCriteria();
+        if(!StringUtils.isEmpty( sp1 )){
+            criteria.andSp1EqualTo( sp1 );
+        }
+        if(!StringUtils.isEmpty( sp2 )){
+            criteria.andSp2EqualTo( sp2 );
+        }
+        if(!StringUtils.isEmpty( sp3 )){
+            criteria.andSp3EqualTo( sp3 );
+        }
+        criteria.andProductIdEqualTo( productId );
+        List <PmsSkuStock> pmsSkuStocks=pmsSkuStockMapper.selectByExample( example );
+        List<PortalProductPriceStockResult> list = new ArrayList <>(  );
+        PortalProductPriceStockResult result = new PortalProductPriceStockResult();
+        for(PmsSkuStock pmsSkuStock : pmsSkuStocks){
+            result.setPrice( pmsSkuStock.getPrice() );
+            result.setPromotionPrice( pmsSkuStock.getPromotionPrice() );
+            result.setStock( pmsSkuStock.getStock() );
+            list.add( result );
+        }
+        return list;
     }
 
     private List<OmsProductComment> getProductComment(Integer productId){

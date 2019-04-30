@@ -20,4 +20,5 @@ public interface PortalUserAddressService {
     @Transactional
     int updateUserAddress(Integer id,PortalUserAddressParams portalUserAddressParams);
     List<UmsUserReceiveAddress> listUserAddressByUserId(String userId,Integer pageNum,Integer pageSize);
+    UmsUserReceiveAddress getUserAddressById(String user_id,Integer id);
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdportal.dao.PortalCartDao">
+
+  <resultMap id="BaseResultMap" type="com.shanyuan.bgbirdportal.dto.PortalCartResult">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="buy_count" jdbcType="VARCHAR" property="buyCount" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+  </resultMap>
+  <select id="listCartByUserId" resultMap="BaseResultMap">
+    select a.product_name ,a.id productId,a.price,a.picture,
+    b.buy_count,b.sp1,b.sp2,b.sp3,b.id cartId
+    from pms_product a
+    left join oms_cart b
+    on a.id = b.product_id
+    where b.user_id = #{userId}
+    order by b.id desc
+  </select>
+
+</mapper>

@@ -30,6 +30,7 @@ import java.util.List;
 @Api(value="UmsAdminController",description="后台用户管理")
 @RequestMapping("/admin")
 @RestController
+
 public class UmsAdminController {
 
     @Autowired

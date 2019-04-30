@@ -7,13 +7,6 @@ public class OmsOrder implements Serializable {
     private Integer id;
 
     /**
-     * 商品id
-     *
-     * @mbggenerated
-     */
-    private Integer productId;
-
-    /**
      * 用户id
      *
      * @mbggenerated
@@ -56,7 +49,7 @@ public class OmsOrder implements Serializable {
     private Integer freightAmount;
 
     /**
-     * 促销优惠金额
+     * 促销优惠金额（促销价、满减、阶梯价）
      *
      * @mbggenerated
      */
@@ -188,6 +181,13 @@ public class OmsOrder implements Serializable {
      */
     private Integer deleteStatus;
 
+    /**
+     * 确认收货:0->否，1->是
+     *
+     * @mbggenerated
+     */
+    private Integer confirmStatus;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -196,14 +196,6 @@ public class OmsOrder implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
     }
 
     public String getUserId() {
@@ -406,6 +398,14 @@ public class OmsOrder implements Serializable {
         this.deleteStatus = deleteStatus;
     }
 
+    public Integer getConfirmStatus() {
+        return confirmStatus;
+    }
+
+    public void setConfirmStatus(Integer confirmStatus) {
+        this.confirmStatus = confirmStatus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -413,7 +413,6 @@ public class OmsOrder implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", productId=").append(productId);
         sb.append(", userId=").append(userId);
         sb.append(", couponId=").append(couponId);
         sb.append(", orderId=").append(orderId);
@@ -439,6 +438,7 @@ public class OmsOrder implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleteStatus=").append(deleteStatus);
+        sb.append(", confirmStatus=").append(confirmStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

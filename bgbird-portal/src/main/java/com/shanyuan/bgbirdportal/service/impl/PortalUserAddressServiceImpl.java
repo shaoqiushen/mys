@@ -9,6 +9,7 @@ import com.shanyuan.model.UmsUserReceiveAddressExample;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -80,5 +81,17 @@ public class PortalUserAddressServiceImpl implements PortalUserAddressService {
         example.createCriteria().andUserIdEqualTo( userId );
         PageHelper.startPage( pageNum,pageSize );
         return umsUserReceiveAddressMapper.selectByExample( example );
+    }
+
+    @Override
+    public UmsUserReceiveAddress getUserAddressById(String user_id, Integer id) {
+        UmsUserReceiveAddress umsUserReceiveAddress = new UmsUserReceiveAddress();
+        UmsUserReceiveAddressExample example = new UmsUserReceiveAddressExample();
+        example.createCriteria().andIdEqualTo( id ).andUserIdEqualTo( user_id );
+        List <UmsUserReceiveAddress> addressList=umsUserReceiveAddressMapper.selectByExample( example );
+        if(!CollectionUtils.isEmpty(addressList)){
+            return addressList.get(0);
+        }
+        return null;
     }
 }

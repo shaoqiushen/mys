@@ -11,6 +11,8 @@
     <result column="comment_star" jdbcType="INTEGER" property="commentStar" />
     <result column="show_status" jdbcType="INTEGER" property="showStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="comment_picture" jdbcType="VARCHAR" property="commentPicture" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, product_id, user_id, avartal_url, nickname, comment_content, comment_star, show_status, 
-    create_time
+    create_time, product_name, comment_picture
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.OmsProductCommentExample" resultMap="BaseResultMap">
     select
@@ -110,10 +112,12 @@
     </selectKey>
     insert into oms_product_comment (product_id, user_id, avartal_url, 
       nickname, comment_content, comment_star, 
-      show_status, create_time)
+      show_status, create_time, product_name, 
+      comment_picture)
     values (#{productId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{avartalUrl,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{commentContent,jdbcType=VARCHAR}, #{commentStar,jdbcType=INTEGER}, 
-      #{showStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{showStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{productName,jdbcType=VARCHAR}, 
+      #{commentPicture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.OmsProductComment">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -145,6 +149,12 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="commentPicture != null">
+        comment_picture,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -170,6 +180,12 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="commentPicture != null">
+        #{commentPicture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -209,6 +225,12 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.productName != null">
+        product_name = #{record.productName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentPicture != null">
+        comment_picture = #{record.commentPicture,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,7 +246,9 @@
       comment_content = #{record.commentContent,jdbcType=VARCHAR},
       comment_star = #{record.commentStar,jdbcType=INTEGER},
       show_status = #{record.showStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      product_name = #{record.productName,jdbcType=VARCHAR},
+      comment_picture = #{record.commentPicture,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -256,6 +280,12 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="commentPicture != null">
+        comment_picture = #{commentPicture,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -268,7 +298,9 @@
       comment_content = #{commentContent,jdbcType=VARCHAR},
       comment_star = #{commentStar,jdbcType=INTEGER},
       show_status = #{showStatus,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      product_name = #{productName,jdbcType=VARCHAR},
+      comment_picture = #{commentPicture,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

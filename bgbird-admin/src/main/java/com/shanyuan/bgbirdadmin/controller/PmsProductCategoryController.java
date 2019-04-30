@@ -27,6 +27,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/productCategory")
 @Api(value="PmsProductCategoryController",description="产品分类管理")
+
 public class PmsProductCategoryController {
 
     @Autowired

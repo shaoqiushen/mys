@@ -27,9 +27,11 @@ public class PortalUserAddressParams {
     @NotEmpty(message="联系电话不允许为空")
     @LengthValidator(value=11,message="联系电话不允许超过11位")
     private String receiverPhone;
+    @ApiModelProperty(value="所在区域",required=true)
+    @NotEmpty(message="所在区域不允许为空")
+    private String addressArea;
     @ApiModelProperty(value="详细地址",required=true)
-    @NotEmpty(message="详细地址不允许为空")
-    private String address;
+    private String addressDetail;
     @ApiModelProperty(value="默认地址:0->否，1->是；默认为0")
     @FlagValidator(value={"0","1"},message="默认状态只能允许0或1")
     private Integer defaultStatus=0;

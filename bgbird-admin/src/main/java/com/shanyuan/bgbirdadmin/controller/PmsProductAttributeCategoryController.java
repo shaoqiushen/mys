@@ -24,6 +24,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/productAttribute/category")
 @Api(value="PmsProductAttributeCategoryController",description="产品属性分类管理")
+
 public class PmsProductAttributeCategoryController {
 
     @Autowired

@@ -62,6 +62,20 @@ public class OmsProductComment implements Serializable {
      */
     private Date createTime;
 
+    /**
+     * 商品名称
+     *
+     * @mbggenerated
+     */
+    private String productName;
+
+    /**
+     * 评价图片
+     *
+     * @mbggenerated
+     */
+    private String commentPicture;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -136,6 +150,22 @@ public class OmsProductComment implements Serializable {
         this.createTime = createTime;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getCommentPicture() {
+        return commentPicture;
+    }
+
+    public void setCommentPicture(String commentPicture) {
+        this.commentPicture = commentPicture;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -151,6 +181,8 @@ public class OmsProductComment implements Serializable {
         sb.append(", commentStar=").append(commentStar);
         sb.append(", showStatus=").append(showStatus);
         sb.append(", createTime=").append(createTime);
+        sb.append(", productName=").append(productName);
+        sb.append(", commentPicture=").append(commentPicture);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

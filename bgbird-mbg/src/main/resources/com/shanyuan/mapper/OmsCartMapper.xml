@@ -7,9 +7,12 @@
     <result column="product_attr_value_id" jdbcType="INTEGER" property="productAttrValueId" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="delete_status" jdbcType="BIT" property="deleteStatus" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
     <result column="buy_count" jdbcType="INTEGER" property="buyCount" />
     <result column="spec_desc" jdbcType="VARCHAR" property="specDesc" />
+    <result column="sp1" jdbcType="VARCHAR" property="sp1" />
+    <result column="sp2" jdbcType="VARCHAR" property="sp2" />
+    <result column="sp3" jdbcType="VARCHAR" property="sp3" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, product_id, product_attr_value_id, user_id, create_time, delete_status, buy_count, 
-    spec_desc
+    spec_desc, sp1, sp2, sp3
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.OmsCartExample" resultMap="BaseResultMap">
     select
@@ -109,10 +112,12 @@
     </selectKey>
     insert into oms_cart (product_id, product_attr_value_id, user_id, 
       create_time, delete_status, buy_count, 
-      spec_desc)
+      spec_desc, sp1, sp2, 
+      sp3)
     values (#{productId,jdbcType=INTEGER}, #{productAttrValueId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=BIT}, #{buyCount,jdbcType=INTEGER}, 
-      #{specDesc,jdbcType=VARCHAR})
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, #{buyCount,jdbcType=INTEGER}, 
+      #{specDesc,jdbcType=VARCHAR}, #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, 
+      #{sp3,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.OmsCart">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -141,6 +146,15 @@
       <if test="specDesc != null">
         spec_desc,
       </if>
+      <if test="sp1 != null">
+        sp1,
+      </if>
+      <if test="sp2 != null">
+        sp2,
+      </if>
+      <if test="sp3 != null">
+        sp3,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -156,13 +170,22 @@
         #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="deleteStatus != null">
-        #{deleteStatus,jdbcType=BIT},
+        #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="buyCount != null">
         #{buyCount,jdbcType=INTEGER},
       </if>
       <if test="specDesc != null">
         #{specDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sp1 != null">
+        #{sp1,jdbcType=VARCHAR},
+      </if>
+      <if test="sp2 != null">
+        #{sp2,jdbcType=VARCHAR},
+      </if>
+      <if test="sp3 != null">
+        #{sp3,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -191,13 +214,22 @@
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=BIT},
+        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="record.buyCount != null">
         buy_count = #{record.buyCount,jdbcType=INTEGER},
       </if>
       <if test="record.specDesc != null">
         spec_desc = #{record.specDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sp1 != null">
+        sp1 = #{record.sp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sp2 != null">
+        sp2 = #{record.sp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sp3 != null">
+        sp3 = #{record.sp3,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -211,9 +243,12 @@
       product_attr_value_id = #{record.productAttrValueId,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      delete_status = #{record.deleteStatus,jdbcType=BIT},
+      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       buy_count = #{record.buyCount,jdbcType=INTEGER},
-      spec_desc = #{record.specDesc,jdbcType=VARCHAR}
+      spec_desc = #{record.specDesc,jdbcType=VARCHAR},
+      sp1 = #{record.sp1,jdbcType=VARCHAR},
+      sp2 = #{record.sp2,jdbcType=VARCHAR},
+      sp3 = #{record.sp3,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -234,13 +269,22 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=BIT},
+        delete_status = #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="buyCount != null">
         buy_count = #{buyCount,jdbcType=INTEGER},
       </if>
       <if test="specDesc != null">
         spec_desc = #{specDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="sp1 != null">
+        sp1 = #{sp1,jdbcType=VARCHAR},
+      </if>
+      <if test="sp2 != null">
+        sp2 = #{sp2,jdbcType=VARCHAR},
+      </if>
+      <if test="sp3 != null">
+        sp3 = #{sp3,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -251,9 +295,12 @@
       product_attr_value_id = #{productAttrValueId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      delete_status = #{deleteStatus,jdbcType=BIT},
+      delete_status = #{deleteStatus,jdbcType=INTEGER},
       buy_count = #{buyCount,jdbcType=INTEGER},
-      spec_desc = #{specDesc,jdbcType=VARCHAR}
+      spec_desc = #{specDesc,jdbcType=VARCHAR},
+      sp1 = #{sp1,jdbcType=VARCHAR},
+      sp2 = #{sp2,jdbcType=VARCHAR},
+      sp3 = #{sp3,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
