@@ -14,6 +14,7 @@
     left join oms_cart b
     on a.id = b.product_id
     where b.user_id = #{userId}
+    and b.delete_status = 0
     order by b.id desc
   </select>
 

@@ -17,8 +17,7 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -123,7 +122,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         //更新商品信息
         PmsProduct product = pmsProductParams;
         product.setId(productId);
-        pmsProductMapper.updateByPrimaryKeySelective(product);
+        pmsProductMapper.updateByPrimaryKey(product);
         //更新满减价格
         PmsProductFullReductionExample fullReductionExample = new PmsProductFullReductionExample();
         fullReductionExample.createCriteria().andProductIdEqualTo( productId );
@@ -134,11 +133,16 @@ public class PmsProductServiceImpl implements PmsProductService {
         //更新sku信息
         PmsSkuStockExample skuStockExample = new PmsSkuStockExample();
         skuStockExample.createCriteria().andProductIdEqualTo( productId );
-        pmsSkuStockMapper.deleteByExample( skuStockExample );
-        //处理sku -code编码
-        handleSkuStockCode(pmsProductParams.getSkuStockList(),productId);
-        //添加sku库存信息
-        relateAndInsertList(pmsSkuStockDao,pmsProductParams.getSkuStockList(),productId);
+//        pmsSkuStockMapper.deleteByExample( skuStockExample );
+        //查出之前的sku信息
+        List <PmsSkuStock> pmsSkuStocks=pmsSkuStockMapper.selectByExample( skuStockExample );
+        //根据情况处理sku信息
+        sovleSkuInfo(pmsSkuStocks,pmsProductParams.getSkuStockList(),productId);
+
+//        //处理sku -code编码
+//        handleSkuStockCode(pmsProductParams.getSkuStockList(),productId);
+//        //添加sku库存信息
+//        relateAndInsertList(pmsSkuStockDao,pmsProductParams.getSkuStockList(),productId);
 
         //更新参数规格
         PmsProductAttributeValueExample pmsProductAttributeValueExample = new PmsProductAttributeValueExample();
@@ -163,6 +167,15 @@ public class PmsProductServiceImpl implements PmsProductService {
     public int updatePublishStatues(List <Integer> ids, Integer publishStatus) {
         PmsProduct pmsProduct = new PmsProduct();
         pmsProduct.setPublishStatus( publishStatus );
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria().andIdIn( ids );
+        return pmsProductMapper.updateByExampleSelective( pmsProduct,example );
+    }
+
+    @Override
+    public int updateExchangeStatus(List <Integer> ids, Integer exchangeStatus) {
+        PmsProduct pmsProduct = new PmsProduct();
+        pmsProduct.setExchangeStatus( exchangeStatus );
         PmsProductExample example = new PmsProductExample();
         example.createCriteria().andIdIn( ids );
         return pmsProductMapper.updateByExampleSelective( pmsProduct,example );
@@ -209,5 +222,49 @@ public class PmsProductServiceImpl implements PmsProductService {
                 skuStock.setSkuCode(sb.toString());
             }
         }
+    }
+
+    private void sovleSkuInfo(List <PmsSkuStock> pmsSkuStocks,List <PmsSkuStock> skuStockList,Integer productId){
+        List<Integer> deleteIds = new ArrayList <>(  );
+        List<PmsSkuStock> addSkuList = new ArrayList <>(  );
+        List<PmsSkuStock> updateSkuList = new ArrayList <>(  );
+        //存储已使用过的id
+        Map<Integer,Integer> idMap = new HashMap <>(  );
+            start: for(PmsSkuStock skuStock : skuStockList){
+                if(skuStock.getId() == null){
+                    //说明是新增的数据
+                    addSkuList.add( skuStock );
+                }
+               for(PmsSkuStock pmsSkuStock : pmsSkuStocks){
+                   if(skuStock.getId() == pmsSkuStock.getId()){
+                       //证明是更新的数据
+                       updateSkuList.add( skuStock );
+                       idMap.put( pmsSkuStock.getId(),pmsSkuStock.getId() );
+                       continue start;
+                   }else{
+                       if(idMap.get( pmsSkuStock.getId() )==null){
+                           //说明是要删除的数据
+                           deleteIds.add( pmsSkuStock.getId() );
+                       }
+                   }
+               }
+            }
+        idMap.clear();
+            if(addSkuList.size()>0){
+
+                //处理sku -code编码
+                handleSkuStockCode(addSkuList,productId);
+                //执行新增sku操作
+                relateAndInsertList(pmsSkuStockDao,addSkuList,productId);
+            }
+            if(updateSkuList.size()>0){
+                //执行更新sku操作
+                pmsSkuStockDao.updateList( updateSkuList );
+            }
+            if(deleteIds.size()>0){
+                //执行删除sku操作
+                pmsSkuStockDao.deleteList( deleteIds );
+            }
+
     }
 }

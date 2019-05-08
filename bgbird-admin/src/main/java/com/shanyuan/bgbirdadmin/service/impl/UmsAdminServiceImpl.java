@@ -69,7 +69,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         UmsAdminLoginResult umsAdminLoginResult = new UmsAdminLoginResult();
         if(umsAdmins.size()>0){
             for(UmsAdmin umsAdmin : umsAdmins){
-
+                umsAdminLoginResult.setAccount( umsAdmin.getAccount() );
                 umsAdminLoginResult.setLastLoginTime( umsAdmin.getLastLoginTime() == null?new Date(): umsAdmin.getLastLoginTime());
             }
             UmsAdmin umsAdmin = new UmsAdmin();

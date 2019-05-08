@@ -9,6 +9,7 @@ import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.PmsProduct;
 import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ import java.util.List;
 @Api(tags="PmsProductController",description="商品管理")
 @Slf4j
 @RequestMapping("/product")
-
 public class PmsProductController {
 
     @Autowired
@@ -75,9 +75,18 @@ public class PmsProductController {
     }
 
     @ApiOperation( "批量上下架" )
-    @PostMapping("/updatePublishStatues")
-    public CommonResult updatePublishStatues(@RequestParam("ids")List<Integer>ids,@RequestParam Integer publishStatus){
+    @PostMapping("/updatePublishStatus")
+    @ApiImplicitParam(name="publishStatus",value="上架状态:0->否,1->是",required=true)
+    public CommonResult updatePublishStatus(@RequestParam("ids")List<Integer>ids,@RequestParam Integer publishStatus){
         int count=pmsProductService.updatePublishStatues( ids, publishStatus );
+        return ResultUtil.result( count );
+    }
+
+    @ApiOperation( "批量修改兑换状态" )
+    @PostMapping("/updateExchangeStatus")
+    @ApiImplicitParam(name="exchangeStatus",value="兑换状态:0->否,1->是",required=true)
+    public CommonResult updateExchangeStatus(@RequestParam("ids")List<Integer>ids,@RequestParam Integer exchangeStatus){
+        int count=pmsProductService.updateExchangeStatus( ids, exchangeStatus );
         return ResultUtil.result( count );
     }
 }

@@ -98,13 +98,6 @@ public class PmsProduct implements Serializable {
     private Integer giftPoint;
 
     /**
-     * 库存
-     *
-     * @mbggenerated
-     */
-    private Integer stock;
-
-    /**
      * 创建时间
      *
      * @mbggenerated
@@ -145,6 +138,13 @@ public class PmsProduct implements Serializable {
      * @mbggenerated
      */
     private Integer promotionPerLimit;
+
+    /**
+     * 分类名称
+     *
+     * @mbggenerated
+     */
+    private String productCategoryName;
 
     private static final long serialVersionUID = 1L;
 
@@ -260,14 +260,6 @@ public class PmsProduct implements Serializable {
         this.giftPoint = giftPoint;
     }
 
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -316,6 +308,14 @@ public class PmsProduct implements Serializable {
         this.promotionPerLimit = promotionPerLimit;
     }
 
+    public String getProductCategoryName() {
+        return productCategoryName;
+    }
+
+    public void setProductCategoryName(String productCategoryName) {
+        this.productCategoryName = productCategoryName;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -336,13 +336,13 @@ public class PmsProduct implements Serializable {
         sb.append(", price=").append(price);
         sb.append(", promotionPrice=").append(promotionPrice);
         sb.append(", giftPoint=").append(giftPoint);
-        sb.append(", stock=").append(stock);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", promotionStartTime=").append(promotionStartTime);
         sb.append(", promotionEndTime=").append(promotionEndTime);
         sb.append(", promotionType=").append(promotionType);
         sb.append(", promotionPerLimit=").append(promotionPerLimit);
+        sb.append(", productCategoryName=").append(productCategoryName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

@@ -16,13 +16,13 @@
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="promotion_price" jdbcType="INTEGER" property="promotionPrice" />
     <result column="gift_point" jdbcType="INTEGER" property="giftPoint" />
-    <result column="stock" jdbcType="INTEGER" property="stock" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="promotion_start_time" jdbcType="TIMESTAMP" property="promotionStartTime" />
     <result column="promotion_end_time" jdbcType="TIMESTAMP" property="promotionEndTime" />
     <result column="promotion_type" jdbcType="INTEGER" property="promotionType" />
     <result column="promotion_per_limit" jdbcType="INTEGER" property="promotionPerLimit" />
+    <result column="product_category_name" jdbcType="VARCHAR" property="productCategoryName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -85,8 +85,8 @@
   <sql id="Base_Column_List">
     id, product_category_id, product_name, product_introduce, picture, pictute_detail, 
     delete_status, publish_status, hot_status, exchange_status, sale_amount, price, promotion_price, 
-    gift_point, stock, create_time, update_time, promotion_start_time, promotion_end_time, 
-    promotion_type, promotion_per_limit
+    gift_point, create_time, update_time, promotion_start_time, promotion_end_time, promotion_type, 
+    promotion_per_limit, product_category_name
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.PmsProductExample" resultMap="BaseResultMap">
     select
@@ -126,16 +126,18 @@
       picture, pictute_detail, delete_status, 
       publish_status, hot_status, exchange_status, 
       sale_amount, price, promotion_price, 
-      gift_point, stock, create_time, 
-      update_time, promotion_start_time, promotion_end_time, 
-      promotion_type, promotion_per_limit)
+      gift_point, create_time, update_time, 
+      promotion_start_time, promotion_end_time, 
+      promotion_type, promotion_per_limit, product_category_name
+      )
     values (#{productCategoryId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{productIntroduce,jdbcType=VARCHAR}, 
       #{picture,jdbcType=VARCHAR}, #{pictuteDetail,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=INTEGER}, 
       #{publishStatus,jdbcType=INTEGER}, #{hotStatus,jdbcType=INTEGER}, #{exchangeStatus,jdbcType=INTEGER}, 
       #{saleAmount,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, #{promotionPrice,jdbcType=INTEGER}, 
-      #{giftPoint,jdbcType=INTEGER}, #{stock,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
-      #{promotionType,jdbcType=INTEGER}, #{promotionPerLimit,jdbcType=INTEGER})
+      #{giftPoint,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{promotionStartTime,jdbcType=TIMESTAMP}, #{promotionEndTime,jdbcType=TIMESTAMP}, 
+      #{promotionType,jdbcType=INTEGER}, #{promotionPerLimit,jdbcType=INTEGER}, #{productCategoryName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.PmsProduct">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -182,9 +184,6 @@
       <if test="giftPoint != null">
         gift_point,
       </if>
-      <if test="stock != null">
-        stock,
-      </if>
       <if test="createTime != null">
         create_time,
       </if>
@@ -202,6 +201,9 @@
       </if>
       <if test="promotionPerLimit != null">
         promotion_per_limit,
+      </if>
+      <if test="productCategoryName != null">
+        product_category_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -244,9 +246,6 @@
       <if test="giftPoint != null">
         #{giftPoint,jdbcType=INTEGER},
       </if>
-      <if test="stock != null">
-        #{stock,jdbcType=INTEGER},
-      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -264,6 +263,9 @@
       </if>
       <if test="promotionPerLimit != null">
         #{promotionPerLimit,jdbcType=INTEGER},
+      </if>
+      <if test="productCategoryName != null">
+        #{productCategoryName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -318,9 +320,6 @@
       <if test="record.giftPoint != null">
         gift_point = #{record.giftPoint,jdbcType=INTEGER},
       </if>
-      <if test="record.stock != null">
-        stock = #{record.stock,jdbcType=INTEGER},
-      </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
@@ -338,6 +337,9 @@
       </if>
       <if test="record.promotionPerLimit != null">
         promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
+      </if>
+      <if test="record.productCategoryName != null">
+        product_category_name = #{record.productCategoryName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -360,13 +362,13 @@
       price = #{record.price,jdbcType=INTEGER},
       promotion_price = #{record.promotionPrice,jdbcType=INTEGER},
       gift_point = #{record.giftPoint,jdbcType=INTEGER},
-      stock = #{record.stock,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       promotion_start_time = #{record.promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{record.promotionEndTime,jdbcType=TIMESTAMP},
       promotion_type = #{record.promotionType,jdbcType=INTEGER},
-      promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER}
+      promotion_per_limit = #{record.promotionPerLimit,jdbcType=INTEGER},
+      product_category_name = #{record.productCategoryName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -413,9 +415,6 @@
       <if test="giftPoint != null">
         gift_point = #{giftPoint,jdbcType=INTEGER},
       </if>
-      <if test="stock != null">
-        stock = #{stock,jdbcType=INTEGER},
-      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -433,6 +432,9 @@
       </if>
       <if test="promotionPerLimit != null">
         promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
+      </if>
+      <if test="productCategoryName != null">
+        product_category_name = #{productCategoryName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -452,13 +454,13 @@
       price = #{price,jdbcType=INTEGER},
       promotion_price = #{promotionPrice,jdbcType=INTEGER},
       gift_point = #{giftPoint,jdbcType=INTEGER},
-      stock = #{stock,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       promotion_start_time = #{promotionStartTime,jdbcType=TIMESTAMP},
       promotion_end_time = #{promotionEndTime,jdbcType=TIMESTAMP},
       promotion_type = #{promotionType,jdbcType=INTEGER},
-      promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER}
+      promotion_per_limit = #{promotionPerLimit,jdbcType=INTEGER},
+      product_category_name = #{productCategoryName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

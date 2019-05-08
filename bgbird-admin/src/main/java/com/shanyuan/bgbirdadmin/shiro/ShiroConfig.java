@@ -1,12 +1,12 @@
 package com.shanyuan.bgbirdadmin.shiro;
 
-import com.shanyuan.bgbirdadmin.component.CorsFilter;
-import com.shanyuan.bgbirdadmin.config.CorsConfig;
+
+
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

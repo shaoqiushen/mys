@@ -25,10 +25,12 @@
     <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
     <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
     <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
     <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
+    <result column="eat_type" jdbcType="INTEGER" property="eatType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="comment_status" jdbcType="INTEGER" property="commentStatus" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -92,7 +94,8 @@
     id, user_id, coupon_id, order_id, total_amount, pay_amount, freight_amount, promotion_amount, 
     coupon_amount, pay_type, source_type, order_status, order_type, payment_time, integration, 
     promotion_info, notes, receiver_name, receiver_phone, receiver_address, delivery_time, 
-    receive_time, comment_time, create_time, update_time, delete_status, confirm_status
+    receive_time, comment_time, update_time, delete_status, confirm_status, eat_type, 
+    create_time, comment_status
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.OmsOrderExample" resultMap="BaseResultMap">
     select
@@ -135,8 +138,9 @@
       payment_time, integration, promotion_info, 
       notes, receiver_name, receiver_phone, 
       receiver_address, delivery_time, receive_time, 
-      comment_time, create_time, update_time, 
-      delete_status, confirm_status)
+      comment_time, update_time, delete_status, 
+      confirm_status, eat_type, create_time, 
+      comment_status)
     values (#{userId,jdbcType=VARCHAR}, #{couponId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
       #{totalAmount,jdbcType=INTEGER}, #{payAmount,jdbcType=INTEGER}, #{freightAmount,jdbcType=INTEGER}, 
       #{promotionAmount,jdbcType=INTEGER}, #{couponAmount,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, 
@@ -144,8 +148,9 @@
       #{paymentTime,jdbcType=TIMESTAMP}, #{integration,jdbcType=INTEGER}, #{promotionInfo,jdbcType=VARCHAR}, 
       #{notes,jdbcType=VARCHAR}, #{receiverName,jdbcType=VARCHAR}, #{receiverPhone,jdbcType=VARCHAR}, 
       #{receiverAddress,jdbcType=VARCHAR}, #{deliveryTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
-      #{commentTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleteStatus,jdbcType=INTEGER}, #{confirmStatus,jdbcType=INTEGER})
+      #{commentTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, 
+      #{confirmStatus,jdbcType=INTEGER}, #{eatType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{commentStatus,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.OmsOrder">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -219,9 +224,6 @@
       <if test="commentTime != null">
         comment_time,
       </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
       <if test="updateTime != null">
         update_time,
       </if>
@@ -230,6 +232,15 @@
       </if>
       <if test="confirmStatus != null">
         confirm_status,
+      </if>
+      <if test="eatType != null">
+        eat_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="commentStatus != null">
+        comment_status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -299,9 +310,6 @@
       <if test="commentTime != null">
         #{commentTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
@@ -310,6 +318,15 @@
       </if>
       <if test="confirmStatus != null">
         #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="eatType != null">
+        #{eatType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentStatus != null">
+        #{commentStatus,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -391,9 +408,6 @@
       <if test="record.commentTime != null">
         comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
@@ -402,6 +416,15 @@
       </if>
       <if test="record.confirmStatus != null">
         confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.eatType != null">
+        eat_type = #{record.eatType,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commentStatus != null">
+        comment_status = #{record.commentStatus,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -433,10 +456,12 @@
       delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
       receive_time = #{record.receiveTime,jdbcType=TIMESTAMP},
       comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      confirm_status = #{record.confirmStatus,jdbcType=INTEGER}
+      confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
+      eat_type = #{record.eatType,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      comment_status = #{record.commentStatus,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -510,9 +535,6 @@
       <if test="commentTime != null">
         comment_time = #{commentTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
@@ -521,6 +543,15 @@
       </if>
       <if test="confirmStatus != null">
         confirm_status = #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="eatType != null">
+        eat_type = #{eatType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentStatus != null">
+        comment_status = #{commentStatus,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -549,10 +580,12 @@
       delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
       receive_time = #{receiveTime,jdbcType=TIMESTAMP},
       comment_time = #{commentTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       delete_status = #{deleteStatus,jdbcType=INTEGER},
-      confirm_status = #{confirmStatus,jdbcType=INTEGER}
+      confirm_status = #{confirmStatus,jdbcType=INTEGER},
+      eat_type = #{eatType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      comment_status = #{commentStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

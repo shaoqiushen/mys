@@ -5,6 +5,7 @@ import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
 import com.shanyuan.bgbirdadmin.service.OmsOrderService;
 import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.OmsOrder;
+import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,12 @@ public class OmsOrderController {
         List <OmsOrder> omsOrders=omsOrderService.listOrderInfo( omsOrderQueryParams, pageNum, pageSize );
         PageInfo<OmsOrder> pageInfo= new PageInfo <>( omsOrders );
         return new CommonResult().pageSuccess( pageInfo );
+    }
+
+    @ApiOperation( "修改订单" )
+    @PostMapping("/updateOrderInfo")
+    public CommonResult updateOrderInfo(@RequestBody OmsOrder omsOrder){
+        int count=omsOrderService.updateOrder( omsOrder );
+        return ResultUtil.result( count );
     }
 }

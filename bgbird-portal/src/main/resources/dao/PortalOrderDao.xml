@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdportal.dao.PortalOrderDao">
+
+
+
+  <resultMap id="baseResultMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderQueryResult">
+    <id column="id" jdbcType="INTEGER" property="id"></id>
+    <result column="create_time" property="createTime" jdbcType="VARCHAR"></result>
+    <result column="order_id" property="orderId" jdbcType="BIGINT"></result>
+    <result column="total_amount" property="totalAmount" jdbcType="INTEGER"></result>
+    <result column="pay_amount" property="payAmount" jdbcType="INTEGER"></result>
+    <collection property="orderDetailList" columnPrefix="de_" resultMap="com.shanyuan.mapper.OmsOrderDetailMapper.BaseResultMap"></collection>
+  </resultMap>
+
+    <resultMap id="detailMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderDetailInfo" extends="com.shanyuan.mapper.PmsSkuStockMapper.BaseResultMap">
+        <result column="product_name" jdbcType="VARCHAR" property="productName"></result>
+        <result column="product_id" jdbcType="INTEGER" property="productId"></result>
+        <result column="buy_count" jdbcType="INTEGER" property="buyCount"></result>
+    </resultMap>
+
+    <resultMap id="addressMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderAddressResult">
+        <result column="receiver_name" jdbcType="VARCHAR" property="receiverName"></result>
+        <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone"></result>
+        <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress"></result>
+    </resultMap>
+
+    <resultMap id="orderMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderResult">
+        <result column="order_id" jdbcType="BIGINT" property="orderId"></result>
+        <result column="coupon_id" jdbcType="BIGINT" property="couponId"></result>
+        <result column="total_amount" jdbcType="BIGINT" property="totalAmount"></result>
+        <result column="pay_amount" jdbcType="BIGINT" property="payAmount"></result>
+        <result column="freight_amount" jdbcType="BIGINT" property="freightAmount"></result>
+        <result column="promotion_amount" jdbcType="BIGINT" property="promotionAmount"></result>
+        <result column="coupon_amount" jdbcType="BIGINT" property="couponAmount"></result>
+        <result column="pay_type" jdbcType="BIGINT" property="payType"></result>
+        <result column="order_status" jdbcType="BIGINT" property="orderStatus"></result>
+        <result column="integration" jdbcType="BIGINT" property="integration"></result>
+        <result column="notes" jdbcType="BIGINT" property="notes"></result>
+        <result column="create_time" jdbcType="BIGINT" property="createTime"></result>
+        <result column="confirm_status" jdbcType="BIGINT" property="confirmStatus"></result>
+        <result column="eat_type" jdbcType="INTEGER" property="eatType"></result>
+    </resultMap>
+
+    <resultMap id="orderDetailMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderDetailResult" extends="com.shanyuan.mapper.OmsOrderMapper.BaseResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result column="receiver_name" jdbcType="VARCHAR" property="receiverName"></result>
+        <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone"></result>
+        <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress"></result>
+        <collection property="orderDetailInfoList" columnPrefix="detail_" resultMap="detailMap"></collection>
+        <collection property="addressList" columnPrefix="address_" resultMap="addressMap"></collection>
+        <collection property="orderList" columnPrefix="ord_" resultMap="orderMap"></collection>
+    </resultMap>
+
+  <select id="countOrder" resultType="java.lang.Integer">
+    select count(*)
+    from oms_order a
+    where
+    a.delete_status = 0
+    and a.user_id = #{portalOrderQueryParams.userId}
+    <if test="portalOrderQueryParams.orderStatus != null">
+      and a.order_status = #{portalOrderQueryParams.orderStatus}
+    </if>
+  </select>
+
+  <select id="listOrderInfoByParams" resultMap="baseResultMap">
+      select o.*,
+      b.id de_id,
+      b.product_id de_product_id,b.product_name de_product_name,b.price de_price,
+      b.buy_count de_buy_count,b.order_id de_order_id,b.product_picture de_product_picture,
+      b.sp1 de_sp1,b.sp2 de_sp2,b.sp3 de_sp3
+      from
+      (select a.create_time,a.total_amount,a.pay_amount,a.order_id,a.id
+      from oms_order a
+      where
+      a.delete_status = 0
+      and a.user_id = #{portalOrderQueryParams.userId}
+      <if test="portalOrderQueryParams.orderStatus != null">
+        and a.order_status = #{portalOrderQueryParams.orderStatus}
+          <if test="portalOrderQueryParams.commentStatus != null and portalOrderQueryParams.orderStatus==3">
+              and a.comment_status = #{portalOrderQueryParams.commentStatus}
+          </if>
+      </if>
+
+      order by a.id desc
+      limit #{startNum},#{endNum}) o
+      left join oms_order_detail b
+      on o.order_id=b.order_id
+      order by o.id desc
+    </select>
+
+    <insert id="insertOrderDetail">
+        insert into oms_order_detail(order_id,product_id,product_name,price,buy_count,promotion_name,
+        promotion_amount,coupon_amount,real_amount,gift_integration,product_picture,
+        sp1,sp2,sp3)
+        values
+        <foreach collection="omsOrderDetails" item="item" separator="," index="index">
+            (
+            #{item.orderId},#{item.productId},#{item.productName},#{item.price},#{item.buyCount},#{item.promotionName},
+            #{item.promotionAmount},#{item.couponAmount},#{item.realAmount},#{item.giftIntegration},#{item.productPicture},
+            #{item.sp1},#{item.sp2},#{item.sp3}
+            )
+        </foreach>
+    </insert>
+
+
+    <select id="findOrderInfoById" resultMap="orderDetailMap">
+      select
+      a.id,a.order_id ord_order_id, a.create_time ord_create_time,
+      a.total_amount ord_total_amount,a.pay_amount ord_pay_amount,a.freight_amount ord_freight_amount,
+      a.promotion_amount ord_promotion_amount,a.coupon_amount ord_coupon_amount,a.pay_type ord_pay_type,a.notes ord_notes,
+      a.receiver_name address_receiver_name,a.receiver_phone address_receiver_phone,a.receiver_address address_receiver_address,
+      b.product_id detail_product_id,b.product_name detail_product_name,b.price detail_price,b.buy_count detail_buy_count,
+      b.product_picture detail_product_picture,
+      b.sp1 detail_sp1,b.sp2 detail_sp2,b.sp3 detail_sp3
+      from
+      oms_order a
+      left join oms_order_detail b
+      on a.order_id = b.order_id
+      where a.delete_status=0
+      and a.order_id=#{orderId}
+    </select>
+</mapper>

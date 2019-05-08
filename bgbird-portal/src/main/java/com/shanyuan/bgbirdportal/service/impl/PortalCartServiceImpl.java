@@ -34,6 +34,7 @@ public class PortalCartServiceImpl implements PortalCartService {
     public int createCart(PortalCartParams portalCartParams) {
         OmsCart omsCart = new OmsCart();
         BeanUtils.copyProperties( portalCartParams,omsCart );
+        omsCart.setDeleteStatus( 0 );
         omsCart.setCreateTime( new Date(  ) );
         return omsCartMapper.insert( omsCart );
     }

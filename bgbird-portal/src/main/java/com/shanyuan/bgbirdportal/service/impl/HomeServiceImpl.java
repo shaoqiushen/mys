@@ -115,8 +115,16 @@ public class HomeServiceImpl implements HomeService {
     }
 
     public List<PortalProductAttirbuteParamsResult> getAttributeParamsByProductId(Integer productId,Integer attrType ){
-        //查询参数\规格
-        return portalProductAttributeValueDao.getAttributeParamsByProductId( productId);
+        //查询参数=attrType=1  规格=attrType=0
+        return portalProductAttributeValueDao.getAttributeParamsByProductId( productId,attrType);
+    }
+
+    @Override
+    public List <PmsSkuStock> getAttributeSpecByProductId(Integer productId) {
+        PmsSkuStockExample example = new PmsSkuStockExample();
+        example.setOrderByClause( "id" );
+        example.createCriteria().andProductIdEqualTo( productId );
+        return pmsSkuStockMapper.selectByExample( example );
     }
 
     @Override
@@ -135,6 +143,7 @@ public class HomeServiceImpl implements HomeService {
         if(!StringUtils.isEmpty( sp3 )){
             criteria.andSp3EqualTo( sp3 );
         }
+
         criteria.andProductIdEqualTo( productId );
         List <PmsSkuStock> pmsSkuStocks=pmsSkuStockMapper.selectByExample( example );
         List<PortalProductPriceStockResult> list = new ArrayList <>(  );
@@ -143,6 +152,7 @@ public class HomeServiceImpl implements HomeService {
             result.setPrice( pmsSkuStock.getPrice() );
             result.setPromotionPrice( pmsSkuStock.getPromotionPrice() );
             result.setStock( pmsSkuStock.getStock() );
+            result.setSkuId( pmsSkuStock.getId() );
             list.add( result );
         }
         return list;

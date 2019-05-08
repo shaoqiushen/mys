@@ -11,6 +11,7 @@ import lombok.Data;
  **/
 @Data
 public class PortalProductPriceStockResult {
+    private Integer skuId;
     private Integer price;
     private Integer stock;
     private Integer promotionPrice;

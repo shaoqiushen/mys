@@ -14,7 +14,6 @@
     <result column="sale_count" jdbcType="INTEGER" property="saleCount" />
     <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
     <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
-    <result column="attribute_value_id" jdbcType="VARCHAR" property="attributeValueId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, product_id, promotion_price, price, stock, sp1, sp2, sp3, picture, sale_count, 
-    sku_code, lock_stock, attribute_value_id
+    sku_code, lock_stock
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.PmsSkuStockExample" resultMap="BaseResultMap">
     select
@@ -115,11 +114,11 @@
     insert into pms_sku_stock (product_id, promotion_price, price, 
       stock, sp1, sp2, sp3, 
       picture, sale_count, sku_code, 
-      lock_stock, attribute_value_id)
+      lock_stock)
     values (#{productId,jdbcType=INTEGER}, #{promotionPrice,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, 
       #{stock,jdbcType=INTEGER}, #{sp1,jdbcType=VARCHAR}, #{sp2,jdbcType=VARCHAR}, #{sp3,jdbcType=VARCHAR}, 
       #{picture,jdbcType=VARCHAR}, #{saleCount,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}, 
-      #{lockStock,jdbcType=INTEGER}, #{attributeValueId,jdbcType=VARCHAR})
+      #{lockStock,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.PmsSkuStock">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -160,9 +159,6 @@
       <if test="lockStock != null">
         lock_stock,
       </if>
-      <if test="attributeValueId != null">
-        attribute_value_id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
@@ -197,9 +193,6 @@
       </if>
       <if test="lockStock != null">
         #{lockStock,jdbcType=INTEGER},
-      </if>
-      <if test="attributeValueId != null">
-        #{attributeValueId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -248,9 +241,6 @@
       <if test="record.lockStock != null">
         lock_stock = #{record.lockStock,jdbcType=INTEGER},
       </if>
-      <if test="record.attributeValueId != null">
-        attribute_value_id = #{record.attributeValueId,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -269,8 +259,7 @@
       picture = #{record.picture,jdbcType=VARCHAR},
       sale_count = #{record.saleCount,jdbcType=INTEGER},
       sku_code = #{record.skuCode,jdbcType=VARCHAR},
-      lock_stock = #{record.lockStock,jdbcType=INTEGER},
-      attribute_value_id = #{record.attributeValueId,jdbcType=VARCHAR}
+      lock_stock = #{record.lockStock,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -311,9 +300,6 @@
       <if test="lockStock != null">
         lock_stock = #{lockStock,jdbcType=INTEGER},
       </if>
-      <if test="attributeValueId != null">
-        attribute_value_id = #{attributeValueId,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -329,8 +315,7 @@
       picture = #{picture,jdbcType=VARCHAR},
       sale_count = #{saleCount,jdbcType=INTEGER},
       sku_code = #{skuCode,jdbcType=VARCHAR},
-      lock_stock = #{lockStock,jdbcType=INTEGER},
-      attribute_value_id = #{attributeValueId,jdbcType=VARCHAR}
+      lock_stock = #{lockStock,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

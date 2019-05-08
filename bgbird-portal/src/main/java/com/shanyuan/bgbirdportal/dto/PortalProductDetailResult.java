@@ -2,7 +2,6 @@ package com.shanyuan.bgbirdportal.dto;
 
 import com.shanyuan.model.OmsProductComment;
 import com.shanyuan.model.PmsProduct;
-import com.shanyuan.model.PmsProductAttribute;
 import com.shanyuan.model.PmsSkuStock;
 import lombok.Data;
 

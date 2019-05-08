@@ -82,8 +82,6 @@ public class PmsSkuStock implements Serializable {
      */
     private Integer lockStock;
 
-    private String attributeValueId;
-
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -182,14 +180,6 @@ public class PmsSkuStock implements Serializable {
         this.lockStock = lockStock;
     }
 
-    public String getAttributeValueId() {
-        return attributeValueId;
-    }
-
-    public void setAttributeValueId(String attributeValueId) {
-        this.attributeValueId = attributeValueId;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -208,7 +198,6 @@ public class PmsSkuStock implements Serializable {
         sb.append(", saleCount=").append(saleCount);
         sb.append(", skuCode=").append(skuCode);
         sb.append(", lockStock=").append(lockStock);
-        sb.append(", attributeValueId=").append(attributeValueId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

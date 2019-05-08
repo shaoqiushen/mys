@@ -105,7 +105,7 @@ public class OmsOrder implements Serializable {
     private Integer integration;
 
     /**
-     * 活动信息
+     * 促销活动信息
      *
      * @mbggenerated
      */
@@ -161,13 +161,6 @@ public class OmsOrder implements Serializable {
     private Date commentTime;
 
     /**
-     * 创建时间
-     *
-     * @mbggenerated
-     */
-    private Date createTime;
-
-    /**
      * 更新时间
      *
      * @mbggenerated
@@ -187,6 +180,27 @@ public class OmsOrder implements Serializable {
      * @mbggenerated
      */
     private Integer confirmStatus;
+
+    /**
+     * 送餐方式:0->堂吃，1->配送
+     *
+     * @mbggenerated
+     */
+    private Integer eatType;
+
+    /**
+     * 创建时间
+     *
+     * @mbggenerated
+     */
+    private Date createTime;
+
+    /**
+     * 评价状态:0->否,1->是
+     *
+     * @mbggenerated
+     */
+    private Integer commentStatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -374,14 +388,6 @@ public class OmsOrder implements Serializable {
         this.commentTime = commentTime;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -404,6 +410,30 @@ public class OmsOrder implements Serializable {
 
     public void setConfirmStatus(Integer confirmStatus) {
         this.confirmStatus = confirmStatus;
+    }
+
+    public Integer getEatType() {
+        return eatType;
+    }
+
+    public void setEatType(Integer eatType) {
+        this.eatType = eatType;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getCommentStatus() {
+        return commentStatus;
+    }
+
+    public void setCommentStatus(Integer commentStatus) {
+        this.commentStatus = commentStatus;
     }
 
     @Override
@@ -435,10 +465,12 @@ public class OmsOrder implements Serializable {
         sb.append(", deliveryTime=").append(deliveryTime);
         sb.append(", receiveTime=").append(receiveTime);
         sb.append(", commentTime=").append(commentTime);
-        sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", deleteStatus=").append(deleteStatus);
         sb.append(", confirmStatus=").append(confirmStatus);
+        sb.append(", eatType=").append(eatType);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", commentStatus=").append(commentStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

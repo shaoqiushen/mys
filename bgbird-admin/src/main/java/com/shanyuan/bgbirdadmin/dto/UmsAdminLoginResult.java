@@ -14,4 +14,5 @@ import java.util.Date;
 @Data
 public class UmsAdminLoginResult {
     private Date lastLoginTime;
+    private String account;
 }

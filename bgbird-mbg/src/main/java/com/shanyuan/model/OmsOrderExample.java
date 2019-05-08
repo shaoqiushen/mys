@@ -1545,66 +1545,6 @@ public class OmsOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("create_time =", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("create_time <>", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("create_time >", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("create_time >=", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("create_time <", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("create_time <=", value, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("create_time in", values, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("create_time not in", values, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
         public Criteria andUpdateTimeIsNull() {
             addCriterion("update_time is null");
             return (Criteria) this;
@@ -1782,6 +1722,186 @@ public class OmsOrderExample {
 
         public Criteria andConfirmStatusNotBetween(Integer value1, Integer value2) {
             addCriterion("confirm_status not between", value1, value2, "confirmStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeIsNull() {
+            addCriterion("eat_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeIsNotNull() {
+            addCriterion("eat_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeEqualTo(Integer value) {
+            addCriterion("eat_type =", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeNotEqualTo(Integer value) {
+            addCriterion("eat_type <>", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeGreaterThan(Integer value) {
+            addCriterion("eat_type >", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("eat_type >=", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeLessThan(Integer value) {
+            addCriterion("eat_type <", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("eat_type <=", value, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeIn(List<Integer> values) {
+            addCriterion("eat_type in", values, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeNotIn(List<Integer> values) {
+            addCriterion("eat_type not in", values, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeBetween(Integer value1, Integer value2) {
+            addCriterion("eat_type between", value1, value2, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEatTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("eat_type not between", value1, value2, "eatType");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusIsNull() {
+            addCriterion("comment_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusIsNotNull() {
+            addCriterion("comment_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusEqualTo(Integer value) {
+            addCriterion("comment_status =", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotEqualTo(Integer value) {
+            addCriterion("comment_status <>", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusGreaterThan(Integer value) {
+            addCriterion("comment_status >", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("comment_status >=", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusLessThan(Integer value) {
+            addCriterion("comment_status <", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("comment_status <=", value, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusIn(List<Integer> values) {
+            addCriterion("comment_status in", values, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotIn(List<Integer> values) {
+            addCriterion("comment_status not in", values, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusBetween(Integer value1, Integer value2) {
+            addCriterion("comment_status between", value1, value2, "commentStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("comment_status not between", value1, value2, "commentStatus");
             return (Criteria) this;
         }
     }

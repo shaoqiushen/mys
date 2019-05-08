@@ -52,11 +52,21 @@ public class PortalHomeController {
     }
 
     @GetMapping("/getAttributeParamsByProductId/{productId}")
-    @ApiOperation( "根据商品id查询规格信息" )
-    public CommonResult getAttributeParamsByProductId(@PathVariable Integer productId){
-        List <PortalProductAttirbuteParamsResult> productSpecByProductId=homeService.getAttributeParamsByProductId( productId,0 );
+    @ApiOperation( "根据商品id查询参数、规格信息" )
+    public CommonResult getAttributeParamsByProductId(@PathVariable Integer productId,@RequestParam("attrType")Integer attrType){
+        List <PortalProductAttirbuteParamsResult> productSpecByProductId=homeService.getAttributeParamsByProductId( productId,attrType );
         return new CommonResult().success( productSpecByProductId );
     }
+
+//    @GetMapping("/getAttributeSpecByProductId/{productId}")
+//    @ApiOperation( "根据商品id查询规格信息" )
+//    public CommonResult getAttributeSpecByProductId(@PathVariable Integer productId){
+//        List <PmsSkuStock> attributeSpecByProductId=homeService.getAttributeSpecByProductId( productId );
+//        if(attributeSpecByProductId.size()==0){
+//            return new CommonResult().failed( "商品规格不存在" );
+//        }
+//        return new CommonResult().success( attributeSpecByProductId );
+//    }
 
     @ApiOperation( "根据商品id,规格信息查询商品的价格" )
     @PostMapping("/getProductPriceByAttribute/{productId}")

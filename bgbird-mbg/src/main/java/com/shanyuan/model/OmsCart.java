@@ -14,11 +14,11 @@ public class OmsCart implements Serializable {
     private Integer productId;
 
     /**
-     * 参数表id
+     * sku库存id
      *
      * @mbggenerated
      */
-    private Integer productAttrValueId;
+    private Integer skuId;
 
     /**
      * 用户id
@@ -94,12 +94,12 @@ public class OmsCart implements Serializable {
         this.productId = productId;
     }
 
-    public Integer getProductAttrValueId() {
-        return productAttrValueId;
+    public Integer getSkuId() {
+        return skuId;
     }
 
-    public void setProductAttrValueId(Integer productAttrValueId) {
-        this.productAttrValueId = productAttrValueId;
+    public void setSkuId(Integer skuId) {
+        this.skuId = skuId;
     }
 
     public String getUserId() {
@@ -174,7 +174,7 @@ public class OmsCart implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", productId=").append(productId);
-        sb.append(", productAttrValueId=").append(productAttrValueId);
+        sb.append(", skuId=").append(skuId);
         sb.append(", userId=").append(userId);
         sb.append(", createTime=").append(createTime);
         sb.append(", deleteStatus=").append(deleteStatus);

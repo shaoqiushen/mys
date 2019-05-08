@@ -1,7 +1,11 @@
 package com.shanyuan.bgbirdadmin.dao;
 
+import com.shanyuan.bgbirdadmin.dto.PmsProductQueryParams;
 import com.shanyuan.bgbirdadmin.dto.PmsProductResult;
+import com.shanyuan.model.PmsProduct;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * author  shenshaoqiu

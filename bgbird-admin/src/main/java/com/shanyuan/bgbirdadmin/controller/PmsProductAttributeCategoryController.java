@@ -40,7 +40,6 @@ public class PmsProductAttributeCategoryController {
 
     @ApiOperation( "修改产品属性分类" )
     @PostMapping("updateProductAttributeCategory/{id}")
-
     @ApiImplicitParams({
             @ApiImplicitParam(name="id",value="产品属性分类id",required=true),
             @ApiImplicitParam(name="name",value="产品属性分类名称",required=true)

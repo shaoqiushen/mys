@@ -9,7 +9,7 @@
     left join pms_product_attribute_value b
     on a.id= b.product_attribute_id
     where b.product_id = #{productId}
-
+    and a.attr_type=#{attrType}
     order by a.sort
   </select>
 

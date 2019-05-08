@@ -2,7 +2,6 @@ package com.shanyuan.bgbirdportal.dto;
 
 import lombok.Data;
 
-import java.util.List;
 
 /**
  * author  shenshaoqiu
@@ -16,4 +15,5 @@ public class PortalProductAttirbuteParamsResult {
     private String name;
     private String value;
     private Integer attrType;
+
 }

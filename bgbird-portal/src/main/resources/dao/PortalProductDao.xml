@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shanyuan.bgbirdportal.dao.PortalProductDao">
+  
+  <!--<resultMap id="promotionProductMap" type="com.shanyuan.bgbirdportal.dto.PromotionProduct" extends="com.shanyuan.mapper.PmsProductMapper.BaseResultMap">-->
+  <!--<id column="id" jdbcType="BIGINT" property="id" />-->
+  <!--<collection property="skuStockList" columnPrefix="sku_" resultMap="com.shanyuan.mapper.PmsSkuStockMapper.BaseResultMap">-->
+  <!--</collection>-->
+  <!--<collection property="productFullReductionList" columnPrefix="full_" resultMap="com.shanyuan.mapper.PmsProductFullReductionMapper.BaseResultMap">-->
+  <!--</collection>-->
+  <!--</resultMap>-->
 
   <select id="listProductByCategoryId" resultMap="com.shanyuan.mapper.PmsProductMapper.BaseResultMap" >
     select id,product_name,product_introduce,picture,sale_amount,price,promotion_price
@@ -13,7 +21,7 @@
   </select>
 
   <select id="findProductInfoByParams" resultType="com.shanyuan.bgbirdportal.dto.PortalProductInfoResult">
-    select DISTINCT a.product_name productName,a.price,a.promotion_price promotionPrice,a.picture,a.id,
+    select  a.product_name productName,a.price,a.promotion_price promotionPrice,a.picture,a.id,
     b.stock,b.id skuId,b.sp1,b.sp2,
     c.full_price fullPrice,c.reduce_price reducePrice
     from pms_product a
@@ -36,5 +44,29 @@
     </if>
   </select>
 
+
+  <select id="getPromotionProductList" resultType="com.shanyuan.bgbirdportal.dto.PortalProductSkuInfo">
+
+    <foreach collection="list" index="index" item="item" separator="union">
+      (select
+      p.id productId,p.product_name productName,p.promotion_type promotionType,p.gift_point giftPoint,p.picture,
+      sku.id skuId,
+      sku.price ,
+      sku.sku_code skuCode,
+      sku.promotion_price promotionPrice ,
+      sku.stock ,
+      sku.lock_stock lockStock,
+      sku.sp1,
+      sku.sp2,
+      sku.sp3
+      from pms_product p
+      left join pms_sku_stock sku
+      on p.id=sku.product_id
+      where
+      p.id=#{item.productId}
+      and sku.id=#{item.skuId}
+      and p.delete_status=0)
+    </foreach>
+  </select>
 
 </mapper>

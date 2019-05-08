@@ -14,4 +14,19 @@ mybatis:
 
 spring:
   profiles:
-    active: dev #开发环境
+    active: prod #开发环境
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAIL1idIDliczSS
+    accessKeySecret: 8aGzaaC1lyxiNNuxQId2ZldenQFHUf
+    bucketName: shanyuanoss
+    policy:
+      expire: 300
+    maxSize: 10
+    scaleRatio: 0.50f
+    imgPath: https://oss.shanyuankj.cn/
+    callback: http://localhost:8061/aliyun/oss/callback
+    dir:
+      prefix: bgbird/images/admin/

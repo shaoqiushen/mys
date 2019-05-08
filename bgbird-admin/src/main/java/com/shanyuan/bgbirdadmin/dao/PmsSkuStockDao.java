@@ -15,4 +15,8 @@ import java.util.List;
 public interface PmsSkuStockDao {
     /*批量插入*/
     int insertList(@Param( "list" )List<PmsSkuStock> list);
+    /*批量更新*/
+    int updateList(@Param( "list" )List<PmsSkuStock> list);
+    /*批量删除*/
+    int deleteList(@Param( "ids" )List<Integer> ids);
 }

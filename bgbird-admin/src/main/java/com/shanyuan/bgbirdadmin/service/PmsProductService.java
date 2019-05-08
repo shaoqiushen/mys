@@ -35,4 +35,6 @@ public interface PmsProductService {
     int updateProductById(Integer productId,PmsProductParams pmsProductParams);
     /*批量上下架*/
     int updatePublishStatues(List<Integer> ids,Integer publishStatus);
+    /*批量修改兑换状态*/
+    int updateExchangeStatus(List<Integer> ids,Integer exchangeStatus);
 }

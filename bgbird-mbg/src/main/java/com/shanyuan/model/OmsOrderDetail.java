@@ -75,6 +75,14 @@ public class OmsOrderDetail implements Serializable {
      */
     private Integer giftIntegration;
 
+    private String productPicture;
+
+    private String sp1;
+
+    private String sp2;
+
+    private String sp3;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -165,6 +173,38 @@ public class OmsOrderDetail implements Serializable {
         this.giftIntegration = giftIntegration;
     }
 
+    public String getProductPicture() {
+        return productPicture;
+    }
+
+    public void setProductPicture(String productPicture) {
+        this.productPicture = productPicture;
+    }
+
+    public String getSp1() {
+        return sp1;
+    }
+
+    public void setSp1(String sp1) {
+        this.sp1 = sp1;
+    }
+
+    public String getSp2() {
+        return sp2;
+    }
+
+    public void setSp2(String sp2) {
+        this.sp2 = sp2;
+    }
+
+    public String getSp3() {
+        return sp3;
+    }
+
+    public void setSp3(String sp3) {
+        this.sp3 = sp3;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -182,6 +222,10 @@ public class OmsOrderDetail implements Serializable {
         sb.append(", couponAmount=").append(couponAmount);
         sb.append(", realAmount=").append(realAmount);
         sb.append(", giftIntegration=").append(giftIntegration);
+        sb.append(", productPicture=").append(productPicture);
+        sb.append(", sp1=").append(sp1);
+        sb.append(", sp2=").append(sp2);
+        sb.append(", sp3=").append(sp3);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

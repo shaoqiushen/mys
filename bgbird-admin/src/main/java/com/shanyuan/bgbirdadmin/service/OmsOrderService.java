@@ -14,4 +14,5 @@ import java.util.List;
  **/
 public interface OmsOrderService {
     List<OmsOrder> listOrderInfo(OmsOrderQueryParams omsOrderQueryParams,Integer pageNum,Integer pageSize);
+    int updateOrder(OmsOrder omsOrder);
 }

@@ -17,4 +17,27 @@
             #{item.skuCode,jdbcType=VARCHAR})
         </foreach>
     </insert>
+
+    <update id="updateList">
+        <foreach collection="list" separator=";" item="item" >
+            update pms_sku_stock set
+            product_id=#{item.productId},
+            promotion_price=#{item.promotionPrice,jdbcType=INTEGER},
+            price=#{item.price,jdbcType=INTEGER},
+            stock=#{item.stock,jdbcType=INTEGER},
+            sp1=#{item.sp1,jdbcType=VARCHAR},
+            sp2=#{item.sp2,jdbcType=VARCHAR},
+            sp3=#{item.sp3,jdbcType=VARCHAR},
+            picture=#{item.picture,jdbcType=VARCHAR},
+            sale_count=#{item.saleCount},
+            sku_code = #{item.skuCode}
+            where id=#{item.id}
+        </foreach>
+    </update>
+
+    <delete id="deleteList">
+        <foreach collection="ids" item="id" separator=";">
+            delete from pms_sku_stock where id=#{id}
+        </foreach>
+    </delete>
 </mapper>

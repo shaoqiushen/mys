@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shanyuan.bgbirdadmin.dao.PmsProductDao">
-    <resultMap id="updateInfoMap" type="com.shanyuan.bgbirdadmin.dto.PmsProductResult">
+    <resultMap id="updateInfoMap" type="com.shanyuan.bgbirdadmin.dto.PmsProductResult" extends="com.shanyuan.mapper.PmsProductMapper.BaseResultMap">
         <result column="id" jdbcType="INTEGER" property="id"></result>
         <collection property="memberPriceList" columnPrefix="member_" resultMap="com.shanyuan.mapper.PmsProductMemberPriceMapper.BaseResultMap"></collection>
         <collection property="fullReductionList" columnPrefix="full_" resultMap="com.shanyuan.mapper.PmsProductFullReductionMapper.BaseResultMap"></collection>
@@ -16,8 +16,8 @@
         pf.id full_id,pf.product_id full_product_id,pf.full_price full_full_price,pf.reduce_price full_reduce_price,
         a.id attribute_id,a.product_id attribute_product_id,a.product_attribute_id attribute_product_attribute_id,a.value attribute_value
         from pms_product p
---         left join pms_product_category pc
---         on pc.id = p.product_category_id
+        left join pms_product_category pc
+        on pc.category_id = p.product_category_id
         left join pms_product_full_reduction pf
         on pf.product_id = p.id
         left join pms_product_member_price m
@@ -27,7 +27,9 @@
         left join pms_product_attribute_value a
         on a.product_id = p.id
         where p.id=#{productId}
+        and p.delete_status=0
     </select>
+
 
 
 </mapper>
