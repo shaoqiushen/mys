@@ -19,4 +19,6 @@ public class PortalOrderDetailInfo {
     private String sp3;
     private Integer buyCount;
     private Integer price;
+    private String productPicture;
+    private Integer commentStatus;
 }

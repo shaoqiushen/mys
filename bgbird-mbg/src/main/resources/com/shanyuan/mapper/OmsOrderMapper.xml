@@ -31,6 +31,7 @@
     <result column="eat_type" jdbcType="INTEGER" property="eatType" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="comment_status" jdbcType="INTEGER" property="commentStatus" />
+    <result column="take_meal_no" jdbcType="VARCHAR" property="takeMealNo" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -95,7 +96,7 @@
     coupon_amount, pay_type, source_type, order_status, order_type, payment_time, integration, 
     promotion_info, notes, receiver_name, receiver_phone, receiver_address, delivery_time, 
     receive_time, comment_time, update_time, delete_status, confirm_status, eat_type, 
-    create_time, comment_status
+    create_time, comment_status, take_meal_no
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.OmsOrderExample" resultMap="BaseResultMap">
     select
@@ -140,7 +141,7 @@
       receiver_address, delivery_time, receive_time, 
       comment_time, update_time, delete_status, 
       confirm_status, eat_type, create_time, 
-      comment_status)
+      comment_status, take_meal_no)
     values (#{userId,jdbcType=VARCHAR}, #{couponId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
       #{totalAmount,jdbcType=INTEGER}, #{payAmount,jdbcType=INTEGER}, #{freightAmount,jdbcType=INTEGER}, 
       #{promotionAmount,jdbcType=INTEGER}, #{couponAmount,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, 
@@ -150,7 +151,7 @@
       #{receiverAddress,jdbcType=VARCHAR}, #{deliveryTime,jdbcType=TIMESTAMP}, #{receiveTime,jdbcType=TIMESTAMP}, 
       #{commentTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteStatus,jdbcType=INTEGER}, 
       #{confirmStatus,jdbcType=INTEGER}, #{eatType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{commentStatus,jdbcType=INTEGER})
+      #{commentStatus,jdbcType=INTEGER}, #{takeMealNo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.OmsOrder">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -242,6 +243,9 @@
       <if test="commentStatus != null">
         comment_status,
       </if>
+      <if test="takeMealNo != null">
+        take_meal_no,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -327,6 +331,9 @@
       </if>
       <if test="commentStatus != null">
         #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="takeMealNo != null">
+        #{takeMealNo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -426,6 +433,9 @@
       <if test="record.commentStatus != null">
         comment_status = #{record.commentStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.takeMealNo != null">
+        take_meal_no = #{record.takeMealNo,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -461,7 +471,8 @@
       confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
       eat_type = #{record.eatType,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      comment_status = #{record.commentStatus,jdbcType=INTEGER}
+      comment_status = #{record.commentStatus,jdbcType=INTEGER},
+      take_meal_no = #{record.takeMealNo,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -553,6 +564,9 @@
       <if test="commentStatus != null">
         comment_status = #{commentStatus,jdbcType=INTEGER},
       </if>
+      <if test="takeMealNo != null">
+        take_meal_no = #{takeMealNo,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -585,7 +599,8 @@
       confirm_status = #{confirmStatus,jdbcType=INTEGER},
       eat_type = #{eatType,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      comment_status = #{commentStatus,jdbcType=INTEGER}
+      comment_status = #{commentStatus,jdbcType=INTEGER},
+      take_meal_no = #{takeMealNo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

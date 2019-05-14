@@ -15,6 +15,8 @@
     <result column="act_status" jdbcType="INTEGER" property="actStatus" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="user_status" jdbcType="INTEGER" property="userStatus" />
+    <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, user_id, nickname, openid, wechat_id, avatar_url, tell_phone, gender, city, birthday, 
-    act_status, create_time, user_status
+    act_status, create_time, user_status, unionid, province
   </sql>
   <select id="selectByExample" parameterType="com.shanyuan.model.UmsUserExample" resultMap="BaseResultMap">
     select
@@ -115,13 +117,13 @@
     insert into ums_user (user_id, nickname, openid, 
       wechat_id, avatar_url, tell_phone, 
       gender, city, birthday, 
-      act_status, create_time, user_status
-      )
+      act_status, create_time, user_status, 
+      unionid, province)
     values (#{userId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
       #{wechatId,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{tellPhone,jdbcType=VARCHAR}, 
       #{gender,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
-      #{actStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{userStatus,jdbcType=INTEGER}
-      )
+      #{actStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{userStatus,jdbcType=INTEGER}, 
+      #{unionid,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shanyuan.model.UmsUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -165,6 +167,12 @@
       <if test="userStatus != null">
         user_status,
       </if>
+      <if test="unionid != null">
+        unionid,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -202,6 +210,12 @@
       </if>
       <if test="userStatus != null">
         #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -253,6 +267,12 @@
       <if test="record.userStatus != null">
         user_status = #{record.userStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.unionid != null">
+        unionid = #{record.unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,7 +292,9 @@
       birthday = #{record.birthday,jdbcType=VARCHAR},
       act_status = #{record.actStatus,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      user_status = #{record.userStatus,jdbcType=INTEGER}
+      user_status = #{record.userStatus,jdbcType=INTEGER},
+      unionid = #{record.unionid,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -316,6 +338,12 @@
       <if test="userStatus != null">
         user_status = #{userStatus,jdbcType=INTEGER},
       </if>
+      <if test="unionid != null">
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -332,7 +360,9 @@
       birthday = #{birthday,jdbcType=VARCHAR},
       act_status = #{actStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      user_status = #{userStatus,jdbcType=INTEGER}
+      user_status = #{userStatus,jdbcType=INTEGER},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -13,3 +13,5 @@ mybatis:
 spring:
   profiles:
     active: prod
+  jmx:
+    enabled: false

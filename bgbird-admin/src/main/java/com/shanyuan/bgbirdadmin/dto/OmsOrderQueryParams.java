@@ -18,8 +18,8 @@ import java.math.BigInteger;
 public class OmsOrderQueryParams {
     @ApiModelProperty(value="订单编号")
     private BigInteger orderId;
-    @ApiModelProperty(value="收货人姓名")
-    private String receiverName;
+    @ApiModelProperty(value="用户昵称")
+    private String nickName;
     @ApiModelProperty(value="订单提交时间")
     private String createTime;
     @ApiModelProperty(value="订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")

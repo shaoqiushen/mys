@@ -230,26 +230,27 @@ public class PmsProductServiceImpl implements PmsProductService {
         List<PmsSkuStock> updateSkuList = new ArrayList <>(  );
         //存储已使用过的id
         Map<Integer,Integer> idMap = new HashMap <>(  );
-            start: for(PmsSkuStock skuStock : skuStockList){
-                if(skuStock.getId() == null){
+            start: for(PmsSkuStock skuStock : skuStockList) {
+                if (skuStock.getId() == null) {
                     //说明是新增的数据
                     addSkuList.add( skuStock );
                 }
-               for(PmsSkuStock pmsSkuStock : pmsSkuStocks){
-                   if(skuStock.getId() == pmsSkuStock.getId()){
-                       //证明是更新的数据
-                       updateSkuList.add( skuStock );
-                       idMap.put( pmsSkuStock.getId(),pmsSkuStock.getId() );
-                       continue start;
-                   }else{
-                       if(idMap.get( pmsSkuStock.getId() )==null){
-                           //说明是要删除的数据
-                           deleteIds.add( pmsSkuStock.getId() );
-                       }
-                   }
-               }
+                for (PmsSkuStock pmsSkuStock : pmsSkuStocks) {
+                    if (skuStock.getId() == pmsSkuStock.getId()) {
+                        //证明是更新的数据
+                        updateSkuList.add( skuStock );
+                        idMap.put( pmsSkuStock.getId(), pmsSkuStock.getId() );
+                        continue start;
+                    } else {
+                        if (idMap.get( pmsSkuStock.getId() ) == null) {
+                            //说明是要删除的数据
+                            deleteIds.add( pmsSkuStock.getId() );
+                        }
+                    }
+                }
             }
-        idMap.clear();
+            //清除缓存
+            idMap.clear();
             if(addSkuList.size()>0){
 
                 //处理sku -code编码

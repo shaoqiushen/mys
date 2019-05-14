@@ -114,4 +114,9 @@ public class PortalOrderResult {
      * @mbggenerated
      */
     private Integer eatType;
+
+    /*取餐号*/
+    private String takeMealNo;
+    /*评价状态0否，1是*/
+    private Integer commentStatus;
 }

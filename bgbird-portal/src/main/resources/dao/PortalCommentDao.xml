@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdportal.dao.PortalCommentDao">
+
+
+  <insert id="createComment">
+    insert into oms_product_comment(product_id,user_id,avartal_url,nickname,
+    comment_content,comment_star,create_time,product_name,comment_picture,order_id)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.productId},#{item.userId},#{item.avartalUrl},#{item.nickname},
+      #{item.commentContent},#{item.commentStar},#{item.createTime},#{item.productName},
+      #{item.commentPicture},#{item.orderId})
+    </foreach>
+  </insert>
+</mapper>

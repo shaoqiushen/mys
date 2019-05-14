@@ -1904,6 +1904,76 @@ public class OmsOrderExample {
             addCriterion("comment_status not between", value1, value2, "commentStatus");
             return (Criteria) this;
         }
+
+        public Criteria andTakeMealNoIsNull() {
+            addCriterion("take_meal_no is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoIsNotNull() {
+            addCriterion("take_meal_no is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoEqualTo(String value) {
+            addCriterion("take_meal_no =", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoNotEqualTo(String value) {
+            addCriterion("take_meal_no <>", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoGreaterThan(String value) {
+            addCriterion("take_meal_no >", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoGreaterThanOrEqualTo(String value) {
+            addCriterion("take_meal_no >=", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoLessThan(String value) {
+            addCriterion("take_meal_no <", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoLessThanOrEqualTo(String value) {
+            addCriterion("take_meal_no <=", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoLike(String value) {
+            addCriterion("take_meal_no like", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoNotLike(String value) {
+            addCriterion("take_meal_no not like", value, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoIn(List<String> values) {
+            addCriterion("take_meal_no in", values, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoNotIn(List<String> values) {
+            addCriterion("take_meal_no not in", values, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoBetween(String value1, String value2) {
+            addCriterion("take_meal_no between", value1, value2, "takeMealNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andTakeMealNoNotBetween(String value1, String value2) {
+            addCriterion("take_meal_no not between", value1, value2, "takeMealNo");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

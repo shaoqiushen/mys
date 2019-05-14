@@ -1,7 +1,10 @@
 package com.shanyuan.bgbirdadmin.service;
 
+import com.shanyuan.bgbirdadmin.dto.OmsOrderDetailInfoResult;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
+import com.shanyuan.bgbirdadmin.dto.OmsOrderResult;
 import com.shanyuan.model.OmsOrder;
+import com.shanyuan.model.OmsOrderDetail;
 
 import java.util.List;
 
@@ -13,6 +16,7 @@ import java.util.List;
  * desc
  **/
 public interface OmsOrderService {
-    List<OmsOrder> listOrderInfo(OmsOrderQueryParams omsOrderQueryParams,Integer pageNum,Integer pageSize);
+    List<OmsOrderResult> listOrderInfo(OmsOrderQueryParams omsOrderQueryParams, Integer pageNum, Integer pageSize);
     int updateOrder(OmsOrder omsOrder);
+    List<OmsOrderDetailInfoResult> getOrderDetailInfo(Long userId);
 }

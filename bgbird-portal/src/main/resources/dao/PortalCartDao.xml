@@ -8,11 +8,14 @@
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
   </resultMap>
   <select id="listCartByUserId" resultMap="BaseResultMap">
-    select a.product_name ,a.id productId,a.price,a.picture,
-    b.buy_count,b.sp1,b.sp2,b.sp3,b.id cartId
+    select a.product_name ,a.id productId,a.picture,
+    b.buy_count,b.sp1,b.sp2,b.sp3,b.id cartId,
+    c.price
     from pms_product a
     left join oms_cart b
     on a.id = b.product_id
+    left join pms_sku_stock c
+    on b.sku_id = c.id
     where b.user_id = #{userId}
     and b.delete_status = 0
     order by b.id desc

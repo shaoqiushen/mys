@@ -70,11 +70,18 @@ public class OmsProductComment implements Serializable {
     private String productName;
 
     /**
-     * 评价图片
+     * 评价图片，多个以逗号分隔
      *
      * @mbggenerated
      */
     private String commentPicture;
+
+    /**
+     * 订单id
+     *
+     * @mbggenerated
+     */
+    private Long orderId;
 
     private static final long serialVersionUID = 1L;
 
@@ -166,6 +173,14 @@ public class OmsProductComment implements Serializable {
         this.commentPicture = commentPicture;
     }
 
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -183,6 +198,7 @@ public class OmsProductComment implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", productName=").append(productName);
         sb.append(", commentPicture=").append(commentPicture);
+        sb.append(", orderId=").append(orderId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

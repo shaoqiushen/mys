@@ -4,12 +4,12 @@
 
 
 
-  <resultMap id="baseResultMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderQueryResult">
+  <resultMap id="baseResultMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderQueryResult" extends="com.shanyuan.mapper.OmsOrderMapper.BaseResultMap">
     <id column="id" jdbcType="INTEGER" property="id"></id>
-    <result column="create_time" property="createTime" jdbcType="VARCHAR"></result>
-    <result column="order_id" property="orderId" jdbcType="BIGINT"></result>
-    <result column="total_amount" property="totalAmount" jdbcType="INTEGER"></result>
-    <result column="pay_amount" property="payAmount" jdbcType="INTEGER"></result>
+    <!--<result column="create_time" property="createTime" jdbcType="VARCHAR"></result>-->
+    <!--<result column="order_id" property="orderId" jdbcType="BIGINT"></result>-->
+    <!--<result column="total_amount" property="totalAmount" jdbcType="INTEGER"></result>-->
+    <!--<result column="pay_amount" property="payAmount" jdbcType="INTEGER"></result>-->
     <collection property="orderDetailList" columnPrefix="de_" resultMap="com.shanyuan.mapper.OmsOrderDetailMapper.BaseResultMap"></collection>
   </resultMap>
 
@@ -17,6 +17,8 @@
         <result column="product_name" jdbcType="VARCHAR" property="productName"></result>
         <result column="product_id" jdbcType="INTEGER" property="productId"></result>
         <result column="buy_count" jdbcType="INTEGER" property="buyCount"></result>
+        <result column="product_picture" jdbcType="VARCHAR" property="productPicture"></result>
+        <result column="comment_status" jdbcType="INTEGER" property="commentStatus"></result>
     </resultMap>
 
     <resultMap id="addressMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderAddressResult">
@@ -40,6 +42,9 @@
         <result column="create_time" jdbcType="BIGINT" property="createTime"></result>
         <result column="confirm_status" jdbcType="BIGINT" property="confirmStatus"></result>
         <result column="eat_type" jdbcType="INTEGER" property="eatType"></result>
+        <result column="take_meal_no" jdbcType="VARCHAR" property="takeMealNo"></result>
+        <result column="comment_status" jdbcType="INTEGER" property="commentStatus"></result>
+
     </resultMap>
 
     <resultMap id="orderDetailMap" type="com.shanyuan.bgbirdportal.dto.PortalOrderDetailResult" extends="com.shanyuan.mapper.OmsOrderMapper.BaseResultMap">
@@ -70,7 +75,7 @@
       b.buy_count de_buy_count,b.order_id de_order_id,b.product_picture de_product_picture,
       b.sp1 de_sp1,b.sp2 de_sp2,b.sp3 de_sp3
       from
-      (select a.create_time,a.total_amount,a.pay_amount,a.order_id,a.id
+      (select a.create_time,a.total_amount,a.pay_amount,a.order_id,a.id,a.order_status,a.comment_status
       from oms_order a
       where
       a.delete_status = 0
@@ -106,12 +111,12 @@
 
     <select id="findOrderInfoById" resultMap="orderDetailMap">
       select
-      a.id,a.order_id ord_order_id, a.create_time ord_create_time,
-      a.total_amount ord_total_amount,a.pay_amount ord_pay_amount,a.freight_amount ord_freight_amount,
+      a.id,a.order_id ord_order_id, a.create_time ord_create_time,a.take_meal_no ord_take_meal_no,a.order_status ord_order_status,
+      a.total_amount ord_total_amount,a.pay_amount ord_pay_amount,a.freight_amount ord_freight_amount,a.eat_type ord_eat_type,a.comment_status ord_comment_status,
       a.promotion_amount ord_promotion_amount,a.coupon_amount ord_coupon_amount,a.pay_type ord_pay_type,a.notes ord_notes,
       a.receiver_name address_receiver_name,a.receiver_phone address_receiver_phone,a.receiver_address address_receiver_address,
       b.product_id detail_product_id,b.product_name detail_product_name,b.price detail_price,b.buy_count detail_buy_count,
-      b.product_picture detail_product_picture,
+      b.product_picture detail_product_picture,b.comment_status detail_comment_status,
       b.sp1 detail_sp1,b.sp2 detail_sp2,b.sp3 detail_sp3
       from
       oms_order a

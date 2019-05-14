@@ -90,6 +90,15 @@ public class UmsUser implements Serializable {
      */
     private Integer userStatus;
 
+    private String unionid;
+
+    /**
+     * 省份
+     *
+     * @mbggenerated
+     */
+    private String province;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -196,6 +205,22 @@ public class UmsUser implements Serializable {
         this.userStatus = userStatus;
     }
 
+    public String getUnionid() {
+        return unionid;
+    }
+
+    public void setUnionid(String unionid) {
+        this.unionid = unionid;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -215,6 +240,8 @@ public class UmsUser implements Serializable {
         sb.append(", actStatus=").append(actStatus);
         sb.append(", createTime=").append(createTime);
         sb.append(", userStatus=").append(userStatus);
+        sb.append(", unionid=").append(unionid);
+        sb.append(", province=").append(province);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

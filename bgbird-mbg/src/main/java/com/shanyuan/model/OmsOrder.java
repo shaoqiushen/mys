@@ -202,6 +202,13 @@ public class OmsOrder implements Serializable {
      */
     private Integer commentStatus;
 
+    /**
+     * 取餐号
+     *
+     * @mbggenerated
+     */
+    private String takeMealNo;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -436,6 +443,14 @@ public class OmsOrder implements Serializable {
         this.commentStatus = commentStatus;
     }
 
+    public String getTakeMealNo() {
+        return takeMealNo;
+    }
+
+    public void setTakeMealNo(String takeMealNo) {
+        this.takeMealNo = takeMealNo;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -471,6 +486,7 @@ public class OmsOrder implements Serializable {
         sb.append(", eatType=").append(eatType);
         sb.append(", createTime=").append(createTime);
         sb.append(", commentStatus=").append(commentStatus);
+        sb.append(", takeMealNo=").append(takeMealNo);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

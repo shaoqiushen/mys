@@ -2,10 +2,15 @@ package com.shanyuan.bgbirdadmin.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.shanyuan.bgbirdadmin.dao.OmsOrderDao;
+import com.shanyuan.bgbirdadmin.dto.OmsOrderDetailInfoResult;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
+import com.shanyuan.bgbirdadmin.dto.OmsOrderResult;
 import com.shanyuan.bgbirdadmin.service.OmsOrderService;
+import com.shanyuan.mapper.OmsOrderDetailMapper;
 import com.shanyuan.mapper.OmsOrderMapper;
 import com.shanyuan.model.OmsOrder;
+import com.shanyuan.model.OmsOrderDetail;
+import com.shanyuan.model.OmsOrderDetailExample;
 import com.shanyuan.model.OmsOrderExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +34,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     OmsOrderMapper omsOrderMapper;
 
     @Override
-    public List<OmsOrder> listOrderInfo(OmsOrderQueryParams omsOrderQueryParams, Integer pageNum, Integer pageSize) {
+    public List<OmsOrderResult> listOrderInfo(OmsOrderQueryParams omsOrderQueryParams, Integer pageNum, Integer pageSize) {
         PageHelper.startPage( pageNum,pageSize );
         return omsOrderDao.listOrderInfo( omsOrderQueryParams );
     }
@@ -40,5 +45,10 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         example.createCriteria().andIdEqualTo( omsOrder.getId() )
                 .andOrderIdEqualTo( omsOrder.getOrderId() );
         return omsOrderMapper.updateByExampleSelective( omsOrder,example );
+    }
+
+    @Override
+    public List<OmsOrderDetailInfoResult> getOrderDetailInfo(Long userId) {
+        return omsOrderDao.getOrderDetailInfo( userId );
     }
 }

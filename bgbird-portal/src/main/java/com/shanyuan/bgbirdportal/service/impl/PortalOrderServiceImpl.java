@@ -12,10 +12,13 @@ import com.shanyuan.exception.BussinessException;
 import com.shanyuan.factory.SnowFlakeFactory;
 import com.shanyuan.mapper.*;
 import com.shanyuan.model.*;
+import com.shanyuan.utils.MyDateUtil;
+import com.shanyuan.utils.PrimaryGenerater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
@@ -57,6 +60,9 @@ public class PortalOrderServiceImpl implements PortalOrderService {
 
     @Autowired
     PortalProductSkuDao portalProductSkuDao;
+
+    @Autowired
+    OmsTakeMealNoMapper takeMealNoMapper;
 
 
 
@@ -194,6 +200,7 @@ public class PortalOrderServiceImpl implements PortalOrderService {
                         detail.setSp1( product.getSp1() );
                         detail.setSp2( product.getSp2() );
                         detail.setSp3( product.getSp3() );
+                        detail.setCommentStatus( 0 );
                         totalAmount+=price*omsCart.getBuyCount();
                         orderDetailList.add( detail );
 
@@ -218,6 +225,7 @@ public class PortalOrderServiceImpl implements PortalOrderService {
             omsOrder.setOrderId( orderId );
             omsOrder.setTotalAmount( totalAmount );
             omsOrder.setPayAmount( totalAmount );
+            omsOrder.setTakeMealNo( createTakeMealNo() );//生成取餐流水号//每天重置
             //假如是堂吃则不用配送
             if(portalOrderParams.getEatType() == 1){
                 //选择配送
@@ -231,7 +239,8 @@ public class PortalOrderServiceImpl implements PortalOrderService {
                 }
                 omsOrder.setReceiverPhone( umsUserReceiveAddresses.get( 0 ).getReceiverPhone() );
                 omsOrder.setReceiverName( umsUserReceiveAddresses.get( 0 ).getReceiverName() );
-                omsOrder.setReceiverAddress(  umsUserReceiveAddresses.get( 0 ).getAddressArea() + umsUserReceiveAddresses.get( 0 ).getAddressDetail() );
+                omsOrder.setReceiverAddress(  umsUserReceiveAddresses.get( 0 ).getAddressArea().replace( ",","" ) +
+                        umsUserReceiveAddresses.get( 0 ).getAddressDetail().replace( ",","" ) );
             }
 
         }else {
@@ -278,6 +287,27 @@ public class PortalOrderServiceImpl implements PortalOrderService {
     @Override
     public PortalOrderDetailResult findOrderInfoById(Long orderId) {
         return portalOrderDao.findOrderInfoById( orderId );
+    }
+
+
+    /*生成取餐流水号/每天重置/目前支持每天最多生成9999个*/
+    private synchronized String createTakeMealNo(){
+        OmsTakeMealNoExample example = new OmsTakeMealNoExample();
+        example.setOrderByClause( "id desc" );
+        example.createCriteria().andCreateTimeEqualTo( MyDateUtil.getShortNowTime() );
+        //获取上次的号
+        List <OmsTakeMealNo> omsTakeMealNos=takeMealNoMapper.selectByExample( example );
+        String takeMealNo = "T0000";
+        if(omsTakeMealNos.size() == 0){
+        }else{
+            takeMealNo=omsTakeMealNos.get( 0 ).getTakeMealNo();
+        }
+        takeMealNo = "T"+PrimaryGenerater.getInstance().generaterNextNumber( takeMealNo );
+        OmsTakeMealNo omsTakeMealNo = new OmsTakeMealNo();
+        omsTakeMealNo.setCreateTime( MyDateUtil.getShortNowTime() );
+        omsTakeMealNo.setTakeMealNo( takeMealNo );
+        takeMealNoMapper.insert( omsTakeMealNo );
+        return takeMealNo;
     }
 
 

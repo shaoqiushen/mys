@@ -2,10 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shanyuan.bgbirdadmin.dao.OmsOrderDao">
 
-    <select id="listOrderInfo" resultMap="com.shanyuan.mapper.OmsOrderMapper.BaseResultMap">
-        SELECT *
+    
+        <resultMap id="baseResultMap" type="com.shanyuan.bgbirdadmin.dto.OmsOrderResult">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="user_id" jdbcType="VARCHAR" property="userId" />
+            <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+            <result column="order_id" jdbcType="BIGINT" property="orderId" />
+            <result column="total_amount" jdbcType="INTEGER" property="totalAmount" />
+            <result column="pay_amount" jdbcType="INTEGER" property="payAmount" />
+            <result column="freight_amount" jdbcType="INTEGER" property="freightAmount" />
+            <result column="promotion_amount" jdbcType="INTEGER" property="promotionAmount" />
+            <result column="coupon_amount" jdbcType="INTEGER" property="couponAmount" />
+            <result column="pay_type" jdbcType="INTEGER" property="payType" />
+            <result column="source_type" jdbcType="INTEGER" property="sourceType" />
+            <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+            <result column="order_type" jdbcType="INTEGER" property="orderType" />
+            <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
+            <result column="integration" jdbcType="INTEGER" property="integration" />
+            <result column="promotion_info" jdbcType="VARCHAR" property="promotionInfo" />
+            <result column="notes" jdbcType="VARCHAR" property="notes" />
+            <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+            <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+            <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+            <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+            <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime" />
+            <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+            <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+            <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+            <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
+            <result column="eat_type" jdbcType="INTEGER" property="eatType" />
+            <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+            <result column="comment_status" jdbcType="INTEGER" property="commentStatus" />
+            <result column="take_meal_no" jdbcType="VARCHAR" property="takeMealNo" />
+            <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+
+        </resultMap>
+    <select id="listOrderInfo" resultMap="baseResultMap" >
+        SELECT o.* ,u.nickname
         FROM
-        oms_order
+        oms_order o
+        left join
+        ums_user u
+        on o.user_id = u.user_id
         WHERE
         delete_status = 0
         <if test="omsOrderQueryParams.orderId!=null">
@@ -17,10 +55,22 @@
         <if test="omsOrderQueryParams.createTime!=null and omsOrderQueryParams.createTime!=''">
             AND create_time LIKE concat(#{omsOrderQueryParams.createTime},"%")
         </if>
-        <if test="omsOrderQueryParams.receiverName!=null and omsOrderQueryParams.receiverName!=''">
-            AND (
-            receiver_name LIKE concat("%",#{omsOrderQueryParams.receiverName},"%")
+        <if test="omsOrderQueryParams.nickName!=null and omsOrderQueryParams.nickName!=''">
+            AND u.nickname
+             LIKE concat("%",#{omsOrderQueryParams.nickName},"%")
         </if>
+        order by o.create_time desc
+    </select>
+
+    <select id="getOrderDetailInfo" resultType="com.shanyuan.bgbirdadmin.dto.OmsOrderDetailInfoResult">
+        select sku.sp1,sku.sp2,sku.sp3,
+        o.product_name productName,o.product_id productId,o.product_picture productPicture,
+        o.price price
+        from oms_order_detail o
+        left join
+        pms_sku_stock sku
+        on o.product_id = sku.product_id
+        where o.order_id = #{orderId}
     </select>
 
 

@@ -83,6 +83,13 @@ public class OmsOrderDetail implements Serializable {
 
     private String sp3;
 
+    /**
+     * 评价状态（0否，1是）
+     *
+     * @mbggenerated
+     */
+    private Integer commentStatus;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -205,6 +212,14 @@ public class OmsOrderDetail implements Serializable {
         this.sp3 = sp3;
     }
 
+    public Integer getCommentStatus() {
+        return commentStatus;
+    }
+
+    public void setCommentStatus(Integer commentStatus) {
+        this.commentStatus = commentStatus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -226,6 +241,7 @@ public class OmsOrderDetail implements Serializable {
         sb.append(", sp1=").append(sp1);
         sb.append(", sp2=").append(sp2);
         sb.append(", sp3=").append(sp3);
+        sb.append(", commentStatus=").append(commentStatus);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

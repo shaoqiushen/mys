@@ -50,10 +50,10 @@ public class OssController {
 
     @ApiOperation( "上传图片" )
     @PostMapping("/uploadImg")
-    public CommonResult uploadImg(MultipartFile filename) {
+    public CommonResult uploadImg(MultipartFile file) {
         String filePath=null;
         try {
-            filePath=ossService.uploadImg( filename );
+            filePath=ossService.uploadImg( file );
             Map <String, String> resultMap=new HashMap <>();
             resultMap.put( "filePath", filePath );
             return new CommonResult().success( resultMap );

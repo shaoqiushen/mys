@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
@@ -14,7 +16,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @MapperScan({"com.shanyuan.mapper","com.shanyuan.bgbirdadmin.dao"})
 @EnableTransactionManagement
 @EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
-public class BgbirdAdminApplication {
+public class BgbirdAdminApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run( BgbirdAdminApplication.class, args );
@@ -33,5 +35,10 @@ public class BgbirdAdminApplication {
         resolver.setMaxInMemorySize(40960);
         resolver.setMaxUploadSize(3 * 1024 * 1024);//上传文件大小 10M 3*1024*1024
         return resolver;
+    }
+    /*将springboot项目打包成war*/
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        // 注意这里要指向原先用main方法执行的Application启动类
+        return builder.sources(BgbirdAdminApplication.class);
     }
 }

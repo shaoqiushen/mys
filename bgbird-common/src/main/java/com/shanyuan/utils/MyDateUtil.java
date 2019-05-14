@@ -59,4 +59,17 @@ public class MyDateUtil {
         Date date = format.parse( time );
         return date;
     }
+    /*Date转时间，精确到年月*/
+    public static String parseDateToTime(Date date){
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM" );
+        return format.format( date );
+    }
+
+    /*获取当前月，精确到年月*/
+    public static String getNowTime(){
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM" );
+        return format.format( new Date(  ) );
+    }
+
+
 }

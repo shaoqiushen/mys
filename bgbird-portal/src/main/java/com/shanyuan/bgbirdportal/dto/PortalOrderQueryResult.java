@@ -1,5 +1,6 @@
 package com.shanyuan.bgbirdportal.dto;
 
+import com.shanyuan.model.OmsOrder;
 import com.shanyuan.model.OmsOrderDetail;
 import lombok.Data;
 
@@ -13,11 +14,11 @@ import java.util.List;
  * desc
  **/
 @Data
-public class PortalOrderQueryResult {
-    private Integer id;
-    private Long orderId;
-    private String createTime;
-    private Integer totalAmount;
-    private Integer payAmount;
+public class PortalOrderQueryResult extends OmsOrder {
+//    private Integer id;
+//    private Long orderId;
+//    private String createTime;
+//    private Integer totalAmount;
+//    private Integer payAmount;
     private List<OmsOrderDetail> orderDetailList;
 }
