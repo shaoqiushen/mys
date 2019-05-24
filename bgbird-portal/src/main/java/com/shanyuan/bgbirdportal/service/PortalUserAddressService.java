@@ -19,6 +19,6 @@ public interface PortalUserAddressService {
     int deleteUserAddress(Integer id);
     @Transactional
     int updateUserAddress(Integer id,PortalUserAddressParams portalUserAddressParams);
-    List<UmsUserReceiveAddress> listUserAddressByUserId(String userId,Integer pageNum,Integer pageSize);
+    List<UmsUserReceiveAddress> listUserAddressByUserId(String userId, Integer pageNum, Integer pageSize);
     UmsUserReceiveAddress getUserAddressById(String user_id,Integer id);
 }

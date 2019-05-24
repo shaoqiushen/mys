@@ -2,9 +2,9 @@ package com.shanyuan.bgbirdadmin.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.shanyuan.bgbirdadmin.dto.UmsUserParams;
+import com.shanyuan.bgbirdadmin.dto.UmsUserResult;
 import com.shanyuan.bgbirdadmin.service.UmsUserService;
 import com.shanyuan.domain.CommonResult;
-import com.shanyuan.model.UmsUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +32,8 @@ public class UmsUserController {
     public CommonResult listUserInfo(@RequestBody UmsUserParams umsUserParams,
                                      @RequestParam(defaultValue="1")Integer pageNum,
                                      @RequestParam(defaultValue="10")Integer pageSize){
-        List <UmsUser> umsUsers=umsUserService.listUserInfo( umsUserParams, pageNum, pageSize );
-        PageInfo<UmsUser> pageInfo = new PageInfo <>( umsUsers );
+        List <UmsUserResult> umsUsers=umsUserService.listUserInfo( umsUserParams, pageNum, pageSize );
+        PageInfo<UmsUserResult> pageInfo = new PageInfo <>( umsUsers );
         return new CommonResult().pageSuccess( pageInfo );
     }
 }

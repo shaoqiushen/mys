@@ -17,7 +17,7 @@ public interface HomeService {
     /*获取首页展示内容*/
     HomeContentResult homeContent();
     /*根据分类id查询相应商品*/
-    List<PmsProduct> listProductByCategoryId(Integer pageNum,Integer pageSize,Integer categoryId);
+    List<PmsProduct> listProductByCategoryId(Integer pageNum, Integer pageSize, Integer categoryId);
     /*根据商品id查询商品详情*/
     PortalProductDetailResult findProductDetail(Integer productId);
     /*根据商品id查询参数信息*/

@@ -1,7 +1,7 @@
 package com.shanyuan.bgbirdadmin.service;
 
 import com.shanyuan.bgbirdadmin.dto.UmsUserParams;
-import com.shanyuan.model.UmsUser;
+import com.shanyuan.bgbirdadmin.dto.UmsUserResult;
 
 import java.util.List;
 
@@ -14,5 +14,5 @@ import java.util.List;
  **/
 public interface UmsUserService {
 
-    List<UmsUser> listUserInfo(UmsUserParams umsUserParams,Integer pageNum,Integer pageSize);
+    List<UmsUserResult> listUserInfo(UmsUserParams umsUserParams, Integer pageNum, Integer pageSize);
 }

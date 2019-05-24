@@ -7,7 +7,6 @@ import com.shanyuan.bgbirdadmin.dto.OmsOrderResult;
 import com.shanyuan.bgbirdadmin.service.OmsOrderService;
 import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.OmsOrder;
-import com.shanyuan.model.OmsOrderDetail;
 import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

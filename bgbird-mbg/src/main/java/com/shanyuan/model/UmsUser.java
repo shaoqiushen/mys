@@ -28,13 +28,6 @@ public class UmsUser implements Serializable {
     private String openid;
 
     /**
-     * 微信账号
-     *
-     * @mbggenerated
-     */
-    private String wechatId;
-
-    /**
      * 微信头像
      *
      * @mbggenerated
@@ -133,14 +126,6 @@ public class UmsUser implements Serializable {
         this.openid = openid;
     }
 
-    public String getWechatId() {
-        return wechatId;
-    }
-
-    public void setWechatId(String wechatId) {
-        this.wechatId = wechatId;
-    }
-
     public String getAvatarUrl() {
         return avatarUrl;
     }
@@ -231,7 +216,6 @@ public class UmsUser implements Serializable {
         sb.append(", userId=").append(userId);
         sb.append(", nickname=").append(nickname);
         sb.append(", openid=").append(openid);
-        sb.append(", wechatId=").append(wechatId);
         sb.append(", avatarUrl=").append(avatarUrl);
         sb.append(", tellPhone=").append(tellPhone);
         sb.append(", gender=").append(gender);

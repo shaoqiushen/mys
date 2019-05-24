@@ -1,14 +1,12 @@
 package com.shanyuan.bgbirdadmin.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.shanyuan.bgbirdadmin.dto.UmsAdminLoginParams;
 import com.shanyuan.bgbirdadmin.dto.UmsAdminLoginResult;
 import com.shanyuan.bgbirdadmin.dto.UmsAdminParams;
 import com.shanyuan.bgbirdadmin.service.UmsAdminService;
 import com.shanyuan.mapper.UmsAdminMapper;
 import com.shanyuan.model.UmsAdmin;
 import com.shanyuan.model.UmsAdminExample;
-import com.shanyuan.utils.MyDateUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

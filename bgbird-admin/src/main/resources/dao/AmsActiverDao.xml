@@ -21,6 +21,12 @@
         (select count(*) peopleCount from ams_active_user_apply b where a.id = b.active_id)
         from ams_active a
         where delete_status = 0
+        <if test="startTime1 != null and startTime1 !=''">
+            and a.begin_time &gt;=#{startTime1}
+        </if>
+        <if test="startTime2 != null and startTime2 !=''">
+            and a.begin_time &lt;=#{startTime2}
+        </if>
         order by id
     </select>
 </mapper>

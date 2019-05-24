@@ -2,10 +2,10 @@ package com.shanyuan.bgbirdportal.service.impl;
 
 import com.shanyuan.bgbirdportal.dto.PortalPointsResult;
 import com.shanyuan.bgbirdportal.service.PortalUserPointsService;
-import com.shanyuan.mapper.UmsUserPointsMapper;
+import com.shanyuan.mapper.UmsUserMemberMapper;
 import com.shanyuan.mapper.UmsUserPointsRecordMapper;
-import com.shanyuan.model.UmsUserPoints;
-import com.shanyuan.model.UmsUserPointsExample;
+import com.shanyuan.model.UmsUserMember;
+import com.shanyuan.model.UmsUserMemberExample;
 import com.shanyuan.model.UmsUserPointsRecord;
 import com.shanyuan.model.UmsUserPointsRecordExample;
 import com.shanyuan.utils.MyDateUtil;
@@ -31,14 +31,13 @@ public class PortalUserPointsServiceImpl implements PortalUserPointsService {
     UmsUserPointsRecordMapper umsUserPointsRecordMapper;
 
     @Autowired
-    UmsUserPointsMapper umsUserPointsMapper;
+    UmsUserMemberMapper umsUserMemberMapper;
 
     @Override
-    public UmsUserPoints getUserPointsInfo(String userId) {
-        UmsUserPointsExample umsUserPointsExample = new UmsUserPointsExample();
-        umsUserPointsExample.createCriteria().andUserIdEqualTo( userId );
-        List <UmsUserPoints> umsUserPoints=umsUserPointsMapper.selectByExample( umsUserPointsExample );
-        return umsUserPoints.get( 0 );
+    public UmsUserMember getUserPointsInfo(String userId) {
+        UmsUserMemberExample example = new UmsUserMemberExample();
+        example.createCriteria().andUserIdEqualTo( userId );
+        return umsUserMemberMapper.selectByExample( example ).get( 0 );
     }
 
     @Override

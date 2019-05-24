@@ -4,9 +4,8 @@ import com.shanyuan.bgbirdadmin.dao.UmsUserRechargeRecordDao;
 import com.shanyuan.bgbirdadmin.dto.UmsRechargeRecordParams;
 import com.shanyuan.bgbirdadmin.service.UmsUserRechargeService;
 import com.shanyuan.mapper.UmsUserRechargeRecordMapper;
-import com.shanyuan.model.*;
+import com.shanyuan.model.UmsUserRechargeRecord;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

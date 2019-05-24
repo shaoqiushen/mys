@@ -16,6 +16,4 @@ import lombok.Data;
 public class UmsUserParams {
     @ApiModelProperty(value="微信昵称")
     private String nickname;
-    @ApiModelProperty(value="微信账号")
-    private String wechat_id;
 }

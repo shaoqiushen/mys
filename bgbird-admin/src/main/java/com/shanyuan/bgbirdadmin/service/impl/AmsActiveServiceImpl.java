@@ -5,10 +5,8 @@ import com.shanyuan.bgbirdadmin.dao.AmsActiveDao;
 import com.shanyuan.bgbirdadmin.dto.AmsActiveParams;
 import com.shanyuan.bgbirdadmin.dto.AmsActiveResult;
 import com.shanyuan.bgbirdadmin.service.AmsActiveService;
-import com.shanyuan.mapper.AmsActiveDetailMapper;
 import com.shanyuan.mapper.AmsActiveMapper;
 import com.shanyuan.model.AmsActive;
-import com.shanyuan.model.AmsActiveDetail;
 import com.shanyuan.utils.MyDateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -32,9 +30,6 @@ public class AmsActiveServiceImpl implements AmsActiveService {
 
     @Autowired
     AmsActiveMapper amsActiveMapper;
-
-    @Autowired
-    AmsActiveDetailMapper amsActiveDetailMapper;
 
     @Autowired
     AmsActiveDao amsActiveDao;
@@ -80,8 +75,13 @@ public class AmsActiveServiceImpl implements AmsActiveService {
     }
 
     @Override
-    public List<AmsActiveResult> listAmsActiveInfo(Integer pageNum,Integer pageSize) {
+    public List<AmsActiveResult> listAmsActiveInfo(Integer pageNum,Integer pageSize,String startTime1,String startTime2) {
         PageHelper.startPage( pageNum,pageSize );
-        return amsActiveDao.listActiveInfo();
+        return amsActiveDao.listActiveInfo(startTime1,startTime2);
+    }
+
+    @Override
+    public AmsActive getActiveInfoById(Integer id) {
+        return amsActiveMapper.selectByPrimaryKey( id );
     }
 }

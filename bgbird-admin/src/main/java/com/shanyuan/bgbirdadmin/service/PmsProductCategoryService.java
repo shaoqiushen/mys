@@ -15,6 +15,6 @@ import java.util.List;
 public interface PmsProductCategoryService {
     int createProductCategory(PmsProductCategoryParams pmsProductCategoryParams);
     int updateProductCategory(Integer categoryId,PmsProductCategoryParams pmsProductCategoryParams);
-    List<PmsProductCategory> listProductCategory(Integer pageNum,Integer pageSize);
+    List<PmsProductCategory> listProductCategory(Integer pageNum, Integer pageSize);
     int deleteProductCategory(Integer categoryId);
 }

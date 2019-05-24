@@ -4,11 +4,9 @@ import com.github.pagehelper.PageInfo;
 import com.shanyuan.bgbirdportal.dto.PortalPointsResult;
 import com.shanyuan.bgbirdportal.service.PortalUserPointsService;
 import com.shanyuan.domain.CommonResult;
-import com.shanyuan.model.UmsUserPoints;
-import com.shanyuan.model.UmsUserPointsRecord;
+import com.shanyuan.model.UmsUserMember;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +33,7 @@ public class PortalUserPointsController {
     @ApiOperation( "获取用户积分信息" )
     @GetMapping("/getUserPoints")
     public CommonResult getUserPoints(@RequestParam String userId){
-        UmsUserPoints userPointsInfo=portalUserPointsService.getUserPointsInfo( userId );
+        UmsUserMember userPointsInfo=portalUserPointsService.getUserPointsInfo( userId );
         return new CommonResult().success( userPointsInfo );
     }
 

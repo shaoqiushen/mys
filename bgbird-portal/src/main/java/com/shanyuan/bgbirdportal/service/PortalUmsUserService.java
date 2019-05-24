@@ -4,8 +4,6 @@ import com.shanyuan.bgbirdportal.dto.PortalAuthorizationParams;
 import com.shanyuan.domain.CommonResult;
 import com.shanyuan.model.UmsUser;
 
-import java.util.List;
-
 /**
  * author  shenshaoqiu
  * <p>

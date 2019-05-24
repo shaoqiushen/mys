@@ -28,7 +28,7 @@ public class HomeServiceImpl implements HomeService {
     PmsProductCategoryMapper pmsProductCategoryMapper;
 
     @Autowired
-    CmsShufflingMapper cmsShufflingMapper;
+    CmsCarouselMapper cmsShufflingMapper;
 
     @Autowired
     PmsProductMapper pmsProductMapper;
@@ -82,8 +82,8 @@ public class HomeServiceImpl implements HomeService {
     }
 
 
-    private List<CmsShuffling> getHomeShufflingList(){
-        CmsShufflingExample example = new CmsShufflingExample();
+    private List<CmsCarousel> getHomeShufflingList(){
+        CmsCarouselExample example = new CmsCarouselExample();
         example.setOrderByClause( "sort asc" );
         example.createCriteria().andTypeEqualTo( 0 )
                 .andStatusEqualTo( 1 );

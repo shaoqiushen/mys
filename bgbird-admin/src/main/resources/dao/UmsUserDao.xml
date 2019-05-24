@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shanyuan.bgbirdadmin.dao.UmsUserDao">
+
+
+
+    <select id="listUserInfo" resultType="com.shanyuan.bgbirdadmin.dto.UmsUserResult">
+        select a.user_id userId,a.nickname,a.avatar_url avatarUrl,a.tell_phone tellPhone,a.birthday,a.act_status actStatus,a.create_time registTime,a.user_status userStatus,
+        b.integration,b.card_id cardId,
+        c.level_name levelName,
+        d.money_over moneyOver
+        from ums_user a
+        left join ums_user_member b
+        on a.user_id = b.user_id
+        left join ums_user_member_level c
+        on b.member_level_id = c.id
+        left join ums_user_recharge_over d
+        on a.user_id = d.user_id
+        where 
+        1=1
+        <if test="umsUserParams.nickname != null and umsUserParams.nickname != ''">
+            and a.nickname like '%${umsUserParams.nickname}%'
+        </if>
+        order by a.id desc
+    </select>
+</mapper>

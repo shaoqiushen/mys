@@ -1,8 +1,7 @@
 package com.shanyuan.bgbirdportal.service;
 
 import com.shanyuan.bgbirdportal.dto.PortalPointsResult;
-import com.shanyuan.model.UmsUserPoints;
-import com.shanyuan.model.UmsUserPointsRecord;
+import com.shanyuan.model.UmsUserMember;
 
 import java.util.List;
 
@@ -14,6 +13,6 @@ import java.util.List;
  * desc
  **/
 public interface PortalUserPointsService {
-    UmsUserPoints getUserPointsInfo(String userId);
+    UmsUserMember getUserPointsInfo(String userId);
     List<PortalPointsResult> getUserPointsRecord(String userId);
 }

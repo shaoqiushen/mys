@@ -1,7 +1,6 @@
 package com.shanyuan.bgbirdadmin.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.shanyuan.bgbirdadmin.dto.PmsProductCategoryParams;
 import com.shanyuan.bgbirdadmin.service.PmsProductCategoryService;
 import com.shanyuan.mapper.PmsProductCategoryMapper;

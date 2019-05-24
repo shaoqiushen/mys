@@ -3,10 +3,8 @@ package com.shanyuan.bgbirdportal.dao;
 import com.shanyuan.bgbirdportal.dto.PortalOrderParams;
 import com.shanyuan.bgbirdportal.dto.PortalProductInfoResult;
 import com.shanyuan.bgbirdportal.dto.PortalProductSkuInfo;
-import com.shanyuan.bgbirdportal.dto.PromotionProduct;
 import com.shanyuan.model.OmsCart;
 import com.shanyuan.model.PmsProduct;
-import com.shanyuan.model.PmsSkuStock;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

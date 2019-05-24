@@ -2,7 +2,6 @@ package com.shanyuan.bgbirdadmin.dao;
 
 import com.shanyuan.model.PmsProductAttributeValue;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

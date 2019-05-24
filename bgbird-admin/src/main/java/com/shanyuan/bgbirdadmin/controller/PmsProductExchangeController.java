@@ -4,15 +4,12 @@ import com.shanyuan.bgbirdadmin.dto.PmsProductExchangeParams;
 import com.shanyuan.bgbirdadmin.dto.PmsProductExchangeResult;
 import com.shanyuan.bgbirdadmin.service.PmsProductExchangeService;
 import com.shanyuan.domain.CommonResult;
-import com.shanyuan.model.PmsProductExchange;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * author  shenshaoqiu

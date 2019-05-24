@@ -1,6 +1,6 @@
 package com.shanyuan.bgbirdportal.dto;
 
-import com.shanyuan.model.CmsShuffling;
+import com.shanyuan.model.CmsCarousel;
 import com.shanyuan.model.PmsProduct;
 import com.shanyuan.model.PmsProductCategory;
 import lombok.Data;
@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 public class HomeContentResult {
     /*轮播广告*/
-    List<CmsShuffling> shufflingList;
+    List<CmsCarousel> shufflingList;
 
     //TODO
     /*会员卡*/

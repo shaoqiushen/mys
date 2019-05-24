@@ -4,7 +4,6 @@ import com.shanyuan.bgbirdadmin.dto.OmsOrderDetailInfoResult;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderResult;
 import com.shanyuan.model.OmsOrder;
-import com.shanyuan.model.OmsOrderDetail;
 
 import java.util.List;
 

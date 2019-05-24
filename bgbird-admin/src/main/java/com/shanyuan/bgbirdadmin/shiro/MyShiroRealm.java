@@ -1,6 +1,5 @@
 package com.shanyuan.bgbirdadmin.shiro;
 
-import com.shanyuan.bgbirdadmin.service.UmsAdminService;
 import com.shanyuan.mapper.UmsAdminMapper;
 import com.shanyuan.model.UmsAdmin;
 import com.shanyuan.model.UmsAdminExample;

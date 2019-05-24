@@ -25,7 +25,7 @@ public interface PmsProductService {
     int createProduct(PmsProductParams productParams);
 
     /*商品列表*/
-    List<PmsProduct> listProduct(PmsProductQueryParams pmsProductQueryParams,Integer pageNum,Integer pageSize);
+    List<PmsProduct> listProduct(PmsProductQueryParams pmsProductQueryParams, Integer pageNum, Integer pageSize);
     /*修改商品删除状态*/
     int updateProductDeleteStatus(List<Integer> ids,Integer deleteStatus);
     /*根据商品id获取商品的编辑信息*/

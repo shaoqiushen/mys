@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -63,7 +64,20 @@ public class PortalOrderController {
             @Validated @RequestBody PortalOrderQueryParams portalOrderQueryParams, BindingResult bindingResult){
         List <PortalOrderQueryResult> portalOrderQueryResults=portalOrderService.listOrderInfoByParams( portalOrderQueryParams,pageNum,pageSize );
         PageInfo<PortalOrderQueryResult> portalOrderQueryResultPageInfo = new PageInfo <>( portalOrderQueryResults );
-        portalOrderQueryResultPageInfo.setTotal( portalOrderDao.countOrder( portalOrderQueryParams ) );
+        int total=portalOrderDao.countOrder( portalOrderQueryParams );
+        portalOrderQueryResultPageInfo.setTotal( total );
+        int totalPage = 0;
+        DecimalFormat df = new DecimalFormat("#.##");
+        double v=Double.parseDouble( df.format( (double ) total / pageSize ) );
+
+        if((v)%2==0 || (v)%2 == 1){
+            //说明是分页不产生多余数据
+            totalPage = (int)v;
+        }else{
+            totalPage  = (int) v + 1;
+        }
+        portalOrderQueryResultPageInfo.setPages( totalPage );
+        portalOrderQueryResultPageInfo.setPageNum( pageNum );
         return new CommonResult().pageSuccess( portalOrderQueryResultPageInfo );
     }
 

@@ -3,7 +3,6 @@ package com.shanyuan.bgbirdadmin.dao;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderDetailInfoResult;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderQueryParams;
 import com.shanyuan.bgbirdadmin.dto.OmsOrderResult;
-import com.shanyuan.model.OmsOrder;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

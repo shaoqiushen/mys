@@ -11,7 +11,6 @@ import com.shanyuan.model.UmsUser;
 import com.shanyuan.model.UmsUserExample;
 import com.shanyuan.utils.HttpUtils;
 import com.shanyuan.utils.PrimaryGenerater;
-import com.shanyuan.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

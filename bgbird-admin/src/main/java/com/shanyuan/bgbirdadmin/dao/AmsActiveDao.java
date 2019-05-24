@@ -14,5 +14,5 @@ import java.util.List;
  **/
 public interface AmsActiveDao {
     int deleteActive(@Param( "id" ) Integer id);
-    List<AmsActiveResult> listActiveInfo();
+    List<AmsActiveResult> listActiveInfo(@Param( "startTime1" ) String startTime1,@Param( "startTime2" ) String startTime2);
 }

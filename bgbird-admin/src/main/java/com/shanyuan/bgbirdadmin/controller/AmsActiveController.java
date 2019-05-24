@@ -5,6 +5,7 @@ import com.shanyuan.bgbirdadmin.dto.AmsActiveParams;
 import com.shanyuan.bgbirdadmin.dto.AmsActiveResult;
 import com.shanyuan.bgbirdadmin.service.AmsActiveService;
 import com.shanyuan.domain.CommonResult;
+import com.shanyuan.model.AmsActive;
 import com.shanyuan.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -56,10 +57,20 @@ public class AmsActiveController {
 
     @PostMapping("/listActiveInfo")
     @ApiOperation( "分页查询活动列表" )
-    public CommonResult listActiveInfo(@RequestParam(defaultValue="1")Integer pageNum,@RequestParam(defaultValue="10")Integer pageSize){
-        List <AmsActiveResult> amsActiveResults=amsActiveService.listAmsActiveInfo(pageNum,pageSize);
+    public CommonResult listActiveInfo(@RequestParam(defaultValue="1")Integer pageNum,
+                                       @RequestParam(defaultValue="10")Integer pageSize,
+                                       @RequestParam(defaultValue="") String startTime1,
+                                       @RequestParam(defaultValue="") String startTime2){
+        List <AmsActiveResult> amsActiveResults=amsActiveService.listAmsActiveInfo(pageNum,pageSize,startTime1,startTime2);
         PageInfo<AmsActiveResult> pageInfo = new PageInfo <>( amsActiveResults );
         return new CommonResult().pageSuccess( pageInfo );
+    }
+
+    @GetMapping("/getActiveInfoById/{id}")
+    @ApiOperation( "查询活动详情" )
+    public CommonResult getActiveInfoById(@PathVariable Integer id){
+        AmsActive activeInfoById=amsActiveService.getActiveInfoById( id );
+        return new CommonResult().success( activeInfoById );
     }
 
 

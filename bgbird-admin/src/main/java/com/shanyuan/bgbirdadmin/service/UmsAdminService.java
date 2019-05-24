@@ -1,6 +1,5 @@
 package com.shanyuan.bgbirdadmin.service;
 
-import com.shanyuan.bgbirdadmin.dto.UmsAdminLoginParams;
 import com.shanyuan.bgbirdadmin.dto.UmsAdminLoginResult;
 import com.shanyuan.bgbirdadmin.dto.UmsAdminParams;
 import com.shanyuan.model.UmsAdmin;
@@ -19,7 +18,7 @@ public interface UmsAdminService {
     int createAdmin(UmsAdminParams umsAdminParams);
     int updateAdmin(Integer id,UmsAdminParams umsAdminParams);
     int deleteAdmin(Integer id);
-    List<UmsAdmin> listAdmin(Integer pageNum,Integer pageSize);
+    List<UmsAdmin> listAdmin(Integer pageNum, Integer pageSize);
 
     UmsAdminLoginResult login(String account,String password);
 }
