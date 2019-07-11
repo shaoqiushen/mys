@@ -353,6 +353,66 @@ public class PmsProductAttributeValueExample {
             addCriterion("value not between", value1, value2, "value");
             return (Criteria) this;
         }
+
+        public Criteria andAttrTypeIsNull() {
+            addCriterion("attr_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeIsNotNull() {
+            addCriterion("attr_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeEqualTo(Integer value) {
+            addCriterion("attr_type =", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeNotEqualTo(Integer value) {
+            addCriterion("attr_type <>", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeGreaterThan(Integer value) {
+            addCriterion("attr_type >", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("attr_type >=", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeLessThan(Integer value) {
+            addCriterion("attr_type <", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("attr_type <=", value, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeIn(List<Integer> values) {
+            addCriterion("attr_type in", values, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeNotIn(List<Integer> values) {
+            addCriterion("attr_type not in", values, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeBetween(Integer value1, Integer value2) {
+            addCriterion("attr_type between", value1, value2, "attrType");
+            return (Criteria) this;
+        }
+
+        public Criteria andAttrTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("attr_type not between", value1, value2, "attrType");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

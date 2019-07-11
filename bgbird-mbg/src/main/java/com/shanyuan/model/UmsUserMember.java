@@ -18,7 +18,7 @@ public class UmsUserMember implements Serializable {
      *
      * @mbggenerated
      */
-    private String cardId;
+    private String cardCode;
 
     /**
      * 用户等级id
@@ -59,12 +59,12 @@ public class UmsUserMember implements Serializable {
         this.userId = userId;
     }
 
-    public String getCardId() {
-        return cardId;
+    public String getCardCode() {
+        return cardCode;
     }
 
-    public void setCardId(String cardId) {
-        this.cardId = cardId;
+    public void setCardCode(String cardCode) {
+        this.cardCode = cardCode;
     }
 
     public Integer getMemberLevelId() {
@@ -99,7 +99,7 @@ public class UmsUserMember implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", userId=").append(userId);
-        sb.append(", cardId=").append(cardId);
+        sb.append(", cardCode=").append(cardCode);
         sb.append(", memberLevelId=").append(memberLevelId);
         sb.append(", integration=").append(integration);
         sb.append(", createTime=").append(createTime);

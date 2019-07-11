@@ -235,73 +235,73 @@ public class UmsUserMemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andCardIdIsNull() {
-            addCriterion("card_id is null");
+        public Criteria andCardCodeIsNull() {
+            addCriterion("card_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdIsNotNull() {
-            addCriterion("card_id is not null");
+        public Criteria andCardCodeIsNotNull() {
+            addCriterion("card_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdEqualTo(String value) {
-            addCriterion("card_id =", value, "cardId");
+        public Criteria andCardCodeEqualTo(String value) {
+            addCriterion("card_code =", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotEqualTo(String value) {
-            addCriterion("card_id <>", value, "cardId");
+        public Criteria andCardCodeNotEqualTo(String value) {
+            addCriterion("card_code <>", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdGreaterThan(String value) {
-            addCriterion("card_id >", value, "cardId");
+        public Criteria andCardCodeGreaterThan(String value) {
+            addCriterion("card_code >", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdGreaterThanOrEqualTo(String value) {
-            addCriterion("card_id >=", value, "cardId");
+        public Criteria andCardCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("card_code >=", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdLessThan(String value) {
-            addCriterion("card_id <", value, "cardId");
+        public Criteria andCardCodeLessThan(String value) {
+            addCriterion("card_code <", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdLessThanOrEqualTo(String value) {
-            addCriterion("card_id <=", value, "cardId");
+        public Criteria andCardCodeLessThanOrEqualTo(String value) {
+            addCriterion("card_code <=", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdLike(String value) {
-            addCriterion("card_id like", value, "cardId");
+        public Criteria andCardCodeLike(String value) {
+            addCriterion("card_code like", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotLike(String value) {
-            addCriterion("card_id not like", value, "cardId");
+        public Criteria andCardCodeNotLike(String value) {
+            addCriterion("card_code not like", value, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdIn(List<String> values) {
-            addCriterion("card_id in", values, "cardId");
+        public Criteria andCardCodeIn(List<String> values) {
+            addCriterion("card_code in", values, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotIn(List<String> values) {
-            addCriterion("card_id not in", values, "cardId");
+        public Criteria andCardCodeNotIn(List<String> values) {
+            addCriterion("card_code not in", values, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdBetween(String value1, String value2) {
-            addCriterion("card_id between", value1, value2, "cardId");
+        public Criteria andCardCodeBetween(String value1, String value2) {
+            addCriterion("card_code between", value1, value2, "cardCode");
             return (Criteria) this;
         }
 
-        public Criteria andCardIdNotBetween(String value1, String value2) {
-            addCriterion("card_id not between", value1, value2, "cardId");
+        public Criteria andCardCodeNotBetween(String value1, String value2) {
+            addCriterion("card_code not between", value1, value2, "cardCode");
             return (Criteria) this;
         }
 

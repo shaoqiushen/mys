@@ -78,7 +78,7 @@
       b.buy_count de_buy_count,b.order_id de_order_id,b.product_picture de_product_picture,
       b.sp1 de_sp1,b.sp2 de_sp2,b.sp3 de_sp3
       from
-      (select a.create_time,a.total_amount,a.pay_amount,a.order_id,a.id,a.order_status,a.comment_status
+      (select a.create_time,a.total_amount,a.pay_amount,a.order_id,a.id,a.order_status,a.comment_status,eat_type
       from oms_order a
       where
       a.delete_status = 0

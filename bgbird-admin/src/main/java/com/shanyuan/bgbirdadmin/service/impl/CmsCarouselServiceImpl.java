@@ -30,6 +30,7 @@ public class CmsCarouselServiceImpl implements CmsCarouselService {
         CmsCarousel cmsCarousel = new CmsCarousel();
         BeanUtils.copyProperties( cmsShufflingParams,cmsCarousel );
         cmsCarousel.setCreateTime( new Date(  ) );
+        cmsCarousel.setDeleteStatus( 0 );
         return cmsCarouselMapper.insert( cmsCarousel );
     }
 
@@ -37,6 +38,7 @@ public class CmsCarouselServiceImpl implements CmsCarouselService {
     public int updateCarouselDeleteStatus(Integer id, Integer deleteStatus) {
         CmsCarousel cmsCarousel = new CmsCarousel();
         cmsCarousel.setDeleteStatus( deleteStatus );
+        cmsCarousel.setId( id );
         return cmsCarouselMapper.updateByPrimaryKeySelective( cmsCarousel );
     }
 
@@ -44,6 +46,7 @@ public class CmsCarouselServiceImpl implements CmsCarouselService {
     public List<CmsCarousel> listCarousel() {
         CmsCarouselExample example = new CmsCarouselExample();
         example.setOrderByClause( "sort" );
+        example.createCriteria().andDeleteStatusEqualTo( 0 );
         return cmsCarouselMapper.selectByExample( example );
     }
 

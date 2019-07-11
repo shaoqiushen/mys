@@ -16,4 +16,6 @@ public interface PortalUmsUserService {
     UmsUser getUserInfo(String userId);
     /*用户授权*/
     CommonResult authorization(PortalAuthorizationParams portalAuthorizationParams);
+
+    CommonResult getToken(String userId);
 }

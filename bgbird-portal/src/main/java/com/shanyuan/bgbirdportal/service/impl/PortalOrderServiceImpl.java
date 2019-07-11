@@ -1,17 +1,22 @@
 package com.shanyuan.bgbirdportal.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.shanyuan.bgbirdportal.dao.PortalOrderDao;
 import com.shanyuan.bgbirdportal.dao.PortalProductDao;
 import com.shanyuan.bgbirdportal.dao.PortalProductSkuDao;
 import com.shanyuan.bgbirdportal.dto.*;
 import com.shanyuan.bgbirdportal.service.PortalOrderService;
+import com.shanyuan.bgbirdportal.service.PortalUmsUserService;
 import com.shanyuan.bgbirdportal.service.PortalUserAddressService;
 import com.shanyuan.bgbirdportal.service.PromotionService;
 import com.shanyuan.domain.CommonResult;
+import com.shanyuan.domain.PayInfo;
+import com.shanyuan.domain.PrePayResult;
 import com.shanyuan.exception.BussinessException;
 import com.shanyuan.factory.SnowFlakeFactory;
 import com.shanyuan.mapper.*;
 import com.shanyuan.model.*;
+import com.shanyuan.utils.HttpUtils;
 import com.shanyuan.utils.MyDateUtil;
 import com.shanyuan.utils.PrimaryGenerater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,96 +69,16 @@ public class PortalOrderServiceImpl implements PortalOrderService {
     @Autowired
     OmsTakeMealNoMapper takeMealNoMapper;
 
+    @Autowired
+    PortalUmsUserService portalUmsUserService;
 
+    @Autowired
+    OmsOrderPrepayMapper omsOrderPrepayMapper;
 
-
-//    @Override
-//    public CommonResult createOrder(PortalOrderParams portalOrderParams) {
-//        //查商品信息
-//        PortalProductInfoResult productInfoResult=portalProductDao.findProductInfoByParams( portalOrderParams );
-//        if(productInfoResult == null){
-//            return new CommonResult().failed( "下单失败，商品不存在" );
-//        }
-//        //判断商品的库存是否充足
-//        if(productInfoResult.getStock() < portalOrderParams.getBuyCount()){
-//            return new CommonResult().failed( "下单失败，库存不足" );
-//        }
-//        //商品售价
-//        int price;
-//
-//        if(productInfoResult.getPromotionPrice()==0){
-//            //说明没有促销，使用原价
-//            price = productInfoResult.getPrice();
-//        }else{
-//            price = productInfoResult.getPromotionPrice();
-//        }
-//
-//        //判断是否使用了优惠券
-//        if(portalOrderParams.getCouponId() == null){
-//            //不使用优惠券
-//        }else{
-//            //使用了优惠券
-//        }
-//        //优惠券抵扣金额
-//        int couponAmount = 0;
-//        //邮费
-//        int freightAmount = 0;
-//        //促销优惠金额
-//        int promotionAmount = 0;
-//
-//
-//        //锁定库存//负数//超时未支付或异常时需要还原库存
-//        lockStock(productInfoResult.getSkuId(),portalOrderParams.getBuyCount());
-//
-//        //计算商品总价
-//        int total_amount = price*portalOrderParams.getBuyCount() ;
-//        if(total_amount>=productInfoResult.getFullPrice()){
-//            //假如大于满减
-//            promotionAmount = productInfoResult.getReducePrice();
-//        }
-//
-//        Long orderId = SnowFlakeFactory.getInstance().getId();
-//        OmsOrder omsOrder = new OmsOrder();
-//        omsOrder.setUserId( portalOrderParams.getUserId() );
-//        omsOrder.setOrderId( orderId );
-//        omsOrder.setTotalAmount( total_amount );
-//        omsOrder.setCouponId( portalOrderParams.getCouponId() );//优惠券id
-//        omsOrder.setPayType( portalOrderParams.getPayType() );
-//        omsOrder.setOrderStatus( 0 );//待付款
-//        omsOrder.setSourceType( portalOrderParams.getSourceType() );
-//        omsOrder.setCouponAmount( couponAmount );//优惠券抵扣金额
-//        omsOrder.setFreightAmount( freightAmount );//邮费
-//        omsOrder.setNotes( portalOrderParams.getNotes() );
-//        omsOrder.setCreateTime( new Date(  ) );//订单创建时间
-//        omsOrder.setPromotionAmount( promotionAmount );//促销优惠金额
-//        omsOrder.setDeleteStatus( 0 );
-//        //查询收货人信息
-//        UmsUserReceiveAddress userAddressById=portalUserAddressService.getUserAddressById( portalOrderParams.getUserId(), portalOrderParams.getAddressId() );
-//        omsOrder.setReceiverAddress( userAddressById.getAddressArea()+userAddressById.getAddressDetail() );
-//        omsOrder.setReceiverName( userAddressById.getReceiverName() );
-//        omsOrder.setReceiverPhone( userAddressById.getReceiverPhone() );
-//        omsOrder.setConfirmStatus( 0 );//未收货
-//
-//        //实付=总额+运费-优惠券抵扣金额-促销优惠金额
-//        int payAmount = total_amount + freightAmount - couponAmount - promotionAmount;
-//        omsOrder.setPayAmount( payAmount );
-//        //入订单主表
-//        omsOrderMapper.insert( omsOrder );
-//
-//        //订单详情
-//        OmsOrderDetail omsOrderDetail = new OmsOrderDetail();
-//        omsOrderDetail.setBuyCount( portalOrderParams.getBuyCount() );
-//        omsOrderDetail.setOrderId( orderId );
-//        omsOrderDetail.setPrice( price );
-//        omsOrderDetail.setProductName( productInfoResult.getProductName() );
-//        omsOrderDetail.setProductId( portalOrderParams.getProductId() );
-//        omsOrderDetailMapper.insert( omsOrderDetail );
-//
-//        return new CommonResult().success( "下单成功" );
-//    }
 
     @Override
     public CommonResult createOrderByCart(PortalOrderParams portalOrderParams) {
+
         //根据用户id拉取其相应的购物车信息
         OmsCartExample example = new OmsCartExample();
         example.createCriteria().andDeleteStatusEqualTo( 0 )
@@ -264,9 +189,43 @@ public class PortalOrderServiceImpl implements PortalOrderService {
                 .andUserIdEqualTo( portalOrderParams.getUserId() )
                 .andIdIn( cartIdList );
         omsCartMapper.deleteByExample( cartExample );
-        Map<String,Long> orderIdMap = new HashMap <>(  );
-        orderIdMap.put( "orderId",orderId );
-        return new CommonResult().success( "下单成功",orderIdMap);
+
+        //根据userid 查询用户的openid
+        UmsUser userInfo=portalUmsUserService.getUserInfo( portalOrderParams.getUserId() );
+
+        //调用支付
+        PayInfo payInfo = new PayInfo();
+        payInfo.setOut_trade_no( orderId +"");
+        payInfo.setOpenid( userInfo.getOpenid() );
+        payInfo.setTrade_type( "JSAPI" );
+        payInfo.setNotify_url( "http://www.shanyuankj.cn/bgbird-portal/order/notify" );
+        payInfo.setBody( portalOrderParams.getBody() );
+        payInfo.setSpbill_create_ip( portalOrderParams.getSpbillCreateIp() );
+        payInfo.setTotal_fee( 1+"" );
+        PrePayResult prePayResult=this.payToWechat( payInfo );
+        if(prePayResult.getStatus() != 1){
+            return new CommonResult().failed( "下单失败"+prePayResult.getMsg() );
+        }else{
+            //预支付信息入库
+
+            //成功
+            OmsOrderPrepay omsOrderPrepay = new OmsOrderPrepay();
+            omsOrderPrepay.setApp( "77903002" );
+            omsOrderPrepay.setBody( payInfo.getBody() );
+            omsOrderPrepay.setOpenid( payInfo.getOpenid() );
+            omsOrderPrepay.setOutTradeNo( payInfo.getOut_trade_no() );
+            omsOrderPrepay.setResultCode( 0 );
+            omsOrderPrepay.setSignType( prePayResult.getData().getSignType() );
+            omsOrderPrepay.setPaySign( prePayResult.getData().getPaySign() );
+            omsOrderPrepay.setTimeStamp( prePayResult.getData().getTimeStamp() );
+            omsOrderPrepay.setTotalFee( payInfo.getTotal_fee() );
+            omsOrderPrepay.setPrepayId( prePayResult.getData().getPackage() );
+            omsOrderPrepay.setNoncestr( prePayResult.getData().getNonceStr() );
+            omsOrderPrepay.setUserId( portalOrderParams.getUserId() );
+            omsOrderPrepayMapper.insert( omsOrderPrepay );
+        }
+        prePayResult.setOrderId( orderId );
+        return new CommonResult().success( "下单成功",prePayResult);
     }
 
     @Override
@@ -287,6 +246,43 @@ public class PortalOrderServiceImpl implements PortalOrderService {
     @Override
     public PortalOrderDetailResult findOrderInfoById(Long orderId) {
         return portalOrderDao.findOrderInfoById( orderId );
+    }
+
+    @Override
+    public OmsOrder getOrder(Long orderId) {
+        OmsOrderExample example = new OmsOrderExample();
+        example.createCriteria().andOrderIdEqualTo( orderId );
+        List <OmsOrder> omsOrders=omsOrderMapper.selectByExample( example );
+        if(omsOrders.size() > 0){
+            return omsOrders.get( 0 );
+        }
+        return null;
+    }
+
+    @Override
+    public int updateOrderStatus(Long orderId) {
+        OmsOrder omsOrder = new OmsOrder();
+        //订单状态：0->待付款；1->已支付，待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
+        omsOrder.setOrderStatus( 1 );
+        OmsOrderExample example = new OmsOrderExample();
+        example.createCriteria().andOrderIdEqualTo( orderId );
+        return omsOrderMapper.updateByExampleSelective( omsOrder,example );
+    }
+
+    @Override
+    public int updatePrePayStatus(String outTradeNo) {
+        OmsOrderPrepay omsOrderPrepay = new OmsOrderPrepay();
+        omsOrderPrepay.setResultCode( 1 );
+        OmsOrderPrepayExample example = new OmsOrderPrepayExample();
+        example.createCriteria().andOutTradeNoEqualTo( outTradeNo );
+        return omsOrderPrepayMapper.updateByExampleSelective( omsOrderPrepay,example );
+    }
+
+    @Override
+    public OmsOrderPrepay getPayInfo(String orderId) {
+        OmsOrderPrepayExample example = new OmsOrderPrepayExample();
+        example.createCriteria().andOutTradeNoEqualTo( orderId );
+        return omsOrderPrepayMapper.selectByExample( example ).get( 0 );
     }
 
 
@@ -310,5 +306,39 @@ public class PortalOrderServiceImpl implements PortalOrderService {
         return takeMealNo;
     }
 
+
+    /**
+     * descrition: 发起支付
+     * create_user: shenshaoqiu
+     * create_date: 2019/1/18
+     * create_time: 9:17
+     * param:
+     * return:
+     **/
+    private PrePayResult payToWechat(PayInfo payInfo) {
+        PrePayResult prePayCostVO = new PrePayResult();
+
+        String url="https://www.shanyuankj.cn/wechat/pay/unifiedorderbyisp";
+
+        StringBuffer stringBuffer=new StringBuffer();
+        stringBuffer.append( "app="+"77903002"+"&" );
+        stringBuffer.append( "body=" + payInfo.getBody() + "&" );
+        stringBuffer.append( "out_trade_no=" + payInfo.getOut_trade_no() + "&" );
+        stringBuffer.append( "total_fee=" + payInfo.getTotal_fee() + "&" );
+        stringBuffer.append( "notify_url=" + payInfo.getNotify_url() + "&" );
+        stringBuffer.append( "trade_type="+payInfo.getTrade_type()+"&" );
+        stringBuffer.append( "sub_mch="+"77904201"+"&" );
+        stringBuffer.append( "mch="+"77903201"+"&" );
+        stringBuffer.append( "sub_app="+ "77904101"+"&");
+        stringBuffer.append( "spbill_create_ip="+payInfo.getSpbill_create_ip() +"&");
+        stringBuffer.append( "sub_openid=" + payInfo.getOpenid() );
+
+        String response=HttpUtils.getResponse( url, stringBuffer.toString() );
+        //调用支付接口
+        prePayCostVO = JSONObject.parseObject( response,PrePayResult.class );
+
+
+        return prePayCostVO;
+    }
 
 }

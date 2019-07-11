@@ -1414,6 +1414,66 @@ public class PmsProductExample {
             addCriterion("product_category_name not between", value1, value2, "productCategoryName");
             return (Criteria) this;
         }
+
+        public Criteria andProductAttributeCategoryIdIsNull() {
+            addCriterion("product_attribute_category_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdIsNotNull() {
+            addCriterion("product_attribute_category_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdEqualTo(Integer value) {
+            addCriterion("product_attribute_category_id =", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdNotEqualTo(Integer value) {
+            addCriterion("product_attribute_category_id <>", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdGreaterThan(Integer value) {
+            addCriterion("product_attribute_category_id >", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("product_attribute_category_id >=", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdLessThan(Integer value) {
+            addCriterion("product_attribute_category_id <", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdLessThanOrEqualTo(Integer value) {
+            addCriterion("product_attribute_category_id <=", value, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdIn(List<Integer> values) {
+            addCriterion("product_attribute_category_id in", values, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdNotIn(List<Integer> values) {
+            addCriterion("product_attribute_category_id not in", values, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdBetween(Integer value1, Integer value2) {
+            addCriterion("product_attribute_category_id between", value1, value2, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProductAttributeCategoryIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("product_attribute_category_id not between", value1, value2, "productAttributeCategoryId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

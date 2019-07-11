@@ -30,7 +30,6 @@ import java.util.List;
 @Api(value="UmsAdminController",description="后台用户管理")
 @RequestMapping("/admin")
 @RestController
-
 public class UmsAdminController {
 
     @Autowired
@@ -74,7 +73,7 @@ public class UmsAdminController {
         // 在认证提交前准备 token（令牌）
         UsernamePasswordToken token = new UsernamePasswordToken(account, password);
         Subject subject = SecurityUtils.getSubject();
-
+//        subject.getSession().setTimeout( 5000 );
         try{
             subject.login( token );
         }catch ( Exception e ){
@@ -84,12 +83,12 @@ public class UmsAdminController {
         return new CommonResult().success( "登录成功",login );
     }
 
-    @GetMapping("/notLogin")
+    @RequestMapping("/notLogin")
     public CommonResult notLogin(){
         return new CommonResult().failed( 7777,"登录超时,请重新登录" );
     }
 
-    @GetMapping("/unAuth")
+    @RequestMapping("/unAuth")
     public CommonResult unAuth(){
         return new CommonResult().failed( 7778,"抱歉，您没有权限访问" );
     }

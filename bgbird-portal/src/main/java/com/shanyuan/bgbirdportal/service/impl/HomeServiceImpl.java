@@ -101,8 +101,10 @@ public class HomeServiceImpl implements HomeService {
         PageHelper.startPage( pageNum,pageSize );
         PmsProductExample example = new PmsProductExample();
         example.setOrderByClause( "sale_amount desc" );
+
         example.createCriteria().andDeleteStatusEqualTo( 0 )
-                .andPublishStatusEqualTo( 1 );
+                .andPublishStatusEqualTo( 1 )
+                .andHotStatusEqualTo( 1 );
         return pmsProductMapper.selectByExample( example );
     }
 
@@ -156,6 +158,28 @@ public class HomeServiceImpl implements HomeService {
             list.add( result );
         }
         return list;
+    }
+
+    @Override
+    public List <PmsProduct> getHotSale(Integer pageNum, Integer pageSize) {
+        PmsProductExample example = new PmsProductExample();
+        example.setOrderByClause( "sale_amount desc ,id desc" );
+        example.createCriteria().andDeleteStatusEqualTo( 0 )
+                .andHotStatusEqualTo( 1 )
+                .andPublishStatusEqualTo( 1 );
+        PageHelper.startPage( pageNum,pageSize );
+        return pmsProductMapper.selectByExample( example );
+    }
+
+    @Override
+    public List <PmsProduct> getExchange(Integer pageNum, Integer pageSize) {
+        PmsProductExample example = new PmsProductExample();
+        example.createCriteria().andPublishStatusEqualTo( 1 )
+                .andDeleteStatusEqualTo( 0 )
+                .andExchangeStatusEqualTo( 1 );
+        example.setOrderByClause( "id desc" );
+        PageHelper.startPage( pageNum,pageSize );
+        return pmsProductMapper.selectByExample( example );
     }
 
     private List<OmsProductComment> getProductComment(Integer productId){

@@ -34,6 +34,24 @@ public class PortalHomeController {
         return new CommonResult().success( homeContentResult );
     }
 
+    @ApiOperation( "获取热销商品" )
+    @GetMapping("/getHotSale")
+    public CommonResult getHotSale(@RequestParam(defaultValue="1")Integer pageNum,
+                                       @RequestParam(defaultValue="10")Integer pageSize){
+        List <PmsProduct> hotSale=homeService.getHotSale( pageNum, pageSize );
+        PageInfo<PmsProduct> pmsProductPageInfo = new PageInfo <>( hotSale );
+        return new CommonResult().pageSuccess( pmsProductPageInfo );
+    }
+
+    @ApiOperation( "获取兑换商品" )
+    @GetMapping("/getExchange")
+    public CommonResult getExchange(@RequestParam(defaultValue="1")Integer pageNum,
+                                        @RequestParam(defaultValue="10")Integer pageSize){
+        List <PmsProduct> exchange=homeService.getExchange( pageNum, pageSize );
+        PageInfo<PmsProduct> pmsProductPageInfo = new PageInfo <>( exchange );
+        return new CommonResult().pageSuccess( pmsProductPageInfo );
+    }
+
     @ApiOperation("根据分类id获取相应的商品列表")
     @GetMapping("/listProductByCategoryId/{categoryId}")
     public CommonResult listProductByCategoryId(@PathVariable Integer categoryId,

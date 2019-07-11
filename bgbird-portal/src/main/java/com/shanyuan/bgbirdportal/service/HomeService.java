@@ -26,4 +26,8 @@ public interface HomeService {
     List<PmsSkuStock> getAttributeSpecByProductId(Integer productId);
     /*根据商品id规格获取商品价格*/
     List<PortalProductPriceStockResult> getProductPriceByAttribute(Integer productId,PortalProductAttributeValueParams portalProductAttributeValueParams);
+    /*获取热销商品*/
+    List<PmsProduct> getHotSale(Integer pageNum, Integer pageSize);
+    /*获取兑换商品*/
+    List<PmsProduct> getExchange(Integer pageNum, Integer pageSize);
 }

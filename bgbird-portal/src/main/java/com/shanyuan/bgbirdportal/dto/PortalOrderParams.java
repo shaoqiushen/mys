@@ -20,7 +20,7 @@ public class PortalOrderParams {
     private Integer addressId;
     @ApiModelProperty("优惠券id")
     private Long couponId;
-    @ApiModelProperty(value="支付方式：0->未支付；1->支付宝；2->微信",required=true)
+    @ApiModelProperty(value="支付方式:0->未支付,1->微信支付,2->支付宝支付",required=true)
     private Integer payType;
     @ApiModelProperty(value="订单来源:0->app订单,1->PC订单",required=true)
     private Integer sourceType;
@@ -35,6 +35,10 @@ public class PortalOrderParams {
     @ApiModelProperty("送餐方式:0->堂吃，1->配送")
     @FlagValidator(value={"0","1"},message="请输入0或1")
     private Integer eatType;
+    @ApiModelProperty(value="消费描述",required=true)
+    private String body;
+    @ApiModelProperty(value="ip",required=true)
+    private String spbillCreateIp;
 
 
 }

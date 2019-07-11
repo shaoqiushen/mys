@@ -15,3 +15,5 @@ spring:
     active: prod
   jmx:
     enabled: false
+
+integration-server-addr: https://zrb.shanyuankj.cn/wechat/card/updateuser

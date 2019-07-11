@@ -14,29 +14,28 @@ public class HttpUtils {
 	
 	@SuppressWarnings("unused")
 	public static String getResponse(String requsetUrl, String content) {
+        StringBuffer responseSb=null;
         try {
-            URL url = new URL(requsetUrl);
-            HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
-            httpConn.setDoOutput(true); // 使用 URL 连接进行输出
-            httpConn.setDoInput(true); // 使用 URL 连接进行输入
-            httpConn.setUseCaches(false); // 忽略缓存
-            httpConn.setRequestMethod("POST"); // 设置URL请求方法
-            OutputStream outputStream = httpConn.getOutputStream();
-            outputStream.write(content.getBytes("UTF-8"));
+            URL url=new URL( requsetUrl );
+            HttpURLConnection httpConn=( HttpURLConnection ) url.openConnection();
+            httpConn.setDoOutput( true ); // 使用 URL 连接进行输出
+            httpConn.setDoInput( true ); // 使用 URL 连接进行输入
+            httpConn.setUseCaches( false ); // 忽略缓存
+            httpConn.setRequestMethod( "POST" ); // 设置URL请求方法
+            OutputStream outputStream=httpConn.getOutputStream();
+            outputStream.write( content.getBytes( "UTF-8" ) );
             outputStream.close();
-            BufferedReader responseReader = new BufferedReader(
-                    new InputStreamReader(httpConn.getInputStream(), "UTF-8"));
+            BufferedReader responseReader=new BufferedReader( new InputStreamReader( httpConn.getInputStream(), "UTF-8" ) );
             String readLine;
-            StringBuffer responseSb = new StringBuffer();
-            while ((readLine = responseReader.readLine()) != null) {
-                responseSb.append(readLine);
+            responseSb=new StringBuffer();
+            while ((readLine=responseReader.readLine()) != null) {
+                responseSb.append( readLine );
             }
-            return responseSb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "ERROR";
-        }
 
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+        return responseSb.toString();
     }
 
 }

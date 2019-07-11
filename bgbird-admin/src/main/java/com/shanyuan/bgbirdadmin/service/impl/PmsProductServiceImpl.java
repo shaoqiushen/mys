@@ -66,6 +66,7 @@ public class PmsProductServiceImpl implements PmsProductService {
         int count = 0;
         //创建商品
         PmsProduct pmsProduct = productParams;
+        pmsProduct.setCreateTime( new Date(  ) );
         //添加商品基本信息
         pmsProductMapper.insertSelective( pmsProduct );
         Integer productId = pmsProduct.getId();
@@ -121,8 +122,9 @@ public class PmsProductServiceImpl implements PmsProductService {
         int count;
         //更新商品信息
         PmsProduct product = pmsProductParams;
+        product.setUpdateTime( new Date(  ) );
         product.setId(productId);
-        pmsProductMapper.updateByPrimaryKey(product);
+        pmsProductMapper.updateByPrimaryKeySelective(product);
         //更新满减价格
         PmsProductFullReductionExample fullReductionExample = new PmsProductFullReductionExample();
         fullReductionExample.createCriteria().andProductIdEqualTo( productId );

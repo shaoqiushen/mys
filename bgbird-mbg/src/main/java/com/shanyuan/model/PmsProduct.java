@@ -146,6 +146,13 @@ public class PmsProduct implements Serializable {
      */
     private String productCategoryName;
 
+    /**
+     * 商品类型id
+     *
+     * @mbggenerated
+     */
+    private Integer productAttributeCategoryId;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -316,6 +323,14 @@ public class PmsProduct implements Serializable {
         this.productCategoryName = productCategoryName;
     }
 
+    public Integer getProductAttributeCategoryId() {
+        return productAttributeCategoryId;
+    }
+
+    public void setProductAttributeCategoryId(Integer productAttributeCategoryId) {
+        this.productAttributeCategoryId = productAttributeCategoryId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -343,6 +358,7 @@ public class PmsProduct implements Serializable {
         sb.append(", promotionType=").append(promotionType);
         sb.append(", promotionPerLimit=").append(promotionPerLimit);
         sb.append(", productCategoryName=").append(productCategoryName);
+        sb.append(", productAttributeCategoryId=").append(productAttributeCategoryId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

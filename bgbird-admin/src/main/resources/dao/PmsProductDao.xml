@@ -3,6 +3,7 @@
 <mapper namespace="com.shanyuan.bgbirdadmin.dao.PmsProductDao">
     <resultMap id="updateInfoMap" type="com.shanyuan.bgbirdadmin.dto.PmsProductResult" extends="com.shanyuan.mapper.PmsProductMapper.BaseResultMap">
         <result column="id" jdbcType="INTEGER" property="id"></result>
+        <result column="productAttributeCategoryName" jdbcType="VARCHAR" property="productAttributeCategoryName"></result>
         <collection property="memberPriceList" columnPrefix="member_" resultMap="com.shanyuan.mapper.PmsProductMemberPriceMapper.BaseResultMap"></collection>
         <collection property="fullReductionList" columnPrefix="full_" resultMap="com.shanyuan.mapper.PmsProductFullReductionMapper.BaseResultMap"></collection>
         <collection property="skuStockList" columnPrefix="sku_" resultMap="com.shanyuan.mapper.PmsSkuStockMapper.BaseResultMap"></collection>
@@ -14,7 +15,8 @@
         s.id sku_id,s.product_id sku_product_id,s.price sku_price,s.picture sku_pic,s.sale_count sku_sale,s.sku_code sku_sku_code,s.sp1 sku_sp1,s.sp2 sku_sp2,s.sp3 sku_sp3,s.stock sku_stock,
         m.id member_id,m.product_id member_product_id,m.member_level_id member_member_level_id,m.member_price member_member_price,m.member_level_name member_member_level_name,
         pf.id full_id,pf.product_id full_product_id,pf.full_price full_full_price,pf.reduce_price full_reduce_price,
-        a.id attribute_id,a.product_id attribute_product_id,a.product_attribute_id attribute_product_attribute_id,a.value attribute_value
+        a.id attribute_id,a.product_id attribute_product_id,a.product_attribute_id attribute_product_attribute_id,a.value attribute_value,
+        a.attr_type attribute_attr_type
         from pms_product p
         left join pms_product_category pc
         on pc.category_id = p.product_category_id
@@ -26,6 +28,8 @@
         on s.product_id = p.id
         left join pms_product_attribute_value a
         on a.product_id = p.id
+        left join pms_product_attribute ppa
+        on a.product_attribute_id = ppa.id
         where p.id=#{productId}
         and p.delete_status=0
     </select>

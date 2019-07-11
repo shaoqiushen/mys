@@ -11,7 +11,9 @@
   <!--</resultMap>-->
 
   <select id="listProductByCategoryId" resultMap="com.shanyuan.mapper.PmsProductMapper.BaseResultMap" >
-    select id,product_name,product_introduce,picture,sale_amount,price,promotion_price
+    select id,product_name,product_introduce,picture,
+    sale_amount,price,promotion_price,
+    hot_status,exchange_status
 
     from pms_product
     where product_category_id = #{categoryId}

@@ -5,6 +5,8 @@
     <modules>
         <module>bgbird-mbg</module>
         <module>bgbird-common</module>
+        <module>bgbird-portal</module>
+        <module>bgbird-admin</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

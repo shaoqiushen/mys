@@ -1,6 +1,6 @@
 package com.shanyuan.bgbirdportal.dto;
 
-import com.shanyuan.validator.FlagValidator;
+import com.shanyuan.validator.LengthValidator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -26,4 +26,8 @@ public class PortalAuthorizationParams {
     @ApiModelProperty("登陆时获取到的token")
     @NotEmpty(message="token不允许为空")
     private String token;
+    @ApiModelProperty("手机号")
+    @NotEmpty(message="手机号不允许为空")
+    @LengthValidator(value=11,message="手机号最大长度11位")
+    private String telephone;
 }

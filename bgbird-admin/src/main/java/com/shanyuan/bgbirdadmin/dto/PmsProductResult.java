@@ -11,5 +11,5 @@ import lombok.Data;
  **/
 @Data
 public class PmsProductResult extends PmsProductParams{
-
+//    private String productAttributeCategoryName;
 }

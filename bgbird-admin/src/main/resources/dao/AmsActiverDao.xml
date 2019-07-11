@@ -10,6 +10,7 @@
         <result column="integration" jdbcType="INTEGER" property="integration" />
         <result column="end_time" jdbcType="VARCHAR" property="endTime" />
         <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="is_enable" jdbcType="VARCHAR" property="isEnable" />
     </resultMap>
 
     <update id="deleteActive">
@@ -17,7 +18,7 @@
     </update>
 
     <select id="listActiveInfo" resultMap="BaseResultMap">
-        select a.id,a.active_name,a.begin_time,a.active_introduce,a.active_picture,a.integration,a.end_time,a.create_time,
+        select a.id,a.active_name,a.begin_time,a.active_introduce,a.active_picture,a.integration,a.end_time,a.create_time,is_enable,
         (select count(*) peopleCount from ams_active_user_apply b where a.id = b.active_id)
         from ams_active a
         where delete_status = 0

@@ -46,7 +46,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
         // 使用该过滤器过滤所有的链接
         //filterChainDefinitionMap.put("/**","custom");
-//        filterChainDefinitionMap.put("/**", "authc");//其他路径均拦截
+        filterChainDefinitionMap.put("/**", "authc");//其他路径均拦截
         shiroFilterFactoryBean.setFilterChainDefinitionMap( filterChainDefinitionMap );
        // shiroFilterFactoryBean.setFilters( filterMap );
         return shiroFilterFactoryBean;
@@ -76,6 +76,7 @@ public class ShiroConfig {
     public SessionManager sessionManager(){
         return new MySessionManager();
     }
+
 
 
 }

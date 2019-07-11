@@ -9,6 +9,7 @@ import com.shanyuan.domain.CommonResult;
 import com.shanyuan.mapper.UmsUserMapper;
 import com.shanyuan.model.UmsUser;
 import com.shanyuan.model.UmsUserExample;
+import com.shanyuan.redis.RedisOperator;
 import com.shanyuan.utils.HttpUtils;
 import com.shanyuan.utils.PrimaryGenerater;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class PortalUmsUserServiceImpl implements PortalUmsUserService {
 
     @Autowired
     UmsUserMapper umsUserMapper;
+
+    @Autowired
+    RedisOperator operator;
 
     @Override
     public UmsUser getUserInfo(String userId) {
@@ -92,13 +96,31 @@ public class PortalUmsUserServiceImpl implements PortalUmsUserService {
             umsUser.setUnionid( data.getUnionId() );
             umsUser.setProvince( data.getProvince() );
             umsUser.setCreateTime( new Date(  ) );
+            umsUser.setTellPhone( portalAuthorizationParams.getTelephone() );
             umsUserMapper.insert( umsUser );
         }
-
+        String token = "bg"+PrimaryGenerater.getInstance().getUid();
+        operator.set( token,token,60*60*24 );
         Map map = new HashMap(  );
         map.put( "userId", userId);
         map.put( "avatarUrl", data.getAvatarUrl());
         map.put( "nickName",data.getNickName() );
+        map.put( "token",token );
+        return new CommonResult().success( map );
+    }
+
+    @Override
+    public CommonResult getToken(String userId) {
+        UmsUserExample example = new UmsUserExample();
+        example.createCriteria().andUserIdEqualTo( userId );
+        List <UmsUser> umsUsers=umsUserMapper.selectByExample( example );
+        if(umsUsers.size() == 0){
+            return new CommonResult().failed( "用户不存在" );
+        }
+        String token="bg"+PrimaryGenerater.getInstance().getUid();
+        operator.set( token,token,60*60*24);
+        Map map = new HashMap(  );
+        map.put( "token" ,token);
         return new CommonResult().success( map );
     }
 }

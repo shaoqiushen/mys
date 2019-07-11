@@ -26,6 +26,13 @@ public class PmsProductAttributeValue implements Serializable {
      */
     private String value;
 
+    /**
+     * 1->参数；0->规格
+     *
+     * @mbggenerated
+     */
+    private Integer attrType;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -60,6 +67,14 @@ public class PmsProductAttributeValue implements Serializable {
         this.value = value;
     }
 
+    public Integer getAttrType() {
+        return attrType;
+    }
+
+    public void setAttrType(Integer attrType) {
+        this.attrType = attrType;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -70,6 +85,7 @@ public class PmsProductAttributeValue implements Serializable {
         sb.append(", productId=").append(productId);
         sb.append(", productAttributeId=").append(productAttributeId);
         sb.append(", value=").append(value);
+        sb.append(", attrType=").append(attrType);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

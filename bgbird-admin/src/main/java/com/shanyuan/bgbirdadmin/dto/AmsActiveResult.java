@@ -20,4 +20,5 @@ public class AmsActiveResult {
     private int peopleCount;
     private int integration;
     private String createTime;
+    private int isEnable;
 }

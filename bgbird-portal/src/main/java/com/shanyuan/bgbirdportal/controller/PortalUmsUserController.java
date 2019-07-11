@@ -9,10 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * author  shenshaoqiu
@@ -37,5 +34,11 @@ public class PortalUmsUserController {
             return new CommonResult().failed( "授权登录失败" );
         }
         return  authorization;
+    }
+
+    @ApiOperation( "刷新token" )
+    @PostMapping("/getToken")
+    public CommonResult getToken(@RequestParam String userId){
+        return portalUmsUserService.getToken( userId );
     }
 }
